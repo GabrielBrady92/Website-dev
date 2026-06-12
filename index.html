@@ -1,0 +1,1612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NexaWave Digital, LLC – Digital Marketing Agency</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Reset & Base ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #0a0a0a;
+      --bg2:       #111111;
+      --bg3:       #161616;
+      --surface:   #1a1a1a;
+      --border:    rgba(255,255,255,0.08);
+      --text:      #ffffff;
+      --muted:     #888888;
+      --grad:      linear-gradient(90deg, #ff4500, #ff8c00, #ffd700, #00c853, #00bcd4, #2196f3);
+      --grad-diag: linear-gradient(135deg, #ff4500 0%, #ff8c00 20%, #ffd700 40%, #00c853 60%, #00bcd4 80%, #2196f3 100%);
+      --blue:      #2196f3;
+      --teal:      #00bcd4;
+      --green:     #00c853;
+      --orange:    #ff8c00;
+      --red:       #ff4500;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* ── Utility ── */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .gradient-text {
+      background: var(--grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .gradient-border {
+      border: 1px solid transparent;
+      background-clip: padding-box;
+      position: relative;
+    }
+    .gradient-border::before {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      border-radius: inherit;
+      background: var(--grad);
+      z-index: -1;
+    }
+
+    /* ── Navigation ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      padding: 0 24px;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(10,10,10,0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      transition: all 0.3s ease;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .nav-logo-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--grad-diag);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      font-weight: 900;
+      color: #fff;
+    }
+
+    .nav-logo-text {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.1;
+    }
+
+    .nav-logo-text span {
+      display: block;
+      font-size: 10px;
+      font-weight: 400;
+      color: var(--muted);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    .nav-cta {
+      background: var(--grad);
+      border: none;
+      padding: 10px 24px;
+      border-radius: 8px;
+      color: #fff;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+
+    .nav-cta:hover { opacity: 0.85; transform: translateY(-1px); }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+
+    /* ── Hero ── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding-top: 72px;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .hero-glow {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(120px);
+      opacity: 0.18;
+      animation: pulse 6s ease-in-out infinite;
+    }
+
+    .hero-glow-1 {
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, #2196f3, transparent);
+      top: -100px; right: -100px;
+    }
+
+    .hero-glow-2 {
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, #ff4500, transparent);
+      bottom: -100px; left: -100px;
+      animation-delay: -3s;
+    }
+
+    .hero-glow-3 {
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, #00c853, transparent);
+      top: 50%; left: 40%;
+      animation-delay: -1.5s;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 0.18; }
+      50%       { transform: scale(1.15); opacity: 0.28; }
+    }
+
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 760px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(33,150,243,0.12);
+      border: 1px solid rgba(33,150,243,0.3);
+      border-radius: 100px;
+      padding: 6px 16px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--blue);
+      margin-bottom: 24px;
+    }
+
+    .hero-badge::before {
+      content: '';
+      width: 6px; height: 6px;
+      background: var(--blue);
+      border-radius: 50%;
+      animation: blink 2s ease-in-out infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0.3; }
+    }
+
+    .hero-title {
+      font-size: clamp(42px, 6vw, 80px);
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: -2px;
+      margin-bottom: 24px;
+    }
+
+    .hero-sub {
+      font-size: clamp(16px, 2vw, 20px);
+      color: var(--muted);
+      margin-bottom: 40px;
+      max-width: 580px;
+      line-height: 1.7;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--grad);
+      border: none;
+      padding: 16px 32px;
+      border-radius: 10px;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: opacity 0.2s, transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 24px rgba(33,150,243,0.25);
+    }
+
+    .btn-primary:hover {
+      opacity: 0.9;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(33,150,243,0.4);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      border: 1px solid var(--border);
+      padding: 16px 32px;
+      border-radius: 10px;
+      color: var(--text);
+      font-size: 16px;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .btn-secondary:hover {
+      border-color: rgba(255,255,255,0.3);
+      transform: translateY(-2px);
+    }
+
+    .hero-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      margin-top: 64px;
+      padding-top: 40px;
+      border-top: 1px solid var(--border);
+    }
+
+    .stat-item { }
+
+    .stat-number {
+      font-size: 36px;
+      font-weight: 800;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .stat-label {
+      font-size: 13px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* ── Section Shared ── */
+    section { padding: 100px 0; }
+
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    .section-label::before {
+      content: '';
+      width: 24px; height: 2px;
+      background: var(--grad);
+      border-radius: 2px;
+    }
+
+    .section-title {
+      font-size: clamp(32px, 4vw, 52px);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -1px;
+      margin-bottom: 16px;
+    }
+
+    .section-desc {
+      font-size: 18px;
+      color: var(--muted);
+      max-width: 560px;
+      line-height: 1.7;
+    }
+
+    /* ── Services ── */
+    #services { background: var(--bg2); }
+
+    .services-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 32px;
+      margin-bottom: 64px;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 24px;
+    }
+
+    .service-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 36px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+      cursor: default;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--card-grad, var(--grad-diag));
+      opacity: 0;
+      transition: opacity 0.3s;
+      z-index: 0;
+    }
+
+    .service-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 24px 60px rgba(0,0,0,0.4);
+    }
+
+    .service-card:hover { border-color: transparent; }
+    .service-card:hover::before { opacity: 0.06; }
+
+    .service-card > * { position: relative; z-index: 1; }
+
+    .service-icon {
+      width: 56px; height: 56px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      margin-bottom: 24px;
+    }
+
+    .service-card:nth-child(1) .service-icon { background: rgba(255,69,0,0.15); }
+    .service-card:nth-child(2) .service-icon { background: rgba(0,200,83,0.15); }
+    .service-card:nth-child(3) .service-icon { background: rgba(33,150,243,0.15); }
+    .service-card:nth-child(4) .service-icon { background: rgba(255,140,0,0.15); }
+    .service-card:nth-child(5) .service-icon { background: rgba(0,188,212,0.15); }
+
+    .service-title {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .service-desc {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+
+    .service-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      font-size: 12px;
+      font-weight: 500;
+      padding: 4px 12px;
+      border-radius: 100px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid var(--border);
+      color: var(--muted);
+    }
+
+    /* ── Why Us ── */
+    #why { background: var(--bg); }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .why-visual {
+      position: relative;
+    }
+
+    .why-card-stack {
+      display: grid;
+      gap: 16px;
+    }
+
+    .why-metric-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px 28px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      transition: transform 0.3s;
+    }
+
+    .why-metric-card:hover { transform: translateX(8px); }
+
+    .why-metric-icon {
+      width: 48px; height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      flex-shrink: 0;
+    }
+
+    .why-metric-card:nth-child(1) .why-metric-icon { background: rgba(0,200,83,0.15); }
+    .why-metric-card:nth-child(2) .why-metric-icon { background: rgba(33,150,243,0.15); }
+    .why-metric-card:nth-child(3) .why-metric-icon { background: rgba(255,140,0,0.15); }
+    .why-metric-card:nth-child(4) .why-metric-icon { background: rgba(0,188,212,0.15); }
+
+    .why-metric-label {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 2px;
+    }
+
+    .why-metric-value {
+      font-size: 22px;
+      font-weight: 700;
+    }
+
+    .why-points { display: grid; gap: 32px; }
+
+    .why-point {
+      display: flex;
+      gap: 20px;
+    }
+
+    .why-point-num {
+      width: 40px; height: 40px;
+      border-radius: 10px;
+      background: var(--grad);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .why-point-title {
+      font-size: 17px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .why-point-desc {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* ── Process ── */
+    #process { background: var(--bg2); }
+
+    .process-header { text-align: center; margin-bottom: 64px; }
+    .process-header .section-desc { margin: 0 auto; }
+
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      position: relative;
+    }
+
+    .process-steps::before {
+      content: '';
+      position: absolute;
+      top: 28px; left: 12.5%; right: 12.5%;
+      height: 2px;
+      background: var(--grad);
+      z-index: 0;
+    }
+
+    .process-step {
+      text-align: center;
+      padding: 0 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .step-circle {
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      background: var(--bg2);
+      border: 2px solid transparent;
+      background-clip: padding-box;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      font-weight: 700;
+      margin: 0 auto 24px;
+      position: relative;
+    }
+
+    .step-circle::before {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      border-radius: 50%;
+      background: var(--grad);
+      z-index: -1;
+    }
+
+    .step-circle-inner {
+      width: 52px; height: 52px;
+      background: var(--bg2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      font-weight: 800;
+    }
+
+    .step-title {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .step-desc {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* ── Testimonials ── */
+    #testimonials { background: var(--bg); }
+
+    .testimonials-header { margin-bottom: 64px; }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .testimonial-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 32px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .testimonial-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.35);
+    }
+
+    .testimonial-stars {
+      display: flex;
+      gap: 4px;
+      margin-bottom: 20px;
+      font-size: 16px;
+    }
+
+    .testimonial-text {
+      font-size: 15px;
+      color: rgba(255,255,255,0.8);
+      line-height: 1.8;
+      margin-bottom: 24px;
+      font-style: italic;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .author-avatar {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .author-name {
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .author-role {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    /* ── CTA ── */
+    #cta {
+      background: var(--bg3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-glow {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 20% 50%, rgba(33,150,243,0.12) 0%, transparent 60%),
+        radial-gradient(circle at 80% 50%, rgba(255,69,0,0.10) 0%, transparent 60%);
+    }
+
+    .cta-inner {
+      position: relative;
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .cta-title {
+      font-size: clamp(36px, 5vw, 60px);
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: -1.5px;
+      margin-bottom: 20px;
+    }
+
+    .cta-desc {
+      font-size: 18px;
+      color: var(--muted);
+      margin-bottom: 40px;
+      line-height: 1.7;
+    }
+
+    .cta-actions {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    /* ── Contact ── */
+    #contact { background: var(--bg2); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.3fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .contact-info { }
+
+    .contact-items {
+      display: grid;
+      gap: 24px;
+      margin-top: 40px;
+    }
+
+    .contact-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .contact-item-icon {
+      width: 44px; height: 44px;
+      border-radius: 12px;
+      background: rgba(33,150,243,0.12);
+      border: 1px solid rgba(33,150,243,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    .contact-item-label {
+      font-size: 12px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 4px;
+    }
+
+    .contact-item-value {
+      font-size: 15px;
+      font-weight: 500;
+    }
+
+    .contact-form {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 40px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.7);
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px 16px;
+      font-family: inherit;
+      font-size: 15px;
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.2s, background 0.2s;
+      -webkit-appearance: none;
+    }
+
+    .form-group select option { background: #1a1a1a; }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: rgba(33,150,243,0.5);
+      background: rgba(33,150,243,0.04);
+    }
+
+    .form-group textarea { resize: vertical; min-height: 120px; }
+
+    .form-submit {
+      width: 100%;
+      background: var(--grad);
+      border: none;
+      padding: 16px;
+      border-radius: 10px;
+      color: #fff;
+      font-family: inherit;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+
+    .form-submit:hover { opacity: 0.88; transform: translateY(-1px); }
+
+    /* ── Footer ── */
+    footer {
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+      padding: 60px 0 32px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 48px;
+    }
+
+    .footer-brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .footer-brand-icon {
+      width: 36px; height: 36px;
+      background: var(--grad-diag);
+      border-radius: 8px;
+    }
+
+    .footer-brand-name {
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .footer-brand-name span {
+      display: block;
+      font-size: 10px;
+      font-weight: 400;
+      color: var(--muted);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .footer-desc {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+
+    .footer-socials {
+      display: flex;
+      gap: 12px;
+    }
+
+    .social-btn {
+      width: 36px; height: 36px;
+      border-radius: 8px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      text-decoration: none;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .social-btn:hover { border-color: rgba(255,255,255,0.3); transform: translateY(-2px); }
+
+    .footer-col-title {
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: grid;
+      gap: 12px;
+    }
+
+    .footer-links a {
+      text-decoration: none;
+      font-size: 14px;
+      color: rgba(255,255,255,0.6);
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--text); }
+
+    .footer-bottom {
+      padding-top: 28px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-bottom p {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .footer-bottom-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .footer-bottom-links a {
+      font-size: 13px;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-bottom-links a:hover { color: var(--text); }
+
+    /* ── Scroll Reveal Animation ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+    .reveal-delay-5 { transition-delay: 0.5s; }
+
+    /* ── Mobile ── */
+    @media (max-width: 1024px) {
+      .why-grid { grid-template-columns: 1fr; }
+      .why-visual { order: -1; }
+      .process-steps { grid-template-columns: repeat(2, 1fr); gap: 40px; }
+      .process-steps::before { display: none; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr 1fr; }
+      .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+    }
+
+    @media (max-width: 768px) {
+      section { padding: 72px 0; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .services-grid { grid-template-columns: 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .hero-stats { gap: 24px; }
+    }
+
+    /* ── Mobile Menu ── */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 72px; left: 0; right: 0;
+      background: rgba(10,10,10,0.97);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      padding: 24px;
+      z-index: 999;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .mobile-menu.open { display: flex; }
+
+    .mobile-menu a {
+      text-decoration: none;
+      color: var(--text);
+      font-size: 18px;
+      font-weight: 500;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav id="navbar">
+  <a href="#hero" class="nav-logo">
+    <div class="nav-logo-icon">N</div>
+    <div class="nav-logo-text">
+      NexaWave
+      <span>Digital, LLC</span>
+    </div>
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#testimonials">Results</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+
+  <a href="#contact" class="nav-cta">Get Free Audit</a>
+
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#services" onclick="closeMobile()">Services</a>
+  <a href="#why" onclick="closeMobile()">Why Us</a>
+  <a href="#process" onclick="closeMobile()">Process</a>
+  <a href="#testimonials" onclick="closeMobile()">Results</a>
+  <a href="#contact" onclick="closeMobile()">Contact</a>
+</div>
+
+<!-- Hero -->
+<section id="hero">
+  <div class="hero-bg">
+    <div class="hero-glow hero-glow-1"></div>
+    <div class="hero-glow hero-glow-2"></div>
+    <div class="hero-glow hero-glow-3"></div>
+    <div class="hero-grid"></div>
+  </div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-badge">Full-Service Digital Marketing Agency</div>
+
+      <h1 class="hero-title">
+        Grow Smarter.<br />
+        <span class="gradient-text">Rank Higher.</span><br />
+        Convert More.
+      </h1>
+
+      <p class="hero-sub">
+        NexaWave Digital transforms local businesses into dominant online brands through cutting-edge web design, SEO, paid ads, social media, and professional visual content.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#contact" class="btn-primary">
+          Start Growing Today
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#services" class="btn-secondary">
+          Explore Services
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 9l-7 7-7-7"/></svg>
+        </a>
+      </div>
+
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-number gradient-text">150+</div>
+          <div class="stat-label">Clients Served</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number gradient-text">98%</div>
+          <div class="stat-label">Client Retention</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number gradient-text">3.8×</div>
+          <div class="stat-label">Avg. ROI on Ads</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number gradient-text">Top 3</div>
+          <div class="stat-label">Local Rankings</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Services -->
+<section id="services">
+  <div class="container">
+    <div class="services-header">
+      <div>
+        <div class="section-label">What We Do</div>
+        <h2 class="section-title">Services That <span class="gradient-text">Drive Results</span></h2>
+      </div>
+      <p class="section-desc">Every service is built around one goal: growing your business with measurable, real-world outcomes.</p>
+    </div>
+
+    <div class="services-grid">
+
+      <!-- Website Development -->
+      <div class="service-card reveal">
+        <div class="service-icon">🖥️</div>
+        <h3 class="service-title">Website Development</h3>
+        <p class="service-desc">
+          We design and build conversion-focused websites that look stunning and load fast. From landing pages to full custom builds — your site will work as hard as you do.
+        </p>
+        <div class="service-tags">
+          <span class="tag">Custom Design</span>
+          <span class="tag">WordPress</span>
+          <span class="tag">Mobile-First</span>
+          <span class="tag">Speed Optimized</span>
+        </div>
+      </div>
+
+      <!-- Localized SEO -->
+      <div class="service-card reveal reveal-delay-1">
+        <div class="service-icon">📍</div>
+        <h3 class="service-title">Localized SEO</h3>
+        <p class="service-desc">
+          Dominate local search results and Google Maps. We optimize your presence so when customers search for what you offer nearby, they find you first — every time.
+        </p>
+        <div class="service-tags">
+          <span class="tag">Google Business</span>
+          <span class="tag">Local Citations</span>
+          <span class="tag">Keyword Strategy</span>
+          <span class="tag">On-Page SEO</span>
+        </div>
+      </div>
+
+      <!-- Google Ads -->
+      <div class="service-card reveal reveal-delay-2">
+        <div class="service-icon">🎯</div>
+        <h3 class="service-title">Google Ads Management</h3>
+        <p class="service-desc">
+          Data-driven paid search campaigns that put your business in front of buyers at the exact moment they're ready to purchase. We maximize every dollar of your ad spend.
+        </p>
+        <div class="service-tags">
+          <span class="tag">Search Ads</span>
+          <span class="tag">Display Ads</span>
+          <span class="tag">Retargeting</span>
+          <span class="tag">Conversion Tracking</span>
+        </div>
+      </div>
+
+      <!-- Social Media -->
+      <div class="service-card reveal reveal-delay-3">
+        <div class="service-icon">📱</div>
+        <h3 class="service-title">Social Media Management</h3>
+        <p class="service-desc">
+          We create, schedule, and manage engaging content across all platforms — building your brand's voice, growing your audience, and turning followers into paying customers.
+        </p>
+        <div class="service-tags">
+          <span class="tag">Instagram</span>
+          <span class="tag">Facebook</span>
+          <span class="tag">Content Creation</span>
+          <span class="tag">Analytics</span>
+        </div>
+      </div>
+
+      <!-- Videography & Photography -->
+      <div class="service-card reveal reveal-delay-4">
+        <div class="service-icon">🎬</div>
+        <h3 class="service-title">Videography & Photography</h3>
+        <p class="service-desc">
+          Professional visual content that stops the scroll and tells your story. From brand videos to product photography, we capture the moments that make people choose you.
+        </p>
+        <div class="service-tags">
+          <span class="tag">Brand Videos</span>
+          <span class="tag">Social Reels</span>
+          <span class="tag">Product Shoots</span>
+          <span class="tag">Drone Footage</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Why Us -->
+<section id="why">
+  <div class="container">
+    <div class="why-grid">
+
+      <div class="why-visual reveal">
+        <div class="why-card-stack">
+          <div class="why-metric-card">
+            <div class="why-metric-icon">📈</div>
+            <div>
+              <div class="why-metric-label">Average Traffic Increase</div>
+              <div class="why-metric-value gradient-text">+247% in 90 Days</div>
+            </div>
+          </div>
+          <div class="why-metric-card">
+            <div class="why-metric-icon">💰</div>
+            <div>
+              <div class="why-metric-label">Google Ads Return on Spend</div>
+              <div class="why-metric-value gradient-text">3.8× Average ROAS</div>
+            </div>
+          </div>
+          <div class="why-metric-card">
+            <div class="why-metric-icon">⭐</div>
+            <div>
+              <div class="why-metric-label">Client Satisfaction Rate</div>
+              <div class="why-metric-value gradient-text">98% Retention</div>
+            </div>
+          </div>
+          <div class="why-metric-card">
+            <div class="why-metric-icon">🏆</div>
+            <div>
+              <div class="why-metric-label">Local Ranking Improvements</div>
+              <div class="why-metric-value gradient-text">Top 3 in 60 Days</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="why-content reveal reveal-delay-2">
+        <div class="section-label">Why NexaWave</div>
+        <h2 class="section-title">Results-Obsessed <span class="gradient-text">From Day One</span></h2>
+        <p class="section-desc" style="margin-bottom: 40px;">We don't just run campaigns — we build growth systems tailored to your market, your customers, and your goals.</p>
+
+        <div class="why-points">
+          <div class="why-point">
+            <div class="why-point-num">01</div>
+            <div>
+              <div class="why-point-title">Hyper-Local Expertise</div>
+              <div class="why-point-desc">We understand your community, your competition, and what it takes to win in your specific market.</div>
+            </div>
+          </div>
+          <div class="why-point">
+            <div class="why-point-num">02</div>
+            <div>
+              <div class="why-point-title">Transparent Reporting</div>
+              <div class="why-point-desc">Clear monthly reports with real numbers. You'll always know exactly what we're doing and what results it's producing.</div>
+            </div>
+          </div>
+          <div class="why-point">
+            <div class="why-point-num">03</div>
+            <div>
+              <div class="why-point-title">Full-Service Under One Roof</div>
+              <div class="why-point-desc">From your website to your ads to your social content — one team, one strategy, zero coordination headaches.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Process -->
+<section id="process">
+  <div class="container">
+    <div class="process-header">
+      <div class="section-label">How It Works</div>
+      <h2 class="section-title">Our Simple <span class="gradient-text">4-Step Process</span></h2>
+      <p class="section-desc">Getting started is easy. We handle the complexity so you can focus on running your business.</p>
+    </div>
+
+    <div class="process-steps">
+      <div class="process-step reveal">
+        <div class="step-circle">
+          <div class="step-circle-inner">1</div>
+        </div>
+        <div class="step-title">Free Audit</div>
+        <p class="step-desc">We analyze your current digital presence, identify gaps, and find your biggest opportunities for growth.</p>
+      </div>
+      <div class="process-step reveal reveal-delay-1">
+        <div class="step-circle">
+          <div class="step-circle-inner">2</div>
+        </div>
+        <div class="step-title">Custom Strategy</div>
+        <p class="step-desc">We build a tailored digital marketing plan designed around your goals, budget, and local market.</p>
+      </div>
+      <div class="process-step reveal reveal-delay-2">
+        <div class="step-circle">
+          <div class="step-circle-inner">3</div>
+        </div>
+        <div class="step-title">Launch & Execute</div>
+        <p class="step-desc">Our team gets to work — building, launching, and optimizing every campaign and asset.</p>
+      </div>
+      <div class="process-step reveal reveal-delay-3">
+        <div class="step-circle">
+          <div class="step-circle-inner">4</div>
+        </div>
+        <div class="step-title">Track & Scale</div>
+        <p class="step-desc">We monitor performance closely and continuously optimize to scale what's working and maximize your ROI.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section id="testimonials">
+  <div class="container">
+    <div class="testimonials-header">
+      <div class="section-label">Client Results</div>
+      <h2 class="section-title">Real Businesses. <span class="gradient-text">Real Growth.</span></h2>
+    </div>
+
+    <div class="testimonials-grid">
+
+      <div class="testimonial-card reveal">
+        <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+        <p class="testimonial-text">"NexaWave completely transformed our online presence. We went from page 3 to the top 3 on Google Maps in under two months. Our phone doesn't stop ringing."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar" style="background: rgba(33,150,243,0.2); color: #2196f3;">MR</div>
+          <div>
+            <div class="author-name">Mike Rodriguez</div>
+            <div class="author-role">Owner, Rodriguez HVAC</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card reveal reveal-delay-1">
+        <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+        <p class="testimonial-text">"The Google Ads team at NexaWave cut our cost-per-lead in half while doubling our volume. I was skeptical at first, but the numbers don't lie. Best investment we've made."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar" style="background: rgba(0,200,83,0.2); color: #00c853;">ST</div>
+          <div>
+            <div class="author-name">Sarah Thompson</div>
+            <div class="author-role">Marketing Director, Thompson Law</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card reveal reveal-delay-2">
+        <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+        <p class="testimonial-text">"Their videography team made us look like a national brand. The content they create for our social media gets 10× more engagement than what we were doing before."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar" style="background: rgba(255,140,0,0.2); color: #ff8c00;">JL</div>
+          <div>
+            <div class="author-name">Jennifer Lee</div>
+            <div class="author-role">Owner, Bloom Boutique</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="cta-glow"></div>
+  <div class="container">
+    <div class="cta-inner">
+      <div class="section-label" style="justify-content: center;">Limited Spots Available</div>
+      <h2 class="cta-title">Ready to <span class="gradient-text">Dominate</span> Your Market?</h2>
+      <p class="cta-desc">Get a free digital audit and see exactly where your business stands — and what it'll take to reach the top.</p>
+      <div class="cta-actions">
+        <a href="#contact" class="btn-primary">
+          Claim Your Free Audit
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="tel:+1-000-000-0000" class="btn-secondary">
+          📞 Call Us Now
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-grid">
+
+      <div class="contact-info reveal">
+        <div class="section-label">Get In Touch</div>
+        <h2 class="section-title">Let's Build Something <span class="gradient-text">Great Together</span></h2>
+        <p class="section-desc">Fill out the form and one of our specialists will reach out within 24 hours.</p>
+
+        <div class="contact-items">
+          <div class="contact-item">
+            <div class="contact-item-icon">📧</div>
+            <div>
+              <div class="contact-item-label">Email</div>
+              <div class="contact-item-value">hello@nexawavedigital.com</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">📞</div>
+            <div>
+              <div class="contact-item-label">Phone</div>
+              <div class="contact-item-value">(000) 000-0000</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">📍</div>
+            <div>
+              <div class="contact-item-label">Location</div>
+              <div class="contact-item-value">Serving clients nationwide</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form reveal reveal-delay-2">
+        <form onsubmit="handleSubmit(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label>First Name</label>
+              <input type="text" placeholder="John" required />
+            </div>
+            <div class="form-group">
+              <label>Last Name</label>
+              <input type="text" placeholder="Smith" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Business Email</label>
+            <input type="email" placeholder="john@yourbusiness.com" required />
+          </div>
+          <div class="form-group">
+            <label>Phone Number</label>
+            <input type="tel" placeholder="(555) 000-0000" />
+          </div>
+          <div class="form-group">
+            <label>Service Interested In</label>
+            <select>
+              <option value="">Select a service...</option>
+              <option>Website Development</option>
+              <option>Localized SEO</option>
+              <option>Google Ads Management</option>
+              <option>Social Media Management</option>
+              <option>Videography & Photography</option>
+              <option>Full-Service Package</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Tell Us About Your Business</label>
+            <textarea placeholder="What are your main goals? What challenges are you facing?"></textarea>
+          </div>
+          <button type="submit" class="form-submit">Send Message — It's Free</button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+
+      <div>
+        <div class="footer-brand-logo">
+          <div class="footer-brand-icon"></div>
+          <div class="footer-brand-name">
+            NexaWave
+            <span>Digital, LLC</span>
+          </div>
+        </div>
+        <p class="footer-desc">Full-service digital marketing agency helping local businesses grow through smart strategy, stunning creative, and data-driven execution.</p>
+        <div class="footer-socials">
+          <a href="#" class="social-btn" aria-label="Facebook">f</a>
+          <a href="#" class="social-btn" aria-label="Instagram">📷</a>
+          <a href="#" class="social-btn" aria-label="LinkedIn">in</a>
+          <a href="#" class="social-btn" aria-label="YouTube">▶</a>
+        </div>
+      </div>
+
+      <div>
+        <div class="footer-col-title">Services</div>
+        <ul class="footer-links">
+          <li><a href="#services">Website Development</a></li>
+          <li><a href="#services">Localized SEO</a></li>
+          <li><a href="#services">Google Ads</a></li>
+          <li><a href="#services">Social Media</a></li>
+          <li><a href="#services">Videography</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer-col-title">Company</div>
+        <ul class="footer-links">
+          <li><a href="#why">About Us</a></li>
+          <li><a href="#process">Our Process</a></li>
+          <li><a href="#testimonials">Case Studies</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer-col-title">Get Started</div>
+        <ul class="footer-links">
+          <li><a href="#contact">Free Audit</a></li>
+          <li><a href="#contact">Get a Quote</a></li>
+          <li><a href="#contact">Book a Call</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2025 NexaWave Digital, LLC. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Mobile menu
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+  function closeMobile() { mobileMenu.classList.remove('open'); }
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Navbar scroll effect
+  window.addEventListener('scroll', () => {
+    const nav = document.getElementById('navbar');
+    nav.style.background = window.scrollY > 40
+      ? 'rgba(10,10,10,0.97)'
+      : 'rgba(10,10,10,0.85)';
+  });
+
+  // Form submit (placeholder)
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('.form-submit');
+    btn.textContent = '✓ Message Sent!';
+    btn.style.background = 'linear-gradient(90deg, #00c853, #00bcd4)';
+    setTimeout(() => {
+      btn.textContent = 'Send Message — It\'s Free';
+      btn.style.background = '';
+      e.target.reset();
+    }, 3500);
+  }
+</script>
+
+</body>
+</html>

@@ -321,6 +321,17 @@
     }
     @keyframes stream { 0%{left:-30%} 100%{left:130%} }
 
+    /* ── NAV LOGO image ── */
+    .nav-logo-img { height: 38px; width: auto; display: block; }
+    .flogo-img    { height: 34px; width: auto; display: block; }
+
+    /* ── YouTube video in browser chrome ── */
+    .browser-video {
+      width: 100%; height: 420px; display: block;
+      border: none; border-radius: 0 0 12px 12px;
+      pointer-events: none;
+    }
+
     /* ── WORK REEL (horizontal scroll) ── */
     .reel-section {
       height: 500vh; /* scroll distance */
@@ -484,44 +495,121 @@
       50%{opacity:0.8;transform:rotate(-45deg) translate(0,0)}
     }
 
-    /* ── SERVICES ── */
-    #services { background: var(--bg2); }
+    /* ── SERVICES REEL (horizontal scroll — mirrors work reel) ── */
+    #services { padding: 0; }
+    .services-reel-section { height: 450vh; }
+    .services-reel-sticky {
+      position: sticky; top: 0; height: 100vh;
+      overflow: hidden; display: flex; align-items: center;
+      background: var(--bg2);
+    }
+    .services-reel-bg {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(0,150,255,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,150,255,0.02) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .services-reel-header {
+      position: absolute; top: 36px; left: 48px; z-index: 10;
+    }
+    .services-reel-header .section-label { margin-bottom: 4px; }
+    .services-reel-header h2 {
+      font-size: clamp(22px,2.5vw,34px); font-weight: 800; letter-spacing: -1px;
+    }
+    .services-reel-counter {
+      position: absolute; top: 36px; right: 48px; z-index: 10;
+      font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: 2px;
+    }
+    .services-reel-counter span { color: var(--matrix); font-size: 18px; font-weight: 700; }
 
-    .services-header {
-      display: flex; justify-content: space-between; align-items: flex-end;
-      flex-wrap: wrap; gap: 32px; margin-bottom: 72px;
+    .services-reel-track {
+      display: flex; align-items: center;
+      gap: 28px; padding: 0 80px;
+      will-change: transform; padding-top: 100px;
     }
 
-    .services-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px,1fr)); gap: 20px;
-    }
-
-    .service-card {
+    .service-reel-card {
+      flex-shrink: 0; width: min(460px, 80vw);
       background: var(--surface); border: 1px solid var(--border);
-      border-radius: 10px; padding: 36px; position: relative; overflow: hidden;
-      cursor: none;
-      clip-path: inset(0 0 100% 0); /* GSAP reveals */
+      border-radius: 14px; overflow: hidden; cursor: none;
+      position: relative;
+      clip-path: inset(0 0 100% 0);
+      transition: border-color 0.3s;
     }
-    .service-card::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
-      background: var(--card-grad, var(--grad)); transform: scaleX(0); transform-origin: left;
-      transition: transform 0.5s cubic-bezier(0.23,1,0.32,1);
+    .service-reel-card:hover { border-color: var(--border2); }
+
+    .src-thumb {
+      height: 240px; position: relative; overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
     }
-    .service-card:hover { border-color: var(--border2); }
-    .service-card:hover::before { transform: scaleX(1); }
-    .service-card > * { position: relative; z-index: 1; }
+    .src-thumb-bg {
+      position: absolute; inset: 0;
+    }
+    .src-thumb-icon {
+      font-size: 72px; position: relative; z-index: 1;
+      filter: drop-shadow(0 0 30px rgba(0,150,255,0.4));
+    }
+    .src-thumb-num {
+      position: absolute; bottom: 16px; left: 20px; z-index: 1;
+      font-family: var(--mono); font-size: 11px; color: rgba(255,255,255,0.4);
+      letter-spacing: 2px;
+    }
 
-    .service-card:nth-child(1){--card-grad:linear-gradient(90deg,#0096ff,#00cfff);}
-    .service-card:nth-child(2){--card-grad:linear-gradient(90deg,#00cfff,#3b5bff);}
-    .service-card:nth-child(3){--card-grad:linear-gradient(90deg,#3b5bff,#0096ff);}
-    .service-card:nth-child(4){--card-grad:linear-gradient(90deg,#0096ff,#3b5bff);}
-
-    .service-num { font-family:var(--mono); font-size:11px; color:var(--matrix); opacity:0.5; letter-spacing:2px; margin-bottom:18px; }
-    .service-icon { width:52px;height:52px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:20px;background:rgba(0,150,255,0.06);border:1px solid var(--border); }
-    .service-title { font-size:20px;font-weight:700;margin-bottom:12px;letter-spacing:-0.5px; }
-    .service-desc { font-size:14px;color:var(--muted);line-height:1.75;margin-bottom:22px; }
-    .service-tags { display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px; }
+    .src-body { padding: 28px; }
+    .src-title { font-size: 22px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 12px; }
+    .src-desc { font-size: 14px; color: var(--muted); line-height: 1.75; margin-bottom: 20px; }
+    .src-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 22px; }
     .stag { font-size:11px;font-family:var(--mono);padding:4px 12px;border-radius:2px;background:rgba(0,150,255,0.05);border:1px solid rgba(0,150,255,0.15);color:var(--matrix);letter-spacing:0.5px; }
+    .src-link {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--mono); font-size: 12px; color: #000;
+      background: var(--grad); padding: 10px 22px; border-radius: 4px;
+      text-decoration: none; letter-spacing: 0.5px; cursor: none;
+      transition: box-shadow 0.2s;
+    }
+    .src-link:hover { box-shadow: 0 0 30px rgba(0,150,255,0.4); }
+
+    /* ── PLATFORMS CAROUSEL ── */
+    #platforms {
+      background: var(--bg); padding: 60px 0; overflow: hidden;
+      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    }
+    .platforms-label {
+      text-align: center; font-family: var(--mono); font-size: 11px;
+      letter-spacing: 3px; text-transform: uppercase; color: var(--muted);
+      margin-bottom: 32px; opacity: 0.6;
+    }
+    .platforms-track-wrap { overflow: hidden; position: relative; }
+    .platforms-track-wrap::before,
+    .platforms-track-wrap::after {
+      content: ''; position: absolute; top: 0; bottom: 0; width: 160px; z-index: 2;
+    }
+    .platforms-track-wrap::before { left: 0; background: linear-gradient(to right, var(--bg), transparent); }
+    .platforms-track-wrap::after  { right: 0; background: linear-gradient(to left,  var(--bg), transparent); }
+
+    .platforms-track {
+      display: flex; gap: 48px; align-items: center;
+      animation: marquee 22s linear infinite;
+      width: max-content;
+    }
+    @keyframes marquee { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+
+    .platform-item {
+      display: flex; flex-direction: column; align-items: center; gap: 10px;
+      flex-shrink: 0; min-width: 140px;
+      padding: 20px 28px; border-radius: 10px;
+      background: var(--surface); border: 1px solid var(--border);
+      transition: border-color 0.3s;
+    }
+    .platform-item:hover { border-color: var(--border2); }
+    .platform-icon { font-size: 32px; }
+    .platform-name {
+      font-family: var(--mono); font-size: 12px; color: var(--muted);
+      letter-spacing: 1px; text-transform: uppercase;
+    }
+
+    /* ── legacy service-link for service pages ── */
     .service-link { font-family:var(--mono);font-size:11px;color:var(--matrix);text-decoration:none;letter-spacing:1px;border-bottom:1px solid rgba(0,150,255,0.3);cursor:none;transition:border-color 0.2s; }
     .service-link:hover { border-color:var(--matrix); }
 
@@ -743,7 +831,7 @@
 <!-- NAV -->
 <nav id="navbar">
   <a href="#hero" class="nav-logo">
-    <div class="nav-logo-icon">NW</div>
+    <img src="nexawave-logo.svg" alt="NexaWave Digital" class="nav-logo-img" />
     <div class="nav-logo-text">NexaWave <span>Digital, LLC</span></div>
   </a>
   <ul class="nav-links">
@@ -831,37 +919,41 @@
 
     <div class="reel-track" id="reelTrack">
 
-      <!-- Slide 1 -->
+      <!-- Slide 1: North 2 South Renovations -->
       <div class="reel-slide">
         <div class="reel-slide-inner">
           <div class="browser-chrome">
             <div class="b-dots"><span class="b-dot"></span><span class="b-dot"></span><span class="b-dot"></span></div>
             <div class="b-url"><span class="b-lock">🔒</span> north2southflo.com</div>
           </div>
-          <img class="browser-img" src="north2southflo.jpg" alt="North 2 South Flo website" />
+          <iframe class="browser-video"
+            src="https://www.youtube.com/embed/RQnuKPvxPng?start=17&end=25&autoplay=1&mute=1&loop=1&playlist=RQnuKPvxPng&controls=0&rel=0&modestbranding=1&playsinline=1"
+            allow="autoplay; encrypted-media" allowfullscreen></iframe>
         </div>
         <div class="reel-slide-info">
           <div class="reel-slide-num">01 //</div>
-          <div class="reel-slide-name">North 2 South Flo</div>
+          <div class="reel-slide-name">North 2 South Renovations</div>
           <div class="reel-slide-tags">
-            <span class="rtag">Web Design</span><span class="rtag">Video Integration</span><span class="rtag">SEO</span>
+            <span class="rtag">Web Design</span><span class="rtag">Brand Video</span><span class="rtag">SEO</span>
           </div>
           <a href="https://north2southflo.com" target="_blank" rel="noopener" class="reel-slide-link">Visit Site ↗</a>
         </div>
       </div>
 
-      <!-- Slide 2 -->
+      <!-- Slide 2: NexaWave Productions -->
       <div class="reel-slide">
         <div class="reel-slide-inner">
           <div class="browser-chrome">
             <div class="b-dots"><span class="b-dot"></span><span class="b-dot"></span><span class="b-dot"></span></div>
             <div class="b-url"><span class="b-lock">🔒</span> nextwavepro.com</div>
           </div>
-          <img class="browser-img" src="nextwavepro.jpg" alt="NextWave Pro website" />
+          <iframe class="browser-video"
+            src="https://www.youtube.com/embed/dnwB7x2snPY?autoplay=1&mute=1&loop=1&playlist=dnwB7x2snPY&controls=0&rel=0&modestbranding=1&playsinline=1"
+            allow="autoplay; encrypted-media" allowfullscreen></iframe>
         </div>
         <div class="reel-slide-info">
           <div class="reel-slide-num">02 //</div>
-          <div class="reel-slide-name">NextWave Pro</div>
+          <div class="reel-slide-name">NexaWave Productions</div>
           <div class="reel-slide-tags">
             <span class="rtag">Web Design</span><span class="rtag">Brand Video</span><span class="rtag">Google Ads</span>
           </div>
@@ -869,14 +961,16 @@
         </div>
       </div>
 
-      <!-- Slide 3 -->
+      <!-- Slide 3: Team DMSI -->
       <div class="reel-slide">
         <div class="reel-slide-inner">
           <div class="browser-chrome">
             <div class="b-dots"><span class="b-dot"></span><span class="b-dot"></span><span class="b-dot"></span></div>
             <div class="b-url"><span class="b-lock">🔒</span> teamdmsi.com</div>
           </div>
-          <img class="browser-img" src="teamdmsi.jpg" alt="Team DMSI website" />
+          <iframe class="browser-video"
+            src="https://www.youtube.com/embed/ifW8JQk_P-M?autoplay=1&mute=1&loop=1&playlist=ifW8JQk_P-M&controls=0&rel=0&modestbranding=1&playsinline=1"
+            allow="autoplay; encrypted-media" allowfullscreen></iframe>
         </div>
         <div class="reel-slide-info">
           <div class="reel-slide-num">03 //</div>
@@ -888,14 +982,16 @@
         </div>
       </div>
 
-      <!-- Slide 4 -->
+      <!-- Slide 4: Renowned Hearing Centers -->
       <div class="reel-slide">
         <div class="reel-slide-inner">
           <div class="browser-chrome">
             <div class="b-dots"><span class="b-dot"></span><span class="b-dot"></span><span class="b-dot"></span></div>
             <div class="b-url"><span class="b-lock">🔒</span> renownedhearingcenters.com</div>
           </div>
-          <img class="browser-img" src="renownedhearingcenters.jpg" alt="Renowned Hearing Centers website" />
+          <iframe class="browser-video"
+            src="https://www.youtube.com/embed/RQnuKPvxPng?start=29&end=39&autoplay=1&mute=1&loop=1&playlist=RQnuKPvxPng&controls=0&rel=0&modestbranding=1&playsinline=1"
+            allow="autoplay; encrypted-media" allowfullscreen></iframe>
         </div>
         <div class="reel-slide-info">
           <div class="reel-slide-num">04 //</div>
@@ -910,7 +1006,7 @@
       <!-- Logo reveal -->
       <div class="reel-slide-logo">
         <div class="logo-divline"></div>
-        <div class="logo-icon-big">NW</div>
+        <img src="nexawave-logo.svg" alt="NexaWave Digital" style="height:110px;width:auto;filter:drop-shadow(0 0 40px rgba(0,150,255,0.35));" />
         <div class="logo-big-name">NexaWave Digital</div>
         <div class="logo-big-tag">// Your Vision. Our Execution.</div>
         <div class="logo-divline"></div>
@@ -923,48 +1019,120 @@
 
 <div class="data-divider"></div>
 
-<!-- ════════════════════ SERVICES ════════════════════ -->
-<section id="services">
-  <div class="container">
-    <div class="services-header">
-      <div>
-        <div class="section-label">What We Do</div>
-        <h2 class="section-title">Services That <span class="gradient-text">Drive Results</span></h2>
-      </div>
-      <p class="section-desc">Every service is built around one goal: growing your business with measurable, real-world outcomes.</p>
+<!-- ════════════════════ SERVICES REEL ════════════════════ -->
+<div id="services" class="services-reel-section">
+  <div class="services-reel-sticky">
+    <div class="services-reel-bg"></div>
+
+    <div class="services-reel-header">
+      <div class="section-label">What We Do</div>
+      <h2>Services That <span class="gradient-text">Drive Results</span></h2>
     </div>
-    <div class="services-grid">
-      <div class="service-card">
-        <div class="service-num">01 //</div>
-        <div class="service-icon">📍</div>
-        <h3 class="service-title">Localized SEO</h3>
-        <p class="service-desc">Dominate local search and Google Maps. We optimize your presence so customers nearby find you first — every time.</p>
-        <div class="service-tags"><span class="stag">Google Business</span><span class="stag">Local Citations</span><span class="stag">Maps Ranking</span></div>
-        <a href="localized-seo.html" class="service-link">Learn More →</a>
+
+    <div class="services-reel-counter">
+      <span id="svcCurrent">01</span> / 04
+    </div>
+
+    <div class="reel-hint" style="z-index:10;">
+      Scroll to explore
+      <div class="reel-hint-arrow"><span></span><span></span><span></span></div>
+    </div>
+
+    <div class="services-reel-track" id="svcTrack">
+
+      <!-- Card 1: Website Development -->
+      <div class="service-reel-card">
+        <div class="src-thumb">
+          <div class="src-thumb-bg" style="background:linear-gradient(135deg,rgba(0,150,255,0.18) 0%,rgba(59,91,255,0.22) 100%);"></div>
+          <div class="src-thumb-icon">🖥️</div>
+          <div class="src-thumb-num">01 //</div>
+        </div>
+        <div class="src-body">
+          <div class="src-title">Website Development</div>
+          <p class="src-desc">Conversion-focused websites that look stunning and load fast. From landing pages to full custom builds — we handle design, dev, and launch.</p>
+          <div class="src-tags">
+            <span class="stag">Custom Design</span><span class="stag">Mobile-First</span><span class="stag">Speed Optimized</span>
+          </div>
+          <a href="#contact" class="src-link">Get a Quote →</a>
+        </div>
       </div>
-      <div class="service-card">
-        <div class="service-num">02 //</div>
-        <div class="service-icon">🎯</div>
-        <h3 class="service-title">Google Ads Management</h3>
-        <p class="service-desc">Data-driven paid search that puts you in front of buyers at the exact moment they're ready to purchase. Every dollar maximized.</p>
-        <div class="service-tags"><span class="stag">Search Ads</span><span class="stag">Retargeting</span><span class="stag">Conversion Tracking</span></div>
-        <a href="google-ads.html" class="service-link">Learn More →</a>
+
+      <!-- Card 2: Localized SEO -->
+      <div class="service-reel-card">
+        <div class="src-thumb">
+          <div class="src-thumb-bg" style="background:linear-gradient(135deg,rgba(0,207,255,0.18) 0%,rgba(0,150,255,0.22) 100%);"></div>
+          <div class="src-thumb-icon">📍</div>
+          <div class="src-thumb-num">02 //</div>
+        </div>
+        <div class="src-body">
+          <div class="src-title">Localized SEO</div>
+          <p class="src-desc">Dominate local search and Google Maps. We optimize your presence so customers nearby find you first — every single time they search.</p>
+          <div class="src-tags">
+            <span class="stag">Google Business</span><span class="stag">Local Citations</span><span class="stag">Maps Ranking</span>
+          </div>
+          <a href="localized-seo.html" class="src-link">Learn More →</a>
+        </div>
       </div>
-      <div class="service-card">
-        <div class="service-num">03 //</div>
-        <div class="service-icon">🎬</div>
-        <h3 class="service-title">Videography & Photography</h3>
-        <p class="service-desc">Professional visual content that stops the scroll. Brand films, social reels, product shoots, and drone footage.</p>
-        <div class="service-tags"><span class="stag">Brand Videos</span><span class="stag">Social Reels</span><span class="stag">Drone Footage</span></div>
-        <a href="videography.html" class="service-link">Learn More →</a>
+
+      <!-- Card 3: Google Ads -->
+      <div class="service-reel-card">
+        <div class="src-thumb">
+          <div class="src-thumb-bg" style="background:linear-gradient(135deg,rgba(59,91,255,0.18) 0%,rgba(0,207,255,0.22) 100%);"></div>
+          <div class="src-thumb-icon">🎯</div>
+          <div class="src-thumb-num">03 //</div>
+        </div>
+        <div class="src-body">
+          <div class="src-title">Google Ad Development</div>
+          <p class="src-desc">Data-driven paid search that puts you in front of buyers the exact moment they're ready to purchase. Every dollar tracked and maximized.</p>
+          <div class="src-tags">
+            <span class="stag">Search Ads</span><span class="stag">Retargeting</span><span class="stag">Conversion Tracking</span>
+          </div>
+          <a href="google-ads.html" class="src-link">Learn More →</a>
+        </div>
       </div>
-      <div class="service-card">
-        <div class="service-num">04 //</div>
-        <div class="service-icon">🖥️</div>
-        <h3 class="service-title">Website Development</h3>
-        <p class="service-desc">Conversion-focused websites that look stunning and load fast. From landing pages to full custom builds.</p>
-        <div class="service-tags"><span class="stag">Custom Design</span><span class="stag">Mobile-First</span><span class="stag">Speed Optimized</span></div>
+
+      <!-- Card 4: Videography & Photography -->
+      <div class="service-reel-card">
+        <div class="src-thumb">
+          <div class="src-thumb-bg" style="background:linear-gradient(135deg,rgba(0,150,255,0.18) 0%,rgba(0,207,255,0.28) 100%);"></div>
+          <div class="src-thumb-icon">🎬</div>
+          <div class="src-thumb-num">04 //</div>
+        </div>
+        <div class="src-body">
+          <div class="src-title">Videography &amp; Photography</div>
+          <p class="src-desc">Professional visual content that stops the scroll. Brand films, social reels, product shoots, and cinematic drone footage.</p>
+          <div class="src-tags">
+            <span class="stag">Brand Videos</span><span class="stag">Social Reels</span><span class="stag">Drone Footage</span>
+          </div>
+          <a href="videography.html" class="src-link">Learn More →</a>
+        </div>
       </div>
+
+    </div><!-- /services-reel-track -->
+  </div><!-- /services-reel-sticky -->
+</div><!-- /services-reel-section -->
+
+<!-- ════════════════════ PLATFORMS ════════════════════ -->
+<section id="platforms">
+  <p class="platforms-label">// Platforms We Build On</p>
+  <div class="platforms-track-wrap">
+    <div class="platforms-track">
+      <!-- set 1 -->
+      <div class="platform-item"><div class="platform-icon">🔵</div><div class="platform-name">WordPress</div></div>
+      <div class="platform-item"><div class="platform-icon">🟣</div><div class="platform-name">WebFrames</div></div>
+      <div class="platform-item"><div class="platform-icon">🟠</div><div class="platform-name">Wix</div></div>
+      <div class="platform-item"><div class="platform-icon">⚫</div><div class="platform-name">Webflow</div></div>
+      <div class="platform-item"><div class="platform-icon">🟢</div><div class="platform-name">Shopify</div></div>
+      <div class="platform-item"><div class="platform-icon">🔷</div><div class="platform-name">Squarespace</div></div>
+      <div class="platform-item"><div class="platform-icon">🔴</div><div class="platform-name">Custom Code</div></div>
+      <!-- set 2 (duplicate for seamless loop) -->
+      <div class="platform-item"><div class="platform-icon">🔵</div><div class="platform-name">WordPress</div></div>
+      <div class="platform-item"><div class="platform-icon">🟣</div><div class="platform-name">WebFrames</div></div>
+      <div class="platform-item"><div class="platform-icon">🟠</div><div class="platform-name">Wix</div></div>
+      <div class="platform-item"><div class="platform-icon">⚫</div><div class="platform-name">Webflow</div></div>
+      <div class="platform-item"><div class="platform-icon">🟢</div><div class="platform-name">Shopify</div></div>
+      <div class="platform-item"><div class="platform-icon">🔷</div><div class="platform-name">Squarespace</div></div>
+      <div class="platform-item"><div class="platform-icon">🔴</div><div class="platform-name">Custom Code</div></div>
     </div>
   </div>
 </section>
@@ -1120,7 +1288,7 @@
   <div class="container">
     <div class="footer-grid">
       <div>
-        <div class="flogo-wrap"><div class="flogo-icon">NW</div><div class="flogo-name">NexaWave <span>Digital, LLC</span></div></div>
+        <div class="flogo-wrap"><img src="nexawave-logo.svg" alt="NexaWave Digital" class="flogo-img" /><div class="flogo-name">NexaWave <span>Digital, LLC</span></div></div>
         <p class="fdesc">Full-service digital marketing agency helping local businesses grow through smart strategy, stunning creative, and data-driven execution.</p>
         <div class="fsocials"><a href="#" class="fsoc">f</a><a href="#" class="fsoc">ig</a><a href="#" class="fsoc">in</a><a href="#" class="fsoc">yt</a></div>
       </div>
@@ -1304,32 +1472,39 @@ function initAnimations(){
     }
   });
 
-  // Slide image parallax within horizontal scroll
-  slides.forEach(slide => {
-    const img = slide.querySelector('.browser-img');
-    if(!img) return;
-    gsap.fromTo(img,
-      { objectPosition:'0% 0%' },
-      { objectPosition:'0% 30%', ease:'none',
-        scrollTrigger:{ trigger:slide, containerAnimation:reelST, start:'left right', end:'right left', scrub:true }
-      }
-    );
+  /* ── Services Reel (horizontal scroll) ── */
+  const svcTrack  = document.getElementById('svcTrack');
+  const svcCards  = gsap.utils.toArray('.service-reel-card');
+  const svcCounter = document.getElementById('svcCurrent');
+
+  ScrollTrigger.create({
+    trigger: '.services-reel-section',
+    pin: '.services-reel-sticky',
+    start: 'top top',
+    end: () => '+=' + (svcTrack.scrollWidth - innerWidth + 160),
+    scrub: 1.2,
+    snap: { snapTo: 1/(svcCards.length-1), duration:{min:0.3,max:0.8}, ease:'power2.inOut' },
+    animation: gsap.to(svcTrack, { x: ()=>-(svcTrack.scrollWidth - innerWidth + 80), ease:'none' }),
+    onUpdate: self => {
+      const idx = Math.round(self.progress * (svcCards.length-1));
+      svcCounter.textContent = String(idx+1).padStart(2,'0');
+    }
   });
 
-  /* ── Services section title ── */
-  animSectionTitle('#services .section-title');
-
-  // Cards clip-path reveal stagger
-  gsap.to('.service-card', {
-    clipPath:'inset(0 0 0% 0)', duration:0.9, stagger:0.12, ease:'power4.out',
-    scrollTrigger:{ trigger:'.services-grid', start:'top 75%' }
+  // Reveal service cards as track scrolls
+  gsap.to('.service-reel-card', {
+    clipPath:'inset(0 0 0% 0)', duration:0.9, stagger:0.1, ease:'power4.out',
+    scrollTrigger:{ trigger:'.services-reel-section', start:'top 80%' }
   });
 
   // Card hover lift
-  document.querySelectorAll('.service-card').forEach(card=>{
+  svcCards.forEach(card=>{
     card.addEventListener('mouseenter',()=>gsap.to(card,{y:-10,duration:0.4,ease:'power2.out'}));
-    card.addEventListener('mouseleave',()=>gsap.to(card,{y:0, duration:0.6,ease:'elastic.out(1,0.5)'}));
+    card.addEventListener('mouseleave',()=>gsap.to(card,{y:0,duration:0.6,ease:'elastic.out(1,0.5)'}));
   });
+
+  /* ── Services reel section title ── */
+  animSectionTitle('.services-reel-header h2');
 
   /* ── Why Us ── */
   animSectionTitle('#why .section-title');

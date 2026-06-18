@@ -325,12 +325,57 @@
     .nav-logo-img { height: 38px; width: auto; display: block; }
     .flogo-img    { height: 34px; width: auto; display: block; }
 
-    /* ── YouTube video in browser chrome ── */
-    .browser-video {
+    /* ── Video thumbnail in browser chrome ── */
+    .browser-thumb {
       width: 100%; height: 420px; display: block;
-      border: none; border-radius: 0 0 12px 12px;
-      pointer-events: none;
+      border-radius: 0 0 12px 12px; object-fit: cover;
+      object-position: center; cursor: none;
     }
+    .browser-thumb-wrap {
+      position: relative; cursor: none;
+    }
+    .play-btn {
+      position: absolute; inset: 0; display: flex;
+      align-items: center; justify-content: center;
+      background: rgba(0,0,0,0.25);
+      border-radius: 0 0 12px 12px;
+      transition: background 0.3s;
+    }
+    .browser-thumb-wrap:hover .play-btn { background: rgba(0,0,0,0.4); }
+    .play-circle {
+      width: 64px; height: 64px; border-radius: 50%;
+      background: rgba(0,150,255,0.85); display: flex;
+      align-items: center; justify-content: center;
+      box-shadow: 0 0 40px rgba(0,150,255,0.5);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .browser-thumb-wrap:hover .play-circle {
+      transform: scale(1.1);
+      box-shadow: 0 0 60px rgba(0,150,255,0.7);
+    }
+    .play-circle svg { margin-left: 4px; }
+
+    /* ── Video Lightbox Modal ── */
+    #videoModal {
+      display: none; position: fixed; inset: 0; z-index: 20000;
+      background: rgba(0,0,0,0.92); align-items: center; justify-content: center;
+    }
+    #videoModal.open { display: flex; }
+    .modal-inner {
+      position: relative; width: min(900px, 92vw);
+      aspect-ratio: 16/9;
+    }
+    .modal-inner iframe {
+      width: 100%; height: 100%; border: none; border-radius: 10px;
+    }
+    .modal-close {
+      position: absolute; top: -44px; right: 0;
+      background: none; border: none; color: #fff;
+      font-size: 28px; cursor: pointer; line-height: 1;
+      font-family: var(--mono);
+      transition: color 0.2s;
+    }
+    .modal-close:hover { color: var(--matrix); }
 
     /* ── WORK REEL (horizontal scroll) ── */
     .reel-section {
@@ -926,9 +971,10 @@
             <div class="b-dots"><span class="b-dot"></span><span class="b-dot"></span><span class="b-dot"></span></div>
             <div class="b-url"><span class="b-lock">🔒</span> north2southflo.com</div>
           </div>
-          <iframe class="browser-video"
-            src="https://www.youtube.com/embed/RQnuKPvxPng?start=17&end=25&autoplay=1&mute=1&loop=1&playlist=RQnuKPvxPng&controls=0&rel=0&modestbranding=1&playsinline=1"
-            allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          <div class="browser-thumb-wrap" onclick="openVideo('RQnuKPvxPng','17')">
+            <img class="browser-thumb" src="https://img.youtube.com/vi/RQnuKPvxPng/maxresdefault.jpg" alt="North 2 South Renovations video" />
+            <div class="play-btn"><div class="play-circle"><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff"><polygon points="5,3 19,12 5,21"/></svg></div></div>
+          </div>
         </div>
         <div class="reel-slide-info">
           <div class="reel-slide-num">01 //</div>
@@ -947,9 +993,10 @@
             <div class="b-dots"><span class="b-dot"></span><span class="b-dot"></span><span class="b-dot"></span></div>
             <div class="b-url"><span class="b-lock">🔒</span> nextwavepro.com</div>
           </div>
-          <iframe class="browser-video"
-            src="https://www.youtube.com/embed/dnwB7x2snPY?autoplay=1&mute=1&loop=1&playlist=dnwB7x2snPY&controls=0&rel=0&modestbranding=1&playsinline=1"
-            allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          <div class="browser-thumb-wrap" onclick="openVideo('dnwB7x2snPY','0')">
+            <img class="browser-thumb" src="https://img.youtube.com/vi/dnwB7x2snPY/maxresdefault.jpg" alt="NexaWave Productions video" />
+            <div class="play-btn"><div class="play-circle"><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff"><polygon points="5,3 19,12 5,21"/></svg></div></div>
+          </div>
         </div>
         <div class="reel-slide-info">
           <div class="reel-slide-num">02 //</div>
@@ -968,9 +1015,10 @@
             <div class="b-dots"><span class="b-dot"></span><span class="b-dot"></span><span class="b-dot"></span></div>
             <div class="b-url"><span class="b-lock">🔒</span> teamdmsi.com</div>
           </div>
-          <iframe class="browser-video"
-            src="https://www.youtube.com/embed/ifW8JQk_P-M?autoplay=1&mute=1&loop=1&playlist=ifW8JQk_P-M&controls=0&rel=0&modestbranding=1&playsinline=1"
-            allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          <div class="browser-thumb-wrap" onclick="openVideo('ifW8JQk_P-M','0')">
+            <img class="browser-thumb" src="https://img.youtube.com/vi/ifW8JQk_P-M/maxresdefault.jpg" alt="Team DMSI video" />
+            <div class="play-btn"><div class="play-circle"><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff"><polygon points="5,3 19,12 5,21"/></svg></div></div>
+          </div>
         </div>
         <div class="reel-slide-info">
           <div class="reel-slide-num">03 //</div>
@@ -989,9 +1037,10 @@
             <div class="b-dots"><span class="b-dot"></span><span class="b-dot"></span><span class="b-dot"></span></div>
             <div class="b-url"><span class="b-lock">🔒</span> renownedhearingcenters.com</div>
           </div>
-          <iframe class="browser-video"
-            src="https://www.youtube.com/embed/RQnuKPvxPng?start=29&end=39&autoplay=1&mute=1&loop=1&playlist=RQnuKPvxPng&controls=0&rel=0&modestbranding=1&playsinline=1"
-            allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          <div class="browser-thumb-wrap" onclick="openVideo('RQnuKPvxPng','29')">
+            <img class="browser-thumb" src="https://img.youtube.com/vi/RQnuKPvxPng/maxresdefault.jpg" alt="Renowned Hearing Centers video" />
+            <div class="play-btn"><div class="play-circle"><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff"><polygon points="5,3 19,12 5,21"/></svg></div></div>
+          </div>
         </div>
         <div class="reel-slide-info">
           <div class="reel-slide-num">04 //</div>
@@ -1312,6 +1361,14 @@
   </div>
 </footer>
 
+<!-- Video Lightbox Modal -->
+<div id="videoModal">
+  <div class="modal-inner">
+    <button class="modal-close" onclick="closeVideo()">✕</button>
+    <iframe id="modalFrame" src="" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+  </div>
+</div>
+
 <!-- ════════════════════ LIBRARIES ════════════════════ -->
 <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
@@ -1580,6 +1637,25 @@ function animSectionTitle(selector){
     scrollTrigger:{ trigger:el, start:'top 82%' }
   });
 }
+
+/* ════ VIDEO MODAL ════ */
+function openVideo(id, start){
+  const modal = document.getElementById('videoModal');
+  document.getElementById('modalFrame').src =
+    'https://www.youtube.com/embed/'+id+'?start='+start+'&autoplay=1&rel=0&modestbranding=1';
+  modal.classList.add('open');
+  lenis.stop();
+}
+function closeVideo(){
+  const modal = document.getElementById('videoModal');
+  document.getElementById('modalFrame').src = '';
+  modal.classList.remove('open');
+  lenis.start();
+}
+document.getElementById('videoModal').addEventListener('click', function(e){
+  if(e.target === this) closeVideo();
+});
+document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeVideo(); });
 
 /* ════ FORM ════ */
 function handleSubmit(e){

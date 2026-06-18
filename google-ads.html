@@ -1,0 +1,1655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Google Ads Management Services | PPC Management | NexaWave Digital</title>
+  <meta name="description" content="Professional Google Ads management services that maximize your ROAS and reduce cost per click. NexaWave Digital is your trusted Google Ads agency for local businesses — search ads management, conversion tracking, and full PPC management services." />
+  <meta name="keywords" content="Google Ads management, PPC management services, pay-per-click advertising, Google Ads agency, local Google Ads, search ads management, Google Ads optimization, reduce cost per click, conversion tracking, Google Ads campaign management, ROAS, ad spend optimization" />
+  <link rel="canonical" href="https://nexawavedigi.com/google-ads.html" />
+  <meta property="og:title" content="Google Ads Management Services | PPC Management | NexaWave Digital" />
+  <meta property="og:description" content="Data-driven Google Ads management that maximizes ROAS and minimizes wasted spend. Full-service PPC management for local businesses." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #050508;
+      --bg2:       #07070d;
+      --bg3:       #0a0a12;
+      --surface:   #0d0d1a;
+      --surface2:  #111120;
+      --border:    rgba(0,150,255,0.08);
+      --border2:   rgba(0,150,255,0.22);
+      --text:      #e8f2ff;
+      --muted:     #4a6a8a;
+      --matrix:    #0096ff;
+      --matrix2:   #00cfff;
+      --matrix3:   #3b5bff;
+      --grad:      linear-gradient(90deg, #0096ff, #00cfff, #3b5bff);
+      --grad-rev:  linear-gradient(90deg, #3b5bff, #00cfff, #0096ff);
+      --grad-diag: linear-gradient(135deg, #0096ff 0%, #00cfff 50%, #3b5bff 100%);
+      --glow-green: 0 0 20px rgba(0,150,255,0.4), 0 0 60px rgba(0,150,255,0.15);
+      --glow-cyan:  0 0 20px rgba(0,207,255,0.4), 0 0 60px rgba(0,207,255,0.15);
+      --mono: 'Share Tech Mono', monospace;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* ── Scrollbar ── */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--matrix); border-radius: 2px; }
+
+    /* ── Utility ── */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 28px; }
+
+    .gradient-text {
+      background: var(--grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .mono { font-family: var(--mono); }
+
+    /* ── Cursor glow ── */
+    .cursor-glow {
+      position: fixed;
+      width: 300px; height: 300px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,150,255,0.04), transparent 70%);
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: left 0.08s, top 0.08s;
+    }
+
+    /* ── Navigation ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      padding: 0 28px;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(5,5,8,0.88);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border2);
+      transition: all 0.3s;
+    }
+
+    nav::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 1px;
+      background: var(--grad);
+      opacity: 0.5;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .nav-logo-icon {
+      width: 38px; height: 38px;
+      background: var(--grad-diag);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--mono);
+      font-size: 16px;
+      font-weight: 700;
+      color: #000;
+      box-shadow: var(--glow-green);
+    }
+
+    .nav-logo-text {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.1;
+    }
+
+    .nav-logo-text span {
+      display: block;
+      font-size: 9px;
+      font-family: var(--mono);
+      font-weight: 400;
+      color: var(--matrix);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      opacity: 0.7;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 500;
+      font-family: var(--mono);
+      letter-spacing: 0.5px;
+      transition: color 0.2s;
+      position: relative;
+    }
+
+    .nav-links a::before {
+      content: '> ';
+      color: var(--matrix);
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--matrix); }
+    .nav-links a:hover::before { opacity: 1; }
+
+    .nav-cta {
+      background: transparent;
+      border: 1px solid var(--matrix);
+      padding: 9px 22px;
+      border-radius: 4px;
+      color: var(--matrix);
+      font-family: var(--mono);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s;
+      box-shadow: 0 0 12px rgba(0,150,255,0.15);
+    }
+
+    .nav-cta:hover {
+      background: rgba(0,150,255,0.08);
+      box-shadow: var(--glow-green);
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 22px; height: 2px;
+      background: var(--matrix);
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* ── Mobile Menu ── */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 70px; left: 0; right: 0;
+      background: rgba(5,5,8,0.97);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border2);
+      padding: 24px 28px;
+      z-index: 999;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .mobile-menu.open { display: flex; }
+
+    .mobile-menu a {
+      text-decoration: none;
+      font-family: var(--mono);
+      color: var(--text);
+      font-size: 16px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+      letter-spacing: 1px;
+      transition: color 0.2s;
+    }
+
+    .mobile-menu a::before { content: '> '; color: var(--matrix); }
+    .mobile-menu a:hover { color: var(--matrix); }
+
+    /* ── Hero ── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding-top: 70px;
+      background: var(--bg);
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .hero-grid-lines {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(0,150,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,150,255,0.03) 1px, transparent 1px);
+      background-size: 80px 80px;
+    }
+
+    .hero-glow {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(140px);
+      pointer-events: none;
+    }
+
+    .hero-glow-1 {
+      width: 700px; height: 700px;
+      background: radial-gradient(circle, rgba(0,150,255,0.14), transparent);
+      top: -200px; right: -200px;
+      animation: breathe 8s ease-in-out infinite;
+    }
+
+    .hero-glow-2 {
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(59,91,255,0.1), transparent);
+      bottom: -150px; left: -100px;
+      animation: breathe 10s ease-in-out infinite reverse;
+    }
+
+    .hero-glow-3 {
+      width: 300px; height: 300px;
+      background: radial-gradient(circle, rgba(0,207,255,0.13), transparent);
+      top: 50%; left: 50%;
+      animation: breathe 6s ease-in-out infinite;
+      animation-delay: -3s;
+    }
+
+    @keyframes breathe {
+      0%, 100% { transform: scale(1); opacity: 0.8; }
+      50%       { transform: scale(1.2); opacity: 1; }
+    }
+
+    .scan-line {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--matrix), transparent);
+      opacity: 0.4;
+      animation: scandown 4s linear infinite;
+    }
+
+    @keyframes scandown {
+      0%   { top: -2px; opacity: 0; }
+      10%  { opacity: 0.4; }
+      90%  { opacity: 0.4; }
+      100% { top: 100%; opacity: 0; }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 820px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(0,150,255,0.05);
+      border: 1px solid rgba(0,150,255,0.25);
+      border-radius: 3px;
+      padding: 6px 18px;
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 400;
+      color: var(--matrix);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+
+    .hero-badge-dot {
+      width: 6px; height: 6px;
+      background: var(--matrix);
+      border-radius: 50%;
+      box-shadow: 0 0 6px var(--matrix);
+      animation: blink 1.5s ease-in-out infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0.2; }
+    }
+
+    .hero-title {
+      font-size: clamp(44px, 6.5vw, 88px);
+      font-weight: 900;
+      line-height: 1.02;
+      letter-spacing: -2.5px;
+      margin-bottom: 28px;
+    }
+
+    .hero-sub {
+      font-size: clamp(15px, 1.8vw, 19px);
+      color: var(--muted);
+      margin-bottom: 44px;
+      max-width: 620px;
+      line-height: 1.75;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--grad);
+      border: none;
+      padding: 15px 34px;
+      border-radius: 4px;
+      color: #000;
+      font-size: 14px;
+      font-weight: 700;
+      font-family: var(--mono);
+      cursor: pointer;
+      text-decoration: none;
+      letter-spacing: 0.5px;
+      transition: all 0.2s;
+      box-shadow: 0 0 30px rgba(0,150,255,0.25);
+    }
+
+    .btn-primary:hover {
+      box-shadow: 0 0 50px rgba(0,150,255,0.45);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      border: 1px solid var(--border2);
+      padding: 15px 34px;
+      border-radius: 4px;
+      color: var(--text);
+      font-size: 14px;
+      font-weight: 500;
+      font-family: var(--mono);
+      cursor: pointer;
+      text-decoration: none;
+      letter-spacing: 0.5px;
+      transition: all 0.2s;
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--matrix);
+      color: var(--matrix);
+      box-shadow: 0 0 20px rgba(0,150,255,0.1);
+    }
+
+    .hero-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 48px;
+      margin-top: 72px;
+      padding-top: 40px;
+      border-top: 1px solid var(--border);
+    }
+
+    .stat-item { }
+
+    .stat-number {
+      font-size: 38px;
+      font-weight: 900;
+      font-family: var(--mono);
+      line-height: 1;
+      margin-bottom: 6px;
+      background: var(--grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .stat-label {
+      font-size: 11px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-family: var(--mono);
+    }
+
+    /* ── Section Shared ── */
+    section { padding: 110px 0; position: relative; }
+
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--matrix);
+      margin-bottom: 16px;
+      opacity: 0.8;
+    }
+
+    .section-label::before {
+      content: '//';
+      opacity: 0.5;
+    }
+
+    .section-title {
+      font-size: clamp(30px, 4vw, 52px);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -1.5px;
+      margin-bottom: 16px;
+    }
+
+    .section-desc {
+      font-size: 17px;
+      color: var(--muted);
+      max-width: 560px;
+      line-height: 1.75;
+    }
+
+    /* ── Data stream divider ── */
+    .data-divider {
+      width: 100%;
+      height: 1px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .data-divider::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--grad);
+      opacity: 0.25;
+    }
+
+    .data-divider::after {
+      content: '';
+      position: absolute;
+      top: -1px; left: -100%;
+      width: 30%;
+      height: 3px;
+      background: var(--grad);
+      animation: stream 3s linear infinite;
+    }
+
+    @keyframes stream {
+      0%   { left: -30%; }
+      100% { left: 130%; }
+    }
+
+    /* ── Why Google Ads ── */
+    #why { background: var(--bg2); }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+      margin-top: 64px;
+    }
+
+    .why-text-col { display: grid; gap: 32px; }
+
+    .why-para-block {}
+
+    .why-para-block p {
+      font-size: 15px;
+      color: rgba(232,242,255,0.72);
+      line-height: 1.85;
+    }
+
+    /* ── Terminal ── */
+    .terminal-window {
+      background: var(--surface);
+      border: 1px solid var(--border2);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 0 60px rgba(0,150,255,0.05);
+      position: sticky;
+      top: 90px;
+    }
+
+    .terminal-bar {
+      background: var(--surface2);
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .terminal-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+    }
+
+    .terminal-dot:nth-child(1) { background: #ff5f57; }
+    .terminal-dot:nth-child(2) { background: #febc2e; }
+    .terminal-dot:nth-child(3) { background: #28c840; }
+
+    .terminal-title {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--muted);
+      margin-left: auto;
+      margin-right: auto;
+      letter-spacing: 1px;
+    }
+
+    .terminal-body {
+      padding: 28px;
+      display: grid;
+      gap: 20px;
+    }
+
+    .terminal-prompt {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--muted);
+      margin-bottom: 16px;
+      letter-spacing: 1px;
+    }
+
+    .terminal-prompt span { color: var(--matrix); }
+
+    .metric-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 16px 20px;
+      background: rgba(0,150,255,0.03);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      transition: border-color 0.3s, background 0.3s;
+    }
+
+    .metric-row:hover {
+      border-color: var(--border2);
+      background: rgba(0,150,255,0.06);
+    }
+
+    .metric-icon {
+      width: 40px; height: 40px;
+      border-radius: 6px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+      background: rgba(0,150,255,0.08);
+    }
+
+    .metric-info { flex: 1; }
+
+    .metric-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--muted);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .metric-value {
+      font-size: 18px;
+      font-weight: 700;
+      font-family: var(--mono);
+      background: var(--grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ── Included / Cards ── */
+    #included { background: var(--bg); }
+
+    .included-header {
+      margin-bottom: 64px;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 20px;
+    }
+
+    .service-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 36px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1), border-color 0.3s, box-shadow 0.3s;
+      cursor: default;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--grad);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .service-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 0%, rgba(0,150,255,0.06), transparent 70%);
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+
+    .service-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--border2);
+      box-shadow: 0 24px 80px rgba(0,0,0,0.5), 0 0 40px rgba(0,150,255,0.05);
+    }
+
+    .service-card:hover::before { transform: scaleX(1); }
+    .service-card:hover::after  { opacity: 1; }
+
+    .service-card > * { position: relative; z-index: 1; }
+
+    .card-icon {
+      width: 52px; height: 52px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      margin-bottom: 22px;
+      background: rgba(0,150,255,0.06);
+      border: 1px solid var(--border);
+      transition: box-shadow 0.3s;
+    }
+
+    .service-card:hover .card-icon {
+      box-shadow: 0 0 20px rgba(0,150,255,0.2);
+    }
+
+    .card-title {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 14px;
+      letter-spacing: -0.5px;
+    }
+
+    .card-desc {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.75;
+      margin-bottom: 24px;
+    }
+
+    .card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      font-size: 11px;
+      font-family: var(--mono);
+      font-weight: 400;
+      padding: 4px 12px;
+      border-radius: 2px;
+      background: rgba(0,150,255,0.05);
+      border: 1px solid rgba(0,150,255,0.18);
+      color: var(--matrix);
+      letter-spacing: 0.5px;
+    }
+
+    /* ── Process ── */
+    #process { background: var(--bg2); }
+
+    .process-header { text-align: center; margin-bottom: 72px; }
+    .process-header .section-label { justify-content: center; }
+    .process-header .section-desc { margin: 0 auto; }
+
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 2px;
+      position: relative;
+    }
+
+    .process-connector {
+      position: absolute;
+      top: 28px; left: 10%; right: 10%;
+      height: 1px;
+      background: var(--border2);
+    }
+
+    .process-connector::after {
+      content: '';
+      position: absolute;
+      top: -1px; left: -20%;
+      width: 20%;
+      height: 3px;
+      background: var(--grad);
+      animation: stream 2.5s linear infinite;
+    }
+
+    .process-step {
+      text-align: center;
+      padding: 0 12px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .step-circle {
+      width: 56px; height: 56px;
+      border-radius: 4px;
+      border: 1px solid var(--matrix);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--mono);
+      font-size: 20px;
+      font-weight: 400;
+      color: var(--matrix);
+      margin: 0 auto 28px;
+      background: rgba(0,150,255,0.04);
+      box-shadow: 0 0 20px rgba(0,150,255,0.1);
+      transition: box-shadow 0.3s, background 0.3s;
+    }
+
+    .process-step:hover .step-circle {
+      background: rgba(0,150,255,0.1);
+      box-shadow: 0 0 35px rgba(0,150,255,0.25);
+    }
+
+    .step-title {
+      font-size: 14px; font-weight: 700;
+      margin-bottom: 10px;
+      letter-spacing: -0.3px;
+    }
+
+    .step-desc {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    /* ── FAQ ── */
+    #faq { background: var(--bg); }
+
+    .faq-header { margin-bottom: 56px; }
+
+    .faq-list { display: grid; gap: 12px; max-width: 860px; margin: 0 auto; }
+
+    .faq-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+      transition: border-color 0.3s;
+    }
+
+    .faq-item.open { border-color: var(--border2); }
+
+    .faq-question {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 22px 28px;
+      cursor: pointer;
+      user-select: none;
+      gap: 16px;
+      transition: background 0.2s;
+    }
+
+    .faq-question:hover { background: rgba(0,150,255,0.03); }
+
+    .faq-question-text {
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: -0.3px;
+      line-height: 1.4;
+    }
+
+    .faq-chevron {
+      width: 20px; height: 20px;
+      flex-shrink: 0;
+      color: var(--matrix);
+      transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .faq-item.open .faq-chevron { transform: rotate(180deg); }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .faq-answer-inner {
+      padding: 0 28px 24px;
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.85;
+      border-top: 1px solid var(--border);
+      padding-top: 20px;
+    }
+
+    .faq-item.open .faq-answer {
+      max-height: 400px;
+    }
+
+    /* ── CTA ── */
+    #cta {
+      background: var(--bg3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-bg-grid {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(0,150,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,150,255,0.025) 1px, transparent 1px);
+      background-size: 50px 50px;
+    }
+
+    .cta-glow {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(circle at 30% 50%, rgba(0,150,255,0.08) 0%, transparent 55%),
+        radial-gradient(circle at 70% 50%, rgba(59,91,255,0.08) 0%, transparent 55%);
+    }
+
+    .cta-inner {
+      position: relative;
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .cta-title {
+      font-size: clamp(36px, 5vw, 60px);
+      font-weight: 900;
+      line-height: 1.08;
+      letter-spacing: -2px;
+      margin-bottom: 20px;
+    }
+
+    .cta-desc {
+      font-size: 17px;
+      color: var(--muted);
+      margin-bottom: 44px;
+      line-height: 1.75;
+    }
+
+    .cta-actions {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    /* ── Footer ── */
+    footer {
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+      padding: 64px 0 32px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 48px;
+    }
+
+    .footer-logo-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .footer-logo-icon {
+      width: 34px; height: 34px;
+      background: var(--grad-diag);
+      border-radius: 6px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--mono);
+      font-size: 14px;
+      font-weight: 700;
+      color: #000;
+    }
+
+    .footer-logo-name {
+      font-size: 15px; font-weight: 700;
+    }
+
+    .footer-logo-name span {
+      display: block;
+      font-size: 9px;
+      font-family: var(--mono);
+      color: var(--matrix);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      opacity: 0.6;
+      margin-top: 2px;
+    }
+
+    .footer-desc {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.75;
+      margin-bottom: 24px;
+    }
+
+    .footer-socials { display: flex; gap: 10px; }
+
+    .social-btn {
+      width: 34px; height: 34px;
+      border-radius: 4px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px;
+      text-decoration: none;
+      color: var(--muted);
+      transition: border-color 0.2s, color 0.2s, box-shadow 0.2s;
+    }
+
+    .social-btn:hover {
+      border-color: var(--matrix);
+      color: var(--matrix);
+      box-shadow: 0 0 10px rgba(0,150,255,0.15);
+    }
+
+    .footer-col-title {
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: var(--matrix);
+      margin-bottom: 20px;
+      opacity: 0.7;
+    }
+
+    .footer-links { list-style: none; display: grid; gap: 12px; }
+
+    .footer-links a {
+      text-decoration: none;
+      font-size: 13px;
+      color: rgba(232,242,255,0.5);
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--text); }
+
+    .footer-bottom {
+      padding-top: 28px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-bottom p {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: 0.5px;
+    }
+
+    .footer-bottom-links { display: flex; gap: 24px; }
+
+    .footer-bottom-links a {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-bottom-links a:hover { color: var(--matrix); }
+
+    /* ── Scroll Reveal ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s cubic-bezier(0.23, 1, 0.32, 1),
+                  transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+    .reveal-delay-5 { transition-delay: 0.5s; }
+
+    /* ── Mobile Responsive ── */
+    @media (max-width: 1024px) {
+      .why-grid { grid-template-columns: 1fr; }
+      .process-steps { grid-template-columns: repeat(3, 1fr); gap: 40px; }
+      .process-connector { display: none; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      section { padding: 72px 0; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .cards-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .hero-stats { gap: 28px; }
+      .hero-title { letter-spacing: -1.5px; }
+      .process-steps { grid-template-columns: repeat(2, 1fr); gap: 40px; }
+      .faq-question-text { font-size: 14px; }
+    }
+
+    @media (max-width: 480px) {
+      .process-steps { grid-template-columns: 1fr; }
+      .hero-stats { flex-direction: column; gap: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Cursor Glow -->
+<div class="cursor-glow" id="cursorGlow"></div>
+
+<!-- Navigation -->
+<nav id="navbar">
+  <a href="index.html" class="nav-logo">
+    <div class="nav-logo-icon">NW</div>
+    <div class="nav-logo-text">
+      NexaWave
+      <span>Digital, LLC</span>
+    </div>
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="index.html#services">Services</a></li>
+    <li><a href="index.html#why">Why Us</a></li>
+    <li><a href="index.html#process">Process</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+
+  <a href="index.html#contact" class="nav-cta">[ Get Free Audit ]</a>
+
+  <button class="hamburger" id="hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html#services" onclick="closeMobile()">Services</a>
+  <a href="index.html#why"      onclick="closeMobile()">Why Us</a>
+  <a href="index.html#process"  onclick="closeMobile()">Process</a>
+  <a href="index.html#contact"  onclick="closeMobile()">Contact</a>
+  <a href="index.html#contact"  onclick="closeMobile()">Get Free Audit</a>
+</div>
+
+
+<!-- ═══════════════════════════════ HERO ═══════════════════════════════ -->
+<section id="hero">
+  <div class="hero-bg">
+    <div class="hero-grid-lines"></div>
+    <div class="hero-glow hero-glow-1"></div>
+    <div class="hero-glow hero-glow-2"></div>
+    <div class="hero-glow hero-glow-3"></div>
+    <div class="scan-line"></div>
+  </div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-badge reveal">
+        <span class="hero-badge-dot"></span>
+        <span>// Google Ads Management</span>
+      </div>
+
+      <h1 class="hero-title reveal reveal-delay-1">
+        Turn Ad Spend Into<br />
+        <span class="gradient-text">Real Revenue</span>
+      </h1>
+
+      <p class="hero-sub reveal reveal-delay-2">
+        Data-driven Google Ads management that maximizes your ROAS and minimizes wasted spend. We build, manage, and optimize pay-per-click advertising campaigns that put your business in front of buyers the moment they search.
+      </p>
+
+      <div class="hero-actions reveal reveal-delay-3">
+        <a href="index.html#contact" class="btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          Get a Free Ads Audit
+        </a>
+        <a href="#included" class="btn-secondary">
+          See What's Included
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </a>
+      </div>
+
+      <div class="hero-stats reveal reveal-delay-4">
+        <div class="stat-item">
+          <div class="stat-number">3.8×</div>
+          <div class="stat-label">Avg ROAS</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">-52%</div>
+          <div class="stat-label">Avg Cost Per Click</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">$2.1M+</div>
+          <div class="stat-label">Ad Spend Managed</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">98%</div>
+          <div class="stat-label">Client Retention</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="data-divider"></div>
+
+<!-- ═══════════════════════════════ WHY GOOGLE ADS ═══════════════════════════════ -->
+<section id="why">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">The Power of Paid Search</div>
+      <h2 class="section-title">Reach Buyers at the <span class="gradient-text">Perfect Moment</span></h2>
+    </div>
+
+    <div class="why-grid">
+      <div class="why-text-col">
+        <div class="why-para-block reveal reveal-delay-1">
+          <p>
+            For local businesses, timing is everything — and pay-per-click advertising through Google gives you an unmatched advantage: your ad appears exactly when a potential customer types in a query that matches your service. Unlike organic SEO strategies that can take months to bear fruit, professional Google Ads campaign management delivers immediate visibility at the top of search results. When someone searches "plumber near me" or "best dentist in Orlando," effective search ads management ensures your business is the first answer they see — not your competitor. The intent behind a Google search is unparalleled in digital marketing; these are warm prospects actively looking to spend money, making Google Ads management the highest-ROI paid channel available to local service businesses of every size.
+          </p>
+        </div>
+
+        <div class="why-para-block reveal reveal-delay-2">
+          <p>
+            Professional Google Ads optimization is about far more than just running ads — it's a discipline of continuous refinement. Intelligent bid management allows us to reduce cost per click while simultaneously driving better-quality traffic. Every campaign we manage undergoes rigorous ad spend optimization: we tighten targeting parameters, build robust negative keyword lists to eliminate irrelevant clicks, improve quality scores through tightly themed ad groups, and adjust device and location bid modifiers based on conversion data. A seasoned Google Ads agency brings campaign-level intelligence that a DIY advertiser simply cannot replicate — and the gap in ROAS between a professionally managed account and an unmanaged one typically exceeds 200%. The difference isn't just efficiency; it's the compounding effect of smarter decisions made every single day.
+          </p>
+        </div>
+
+        <div class="why-para-block reveal reveal-delay-3">
+          <p>
+            Local Google Ads campaigns unlock a layer of targeting sophistication that goes well beyond basic keyword matching. Geo-targeting lets us restrict spend to ZIP codes, city limits, or a custom radius around your business — ensuring every dollar reaches a genuinely reachable customer. Location extensions surface your address and map pin directly inside the ad. Call ads let mobile users tap to call you without ever visiting a website. And precise conversion tracking closes the loop between an ad click and a real business outcome — a booked appointment, a filled contact form, a phone call, or a completed purchase. Our PPC management services combine these capabilities into a cohesive strategy that compounds over time: as we gather conversion data, campaigns become smarter, cheaper to run, and more profitable — turning your Google Ads account into a reliable, scalable revenue engine.
+          </p>
+        </div>
+      </div>
+
+      <div class="reveal reveal-delay-2">
+        <div class="terminal-window">
+          <div class="terminal-bar">
+            <div class="terminal-dot"></div>
+            <div class="terminal-dot"></div>
+            <div class="terminal-dot"></div>
+            <div class="terminal-title">google_ads_metrics.sh</div>
+          </div>
+          <div class="terminal-body">
+            <div class="terminal-prompt"><span>$</span> run performance_report --client=all --period=90d</div>
+
+            <div class="metric-row">
+              <div class="metric-icon">📈</div>
+              <div class="metric-info">
+                <div class="metric-label">google_ads_roas</div>
+                <div class="metric-value">3.8× average return</div>
+              </div>
+            </div>
+
+            <div class="metric-row">
+              <div class="metric-icon">💸</div>
+              <div class="metric-info">
+                <div class="metric-label">avg_cpc_reduction</div>
+                <div class="metric-value">-52% in 90 days</div>
+              </div>
+            </div>
+
+            <div class="metric-row">
+              <div class="metric-icon">🎯</div>
+              <div class="metric-info">
+                <div class="metric-label">conversion_rate</div>
+                <div class="metric-value">+180% improvement</div>
+              </div>
+            </div>
+
+            <div class="metric-row">
+              <div class="metric-icon">⭐</div>
+              <div class="metric-info">
+                <div class="metric-label">ad_quality_score</div>
+                <div class="metric-value">8.4 / 10 avg</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="data-divider"></div>
+
+<!-- ═══════════════════════════════ WHAT'S INCLUDED ═══════════════════════════════ -->
+<section id="included">
+  <div class="container">
+    <div class="included-header reveal">
+      <div class="section-label">Service Deliverables</div>
+      <h2 class="section-title">Full-Service <span class="gradient-text">Google Ads Management</span></h2>
+      <p class="section-desc">Everything you need for high-performance pay-per-click advertising — from strategy to reporting, handled by dedicated experts.</p>
+    </div>
+
+    <div class="cards-grid">
+
+      <div class="service-card reveal reveal-delay-1">
+        <div class="card-icon">🎯</div>
+        <div class="card-title">Campaign Strategy</div>
+        <p class="card-desc">Build a data-driven Google Ads campaign management structure perfectly aligned to your business goals and target audience. We define keyword match types, segment campaigns by intent and service line, and allocate budget to maximize return across every ad group from day one.</p>
+        <div class="card-tags">
+          <span class="tag">Search Campaigns</span>
+          <span class="tag">Display Ads</span>
+          <span class="tag">Retargeting</span>
+        </div>
+      </div>
+
+      <div class="service-card reveal reveal-delay-2">
+        <div class="card-icon">🔍</div>
+        <div class="card-title">Keyword Research</div>
+        <p class="card-desc">In-depth keyword analysis to surface high-intent, low-competition terms your competitors are missing. We identify profitable opportunities across exact, phrase, and broad match types, and build comprehensive negative keyword lists that stop wasted spend before it happens.</p>
+        <div class="card-tags">
+          <span class="tag">Intent Analysis</span>
+          <span class="tag">Negative Keywords</span>
+          <span class="tag">Competitor Research</span>
+        </div>
+      </div>
+
+      <div class="service-card reveal reveal-delay-3">
+        <div class="card-icon">✍️</div>
+        <div class="card-title">Ad Copywriting</div>
+        <p class="card-desc">Compelling, conversion-focused ad copy that improves click-through rates and quality scores simultaneously. We write and continuously A/B test responsive search ad headlines and descriptions to find the combinations that resonate most with your target audience and drive action.</p>
+        <div class="card-tags">
+          <span class="tag">RSAs</span>
+          <span class="tag">A/B Testing</span>
+          <span class="tag">Quality Score</span>
+        </div>
+      </div>
+
+      <div class="service-card reveal reveal-delay-1">
+        <div class="card-icon">💰</div>
+        <div class="card-title">Bid Management</div>
+        <p class="card-desc">Smart bidding strategies engineered to reduce cost per click and maximize conversions. We deploy both manual and automated bid adjustments calibrated by device, geographic location, time of day, and audience segment — ensuring your ad spend optimization delivers the best possible ROAS targets.</p>
+        <div class="card-tags">
+          <span class="tag">Smart Bidding</span>
+          <span class="tag">CPC Optimization</span>
+          <span class="tag">ROAS Targets</span>
+        </div>
+      </div>
+
+      <div class="service-card reveal reveal-delay-2">
+        <div class="card-icon">📊</div>
+        <div class="card-title">Conversion Tracking</div>
+        <p class="card-desc">Set up and rigorously verify complete conversion tracking so you always know your true ROAS. We track calls, form submissions, purchases, map directions, and micro-conversions — giving every click a measurable outcome and providing full attribution clarity across your entire campaign portfolio.</p>
+        <div class="card-tags">
+          <span class="tag">Google Tag Manager</span>
+          <span class="tag">Call Tracking</span>
+          <span class="tag">Attribution</span>
+        </div>
+      </div>
+
+      <div class="service-card reveal reveal-delay-3">
+        <div class="card-icon">📋</div>
+        <div class="card-title">Monthly Reporting</div>
+        <p class="card-desc">Clear, jargon-free monthly reports that show exactly where your money went and what it produced — spend, conversions, cost-per-lead, and ROAS broken down by campaign and keyword. No fluff, no vanity metrics. Just the numbers that matter and a clear path forward for the next month.</p>
+        <div class="card-tags">
+          <span class="tag">Performance Reports</span>
+          <span class="tag">ROI Dashboards</span>
+          <span class="tag">Strategy Reviews</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="data-divider"></div>
+
+<!-- ═══════════════════════════════ PROCESS ═══════════════════════════════ -->
+<section id="process">
+  <div class="container">
+    <div class="process-header reveal">
+      <div class="section-label">How We Work</div>
+      <h2 class="section-title">Our <span class="gradient-text">5-Step PPC Framework</span></h2>
+      <p class="section-desc">A proven, systematic process built to deliver measurable results — from the first audit to ongoing campaign scaling.</p>
+    </div>
+
+    <div class="process-steps">
+      <div class="process-connector"></div>
+
+      <div class="process-step reveal reveal-delay-1">
+        <div class="step-circle">01</div>
+        <div class="step-title">Audit &amp; Research</div>
+        <p class="step-desc">Analyze your existing campaigns or competitive landscape, identify wasted spend, understand your market, and establish clear ROAS goals before a single dollar is touched.</p>
+      </div>
+
+      <div class="process-step reveal reveal-delay-2">
+        <div class="step-circle">02</div>
+        <div class="step-title">Campaign Build</div>
+        <p class="step-desc">Construct the full campaign architecture — keyword sets, ad groups, RSA copy, audience targeting, and conversion tracking — with Google Ads campaign management settings configured for maximum performance.</p>
+      </div>
+
+      <div class="process-step reveal reveal-delay-3">
+        <div class="step-circle">03</div>
+        <div class="step-title">Launch &amp; Monitor</div>
+        <p class="step-desc">Go live and watch every metric daily during the critical first 7 days. Catch anomalies early, adjust bids and budgets in real time, and ensure traffic quality is on target from the start.</p>
+      </div>
+
+      <div class="process-step reveal reveal-delay-4">
+        <div class="step-circle">04</div>
+        <div class="step-title">Optimize</div>
+        <p class="step-desc">A/B test ads continuously, refine keyword targeting, expand negative keyword lists, improve quality scores, and apply ad spend optimization techniques to lower CPC and raise conversion rates month over month.</p>
+      </div>
+
+      <div class="process-step reveal reveal-delay-5">
+        <div class="step-circle">05</div>
+        <div class="step-title">Scale &amp; Report</div>
+        <p class="step-desc">Scale winning campaigns with increased budgets and new keyword expansions. Deliver monthly reporting with full ROAS breakdown, strategic review, and recommendations for expanding into new ad types and opportunities.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="data-divider"></div>
+
+<!-- ═══════════════════════════════ FAQ ═══════════════════════════════ -->
+<section id="faq">
+  <div class="container">
+    <div class="faq-header reveal">
+      <div class="section-label">Common Questions</div>
+      <h2 class="section-title">Google Ads <span class="gradient-text">FAQ</span></h2>
+      <p class="section-desc">Straight answers to the questions we hear most from business owners exploring PPC management services.</p>
+    </div>
+
+    <div class="faq-list">
+
+      <div class="faq-item reveal reveal-delay-1">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span class="faq-question-text">How much should I spend on Google Ads?</span>
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Ad budget depends on your industry, local competition, and growth goals. For most local service businesses, we recommend starting at $500–1,500 per month in ad spend to gather meaningful conversion data. Our Google Ads management fee is separate from your ad spend — you pay Google directly for clicks, and you pay us to manage the campaigns that make those clicks profitable. We'll recommend a specific starting budget and projected cost-per-lead during your free audit, based on real search volume and competitor data in your market.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item reveal reveal-delay-2">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span class="faq-question-text">How quickly will I see results from Google Ads?</span>
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Unlike SEO, pay-per-click advertising can drive traffic and inbound calls within 24–48 hours of a campaign going live. That's one of Google Ads' most powerful advantages — immediate visibility at the top of search results. However, true optimization for maximum ROAS takes 30–60 days as we accumulate conversion data, identify which keywords and ads perform best, and systematically refine the account. Think of the first month as gathering intelligence; months two and three are where the compounding efficiency gains really begin to show.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item reveal reveal-delay-3">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span class="faq-question-text">What is ROAS and why does it matter?</span>
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            ROAS stands for Return on Ad Spend — it measures how many dollars of revenue you earn for every dollar you invest in advertising. A 3× ROAS means you generate $3 in revenue for every $1 spent on ads. A 3.8× ROAS — our average across managed accounts — means your ad budget is multiplying itself almost four times over. Our entire approach to Google Ads optimization is anchored on consistently improving your ROAS over time: reducing cost per click, increasing conversion rates, and eliminating wasted spend until your campaigns run as efficiently as possible.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item reveal reveal-delay-4">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span class="faq-question-text">Do you manage Google Ads for specific industries?</span>
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            We specialize in local service businesses across a wide range of industries, including home service contractors, medical and dental practices, law firms, restaurants, retail stores, and real estate professionals. Local Google Ads campaigns require unique strategies for each vertical — the bidding landscape, ad formats, and conversion actions that work for a plumbing company are very different from those that work for a law firm. Our team brings industry-specific experience so your campaigns launch with proven frameworks rather than starting from scratch.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item reveal reveal-delay-5">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span class="faq-question-text">What makes your PPC management services different?</span>
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            We operate without long-term contracts — you stay because results keep you, not paperwork. Every client gets transparent billing (you always know exactly what goes to Google and what comes to us), a dedicated account manager who knows your business, and weekly check-ins available on request. From day one, complete conversion tracking is in place so you can see precisely what your ad spend is generating. We treat your budget the way we'd treat our own money: methodically, honestly, and with a relentless focus on improving your ROAS every single month.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="data-divider"></div>
+
+<!-- ═══════════════════════════════ CTA ═══════════════════════════════ -->
+<section id="cta">
+  <div class="cta-bg-grid"></div>
+  <div class="cta-glow"></div>
+  <div class="container">
+    <div class="cta-inner">
+      <div class="reveal">
+        <div class="section-label" style="justify-content:center;">Ready to Grow</div>
+        <h2 class="cta-title">Ready to Maximize Your <span class="gradient-text">Ad Spend?</span></h2>
+        <p class="cta-desc">Get a free Google Ads audit and find out exactly how much revenue you're leaving on the table. No obligation, no hard sell — just honest data.</p>
+        <div class="cta-actions">
+          <a href="index.html#contact" class="btn-primary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            Get My Free Audit
+          </a>
+          <a href="tel:4076835256" class="btn-secondary">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.16 6.16l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Call Us: 407-683-5256
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ FOOTER ═══════════════════════════════ -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+
+      <!-- Brand -->
+      <div>
+        <div class="footer-logo-wrap">
+          <div class="footer-logo-icon">NW</div>
+          <div class="footer-logo-name">
+            NexaWave
+            <span>Digital, LLC</span>
+          </div>
+        </div>
+        <p class="footer-desc">NexaWave Digital helps local businesses grow through precision Google Ads management, localized SEO, and cinematic visual content. Your ad spend, maximized.</p>
+        <div class="footer-socials">
+          <a href="#" class="social-btn" aria-label="Facebook">f</a>
+          <a href="#" class="social-btn" aria-label="Instagram">in</a>
+          <a href="#" class="social-btn" aria-label="LinkedIn">Li</a>
+          <a href="#" class="social-btn" aria-label="X / Twitter">X</a>
+        </div>
+      </div>
+
+      <!-- Services -->
+      <div>
+        <div class="footer-col-title">Services</div>
+        <ul class="footer-links">
+          <li><a href="google-ads.html">Google Ads Management</a></li>
+          <li><a href="index.html#services">Local SEO</a></li>
+          <li><a href="index.html#services">Video Production</a></li>
+          <li><a href="index.html#services">Web Design</a></li>
+          <li><a href="index.html#services">Social Media Ads</a></li>
+        </ul>
+      </div>
+
+      <!-- Company -->
+      <div>
+        <div class="footer-col-title">Company</div>
+        <ul class="footer-links">
+          <li><a href="index.html#why">Why NexaWave</a></li>
+          <li><a href="index.html#process">Our Process</a></li>
+          <li><a href="index.html#testimonials">Results</a></li>
+          <li><a href="index.html#contact">Contact Us</a></li>
+          <li><a href="index.html#contact">Free Audit</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div>
+        <div class="footer-col-title">Contact</div>
+        <ul class="footer-links">
+          <li><a href="mailto:gabriel@nexawavedigi.com">gabriel@nexawavedigi.com</a></li>
+          <li><a href="tel:4076835256">407-683-5256</a></li>
+          <li><a href="index.html#contact">Schedule a Call</a></li>
+          <li><a href="index.html#contact">Get a Free Audit</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2025 NexaWave Digital, LLC. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+  // ── Cursor Glow ──
+  const cursorGlow = document.getElementById('cursorGlow');
+  document.addEventListener('mousemove', e => {
+    cursorGlow.style.left = e.clientX + 'px';
+    cursorGlow.style.top  = e.clientY + 'px';
+  });
+
+  // ── Hamburger / Mobile Menu ──
+  const hamburger  = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+  });
+
+  function closeMobile() {
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+  }
+
+  // Close mobile menu on outside click
+  document.addEventListener('click', e => {
+    if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) {
+      closeMobile();
+    }
+  });
+
+  // ── Scroll Reveal ──
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+  // ── FAQ Accordion ──
+  function toggleFAQ(questionEl) {
+    const item = questionEl.parentElement;
+    const isOpen = item.classList.contains('open');
+
+    // Close all open items
+    document.querySelectorAll('.faq-item.open').forEach(openItem => {
+      openItem.classList.remove('open');
+    });
+
+    // Open clicked item if it was closed
+    if (!isOpen) {
+      item.classList.add('open');
+    }
+  }
+
+  // ── Nav scroll shadow ──
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 10) {
+      navbar.style.boxShadow = '0 4px 40px rgba(0,0,0,0.4)';
+    } else {
+      navbar.style.boxShadow = 'none';
+    }
+  });
+</script>
+
+</body>
+</html>

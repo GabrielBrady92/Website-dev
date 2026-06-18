@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Localized SEO Services | NexaWave Digital</title>
+  <meta name="description" content="Dominate local search with NexaWave Digital's local SEO services. Google Business Profile optimization, Google Maps ranking, local citation building, and more." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #050508;
+      --bg2: #07070d;
+      --surface: #0d0d1a;
+      --matrix: #0096ff;
+      --matrix2: #00cfff;
+      --matrix3: #3b5bff;
+      --grad: linear-gradient(90deg, #0096ff, #00cfff, #3b5bff);
+      --text: #e8e8f0;
+      --muted: #7a7a9a;
+      --border: rgba(0, 150, 255, 0.15);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 70px;
+      background: rgba(5, 5, 8, 0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5%;
+      z-index: 1000;
+    }
+
+    .nav-logo {
+      text-decoration: none;
+      font-size: 1.4rem;
+      font-weight: 800;
+      background: var(--grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    .nav-cta {
+      background: var(--grad);
+      color: #fff !important;
+      padding: 0.5rem 1.25rem;
+      border-radius: 6px;
+      font-weight: 600 !important;
+      transition: opacity 0.3s !important;
+      -webkit-text-fill-color: #fff !important;
+    }
+
+    .nav-cta:hover { opacity: 0.85; }
+
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+
+    .nav-toggle span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      padding: 120px 5% 80px;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(0,150,255,0.04) 0%, transparent 60%),
+        repeating-linear-gradient(0deg, transparent, transparent 60px, rgba(0,150,255,0.03) 60px, rgba(0,150,255,0.03) 61px),
+        repeating-linear-gradient(90deg, transparent, transparent 60px, rgba(0,150,255,0.03) 60px, rgba(0,150,255,0.03) 61px);
+      z-index: 0;
+    }
+
+    .hero-scanlines {
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.15) 2px, rgba(0,0,0,0.15) 4px);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .hero-glow {
+      position: absolute;
+      top: 20%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 300px;
+      background: radial-gradient(ellipse, rgba(0,150,255,0.12) 0%, transparent 70%);
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+    }
+
+    .hero-label {
+      font-family: 'Share Tech Mono', monospace;
+      color: var(--matrix);
+      font-size: 0.85rem;
+      letter-spacing: 0.15em;
+      margin-bottom: 1.5rem;
+      display: block;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+    }
+
+    .gradient-text {
+      background: var(--grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero p {
+      font-size: 1.15rem;
+      color: var(--muted);
+      max-width: 620px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.8;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--grad);
+      color: #fff;
+      padding: 0.85rem 2rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.95rem;
+      transition: opacity 0.3s, transform 0.3s;
+      display: inline-block;
+    }
+
+    .btn-primary:hover { opacity: 0.85; transform: translateY(-2px); }
+
+    .btn-secondary {
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 0.85rem 2rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: border-color 0.3s, transform 0.3s;
+      display: inline-block;
+    }
+
+    .btn-secondary:hover { border-color: var(--matrix); transform: translateY(-2px); }
+
+    /* SECTIONS */
+    section { padding: 100px 5%; }
+
+    .section-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-family: 'Share Tech Mono', monospace;
+      color: var(--matrix);
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .section-label::before { content: '// '; }
+
+    .section-title {
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 1.2rem;
+    }
+
+    .section-sub {
+      color: var(--muted);
+      font-size: 1.05rem;
+      max-width: 580px;
+      line-height: 1.7;
+      margin-bottom: 3.5rem;
+    }
+
+    /* TWO-COL */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .two-col p {
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 1.25rem;
+      font-size: 1rem;
+    }
+
+    .stat-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .stat-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      transition: border-color 0.3s;
+    }
+
+    .stat-card:hover { border-color: var(--matrix); }
+
+    .stat-num {
+      font-size: 1.6rem;
+      font-weight: 900;
+      background: var(--grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-card p {
+      color: var(--muted);
+      font-size: 0.88rem;
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    /* SERVICE CARDS */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 2rem;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+
+    .card:hover { border-color: var(--matrix); transform: translateY(-4px); }
+
+    .card-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .card h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .tag {
+      background: rgba(0,150,255,0.08);
+      border: 1px solid rgba(0,150,255,0.2);
+      color: var(--matrix2);
+      font-size: 0.75rem;
+      padding: 0.25rem 0.6rem;
+      border-radius: 4px;
+      font-family: 'Share Tech Mono', monospace;
+    }
+
+    /* PROCESS */
+    .process-steps { display: flex; flex-direction: column; }
+
+    .process-step {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 2rem;
+      padding: 2rem 0;
+      border-bottom: 1px solid var(--border);
+      align-items: start;
+    }
+
+    .process-step:last-child { border-bottom: none; }
+
+    .step-num {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 2.5rem;
+      font-weight: 700;
+      background: var(--grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+      padding-top: 0.2rem;
+    }
+
+    .step-content h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .step-content p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    /* FAQ */
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .faq-item { border-bottom: 1px solid var(--border); }
+
+    .faq-q {
+      width: 100%;
+      background: none;
+      border: none;
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      text-align: left;
+      padding: 1.5rem 0;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      transition: color 0.3s;
+    }
+
+    .faq-q:hover { color: var(--matrix2); }
+
+    .faq-icon {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 1rem;
+      color: var(--matrix);
+      transition: transform 0.3s;
+    }
+
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+    }
+
+    .faq-item.open .faq-a { max-height: 400px; }
+
+    .faq-a p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.8;
+      padding-bottom: 1.5rem;
+    }
+
+    /* CTA SECTION */
+    .cta-section {
+      background: linear-gradient(135deg, rgba(0,150,255,0.08) 0%, rgba(59,91,255,0.08) 100%);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .cta-section h2 {
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      font-weight: 800;
+      margin-bottom: 1rem;
+    }
+
+    .cta-section p {
+      color: var(--muted);
+      font-size: 1.05rem;
+      max-width: 540px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.7;
+    }
+
+    .cta-btns {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      padding: 60px 5% 30px;
+    }
+
+    .footer-inner { max-width: 1200px; margin: 0 auto; }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    .footer-brand p {
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.7;
+      margin-top: 1rem;
+      max-width: 280px;
+    }
+
+    .footer-brand .contact-info { margin-top: 1.25rem; }
+
+    .footer-brand .contact-info a {
+      display: block;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.88rem;
+      margin-bottom: 0.4rem;
+      transition: color 0.3s;
+    }
+
+    .footer-brand .contact-info a:hover { color: var(--matrix2); }
+
+    .footer-col h4 {
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text);
+      margin-bottom: 1.25rem;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .footer-col ul a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.88rem;
+      transition: color 0.3s;
+    }
+
+    .footer-col ul a:hover { color: var(--matrix2); }
+
+    .footer-bottom {
+      border-top: 1px solid var(--border);
+      padding-top: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-bottom p { color: var(--muted); font-size: 0.82rem; }
+
+    /* REVEAL */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .two-col { grid-template-columns: 1fr; gap: 2.5rem; }
+      .cards-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    }
+
+    @media (max-width: 600px) {
+      .cards-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .stat-cards { grid-template-columns: 1fr; }
+      .nav-links { display: none; flex-direction: column; position: absolute; top: 70px; left: 0; right: 0; background: var(--bg); padding: 1.5rem 5%; gap: 1.25rem; border-bottom: 1px solid var(--border); }
+      .nav-links.open { display: flex; }
+      .nav-toggle { display: flex; }
+      .process-step { grid-template-columns: 60px 1fr; gap: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo">NexaWave</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html#services">Services</a></li>
+      <li><a href="index.html#why">Why Us</a></li>
+      <li><a href="index.html#process">Process</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+      <li><a href="index.html#contact" class="nav-cta">Get Free Audit</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-scanlines"></div>
+    <div class="hero-glow"></div>
+    <div class="hero-content">
+      <span class="hero-label">// LOCAL SEO SERVICES</span>
+      <h1>Own Your<br /><span class="gradient-text">Local Market</span></h1>
+      <p>We help local businesses rank #1 on Google Maps and dominate local search results with proven local SEO services tailored to your community. When customers search for what you offer nearby, you'll be the first name they see.</p>
+      <div class="hero-btns">
+        <a href="index.html#contact" class="btn-primary">Get Free SEO Audit</a>
+        <a href="index.html#services" class="btn-secondary">View Our Work</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT IS LOCAL SEO -->
+  <section style="background: var(--bg2);">
+    <div class="section-inner">
+      <div class="reveal">
+        <span class="section-label">what is local seo</span>
+        <h2 class="section-title">Why Local Search Ranking <span class="gradient-text">Changes Everything</span></h2>
+      </div>
+      <div class="two-col reveal">
+        <div>
+          <p>Local SEO is the process of optimizing your online presence so that your business appears prominently when people search for products or services near them. Whether someone types "best plumber near me" or "Italian restaurant downtown," local search ranking determines whether your business shows up in those critical moments of high intent. For small businesses, investing in local SEO services is no longer optional — it's the difference between thriving and being completely invisible to the customers right in your neighborhood.</p>
+          <p>At the heart of local organic search is Google's local pack — the map pack that appears at the top of search results featuring three businesses with pins, ratings, hours, and contact details. Ranking in the map pack means your business is the first thing potential customers see before they even scroll past the ads. Google Maps optimization ensures your listing is complete, accurate, and sends the right authority signals so you earn and maintain those coveted top spots in local search results.</p>
+          <p>Our local SEO agency approach goes far beyond simply claiming your Google Business Profile. We build a comprehensive local presence through local citation building across hundreds of directories, strategic local keyword targeting woven into your website's pages, earning high-quality local backlinks, and actively managing your reputation online. Every signal we send to Google is designed to tell one consistent story: your business is the most trusted, most relevant option in your community. The result is sustained local organic search visibility that brings in real customers, month after month, year after year.</p>
+        </div>
+        <div>
+          <div class="stat-cards">
+            <div class="stat-card">
+              <span class="stat-num">46%</span>
+              <p>of all Google searches have local intent — people are actively looking for businesses near them right now.</p>
+            </div>
+            <div class="stat-card">
+              <span class="stat-num">76%</span>
+              <p>of people who conduct a near me SEO search on mobile visit a business within 24 hours of searching.</p>
+            </div>
+            <div class="stat-card">
+              <span class="stat-num">28%</span>
+              <p>of local searches result in a purchase, making local SEO one of the highest-converting marketing channels available.</p>
+            </div>
+            <div class="stat-card">
+              <span class="stat-num">3×</span>
+              <p>more clicks go to businesses in the local pack compared to those that don't appear in map pack ranking results.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT'S INCLUDED -->
+  <section>
+    <div class="section-inner">
+      <div class="reveal" style="text-align:center; margin-bottom:3rem;">
+        <span class="section-label">what's included</span>
+        <h2 class="section-title">Everything You Need to <span class="gradient-text">Rank Locally</span></h2>
+        <p class="section-sub" style="margin:0 auto;">Our local SEO services cover every factor Google uses to rank businesses — from your Google Business Profile to your website to your citation footprint across the web.</p>
+      </div>
+      <div class="cards-grid reveal">
+        <div class="card">
+          <span class="card-icon">📍</span>
+          <h3>Google Business Profile Optimization</h3>
+          <p>Your Google Business Profile is your most powerful asset for local search ranking. We optimize every element — categories, services, photos, posts, Q&amp;A, and attributes — to maximize your Google Maps optimization and drive more calls and direction requests from the local pack.</p>
+          <div class="tags">
+            <span class="tag">GBP Optimization</span>
+            <span class="tag">Map Pack Ranking</span>
+            <span class="tag">Review Strategy</span>
+          </div>
+        </div>
+        <div class="card">
+          <span class="card-icon">🔗</span>
+          <h3>Local Citation Building</h3>
+          <p>Consistent NAP (Name, Address, Phone) information across hundreds of local directories signals trustworthiness to Google's local algorithm. Our local citation building service gets your business accurately listed and corrected across every major platform that influences local search ranking.</p>
+          <div class="tags">
+            <span class="tag">NAP Consistency</span>
+            <span class="tag">Directory Listings</span>
+            <span class="tag">Citation Cleanup</span>
+          </div>
+        </div>
+        <div class="card">
+          <span class="card-icon">📄</span>
+          <h3>On-Page Local SEO</h3>
+          <p>We optimize your website with geo-targeted content, local schema markup, and location-specific landing pages that signal deep relevance to Google for your city and service area — turning your site into a local organic search machine that drives qualified traffic to your door.</p>
+          <div class="tags">
+            <span class="tag">Schema Markup</span>
+            <span class="tag">Location Pages</span>
+            <span class="tag">Local Content</span>
+          </div>
+        </div>
+        <div class="card">
+          <span class="card-icon">🔍</span>
+          <h3>Local Keyword Research</h3>
+          <p>We identify the exact near me SEO terms your ideal customers are typing into Google, including city-specific, neighborhood-level, and service-specific queries your competitors are missing. Local keyword targeting ensures every page you publish has a clear, achievable path to local search ranking.</p>
+          <div class="tags">
+            <span class="tag">Near Me Keywords</span>
+            <span class="tag">Geo-Targeting</span>
+            <span class="tag">Competitor Gap Analysis</span>
+          </div>
+        </div>
+        <div class="card">
+          <span class="card-icon">🗺️</span>
+          <h3>Google Maps Ranking</h3>
+          <p>Google Maps optimization is a multi-layered discipline combining profile completeness, review velocity, local authority, and behavioral signals. We engineer your entire local presence so Google confidently shows your business to local searchers at the exact moment they're ready to buy.</p>
+          <div class="tags">
+            <span class="tag">Maps Optimization</span>
+            <span class="tag">Local Pack</span>
+            <span class="tag">Rank on Google Maps</span>
+          </div>
+        </div>
+        <div class="card">
+          <span class="card-icon">📊</span>
+          <h3>Monthly Reporting &amp; Analytics</h3>
+          <p>Transparent, plain-English reports delivered every month show your local search ranking progress, keyword movements, Google Business Profile impressions, and phone calls generated — so you always know exactly what your small business SEO investment is producing in real results.</p>
+          <div class="tags">
+            <span class="tag">Rank Tracking</span>
+            <span class="tag">GBP Insights</span>
+            <span class="tag">ROI Reporting</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section style="background: var(--bg2);">
+    <div class="section-inner">
+      <div class="reveal" style="text-align:center; margin-bottom:3rem;">
+        <span class="section-label">our process</span>
+        <h2 class="section-title">How We Get You to <span class="gradient-text">The Top of Local Search</span></h2>
+        <p class="section-sub" style="margin:0 auto;">A proven, systematic local SEO process that eliminates guesswork and delivers consistent results for small businesses in competitive local markets.</p>
+      </div>
+      <div class="process-steps reveal">
+        <div class="process-step">
+          <div class="step-num">01</div>
+          <div class="step-content">
+            <h3>Local Audit &amp; Competitor Analysis</h3>
+            <p>We start by auditing your current local search presence — your Google Business Profile completeness, existing citation health, website technical issues, and current local search ranking positions. Then we analyze the businesses already ranking in your local pack to identify exactly what's driving their map pack ranking and what opportunities they've missed that we can exploit for your growth.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="step-num">02</div>
+          <div class="step-content">
+            <h3>Keyword Research &amp; Mapping</h3>
+            <p>Using our local keyword targeting methodology, we identify every high-intent near me SEO query your potential customers are searching in your market and map each keyword to the right page on your website. This ensures Google understands your relevance for every service you offer, in every city or neighborhood you serve, with no wasted pages and no missed opportunities.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="step-num">03</div>
+          <div class="step-content">
+            <h3>On-Page Optimization</h3>
+            <p>We optimize your website's technical foundation and local content simultaneously — adding local schema markup, refining title tags and meta descriptions with geo-targeted terms, creating or improving location-specific landing pages, and ensuring your site loads quickly on mobile where the majority of local organic search traffic originates.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="step-num">04</div>
+          <div class="step-content">
+            <h3>Citation Building &amp; Link Outreach</h3>
+            <p>We build and clean your local citations across the web's most authoritative directories, ensuring perfect NAP consistency everywhere your business is mentioned. Simultaneously, we pursue targeted local backlink opportunities — community websites, local media outlets, chambers of commerce, and industry associations — that build domain authority and reinforce your Google Maps optimization signals.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="step-num">05</div>
+          <div class="step-content">
+            <h3>Track, Report &amp; Scale</h3>
+            <p>Every month we review your local search ranking data, GBP performance insights, and local organic search traffic to identify what's gaining momentum and where the next opportunity lies. As your map pack ranking climbs and your local presence grows, we scale the strategy intelligently to capture an ever-larger share of your local market and outpace your competitors permanently.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section>
+    <div class="section-inner">
+      <div class="reveal" style="text-align:center; margin-bottom:3rem;">
+        <span class="section-label">faq</span>
+        <h2 class="section-title">Questions About <span class="gradient-text">Local SEO Services</span></h2>
+      </div>
+      <div class="faq-list reveal">
+        <div class="faq-item">
+          <button class="faq-q">How long does local SEO take to show results?<span class="faq-icon">+</span></button>
+          <div class="faq-a"><p>Most businesses begin to see meaningful movement in their local search ranking within 60 to 90 days, with significant, business-changing results typically appearing within 3 to 6 months. The exact timeline depends on how competitive your local market is, the current health of your Google Business Profile and website, and how aggressively we can build citations and earn local authority links. Local SEO services are a long-term investment — the results compound over time, which means the businesses that invest consistently are the ones that dominate their market pack ranking year after year while competitors cycle in and out.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">What is Google Business Profile and why does it matter?<span class="faq-icon">+</span></button>
+          <div class="faq-a"><p>Google Business Profile (formerly Google My Business) is the free listing that controls how your business appears on Google Maps and in the local pack — the map pack shown at the top of search results for local queries. It's arguably the single most important asset for local SEO because it directly determines whether you rank on Google Maps and appear in the 3-pack that local searchers see before any organic results. A fully optimized Google Business Profile includes accurate primary and secondary categories, complete service and product descriptions, regular photo and post updates, active Q&amp;A management, and a consistent flow of genuine customer reviews — all of which signal credibility and relevance to Google's local ranking algorithm and help you earn more calls, visits, and revenue from near me SEO searches.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">How do you rank on Google Maps?<span class="faq-icon">+</span></button>
+          <div class="faq-a"><p>Google Maps optimization depends on three core ranking factors: relevance, distance, and prominence. Relevance means Google needs to clearly understand what services you offer and in which geographic areas — achieved through your Google Business Profile categories, your website's local keyword targeting, and consistent signals across the web. Distance refers to how close your business is to the person searching, which is partly fixed by your address but can be expanded through strategic service-area settings. Prominence is where our local SEO agency work has the greatest impact: it's determined by your review count and quality, the strength of your local citations, inbound links from local sources, and your overall online authority. We build all three pillars simultaneously to move you steadily up the local pack rankings and keep you there.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Do I need a website for local SEO?<span class="faq-icon">+</span></button>
+          <div class="faq-a"><p>You can achieve some local search ranking with a well-optimized Google Business Profile alone, but a website dramatically amplifies your results and your long-term local organic search growth potential. Your website is where you can target dozens of local keyword variations through dedicated service pages and location-specific landing pages, earn local backlinks that build Google authority, and convert local searchers into leads with trust signals, testimonials, and clear calls to action. For small businesses serious about achieving strong map pack ranking and sustained local SEO success, a strong website working in tandem with Google Business Profile optimization is the winning combination by a wide margin. If you don't have a website yet or yours needs work, we can discuss solutions as part of your local SEO strategy.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">What's the difference between local SEO and regular SEO?<span class="faq-icon">+</span></button>
+          <div class="faq-a"><p>Traditional (national or global) SEO focuses on ranking in Google's standard organic results for keywords without geographic intent — typically pursued by e-commerce companies, SaaS businesses, or publishers targeting audiences across an entire country or the world. Local SEO services, by contrast, focus specifically on near me SEO queries and the Google Maps local pack, targeting customers within a defined geographic service area who are ready to take action right now. Local SEO involves unique tactics — Google Business Profile optimization, local citation building, geo-targeted on-page content, and map pack ranking strategies — that simply don't apply to national campaigns. For brick-and-mortar businesses and service-area companies, investing in a local SEO agency is almost always the higher-ROI choice because it targets buyers actively searching in your market with immediate purchase intent.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA SECTION -->
+  <section class="cta-section">
+    <div class="section-inner reveal">
+      <span class="section-label" style="display:flex; justify-content:center;">get started</span>
+      <h2>Ready to <span class="gradient-text">Rank #1 Locally?</span></h2>
+      <p>Let's put your business at the top of Google Maps and dominate your local market. Get a free local SEO audit and find out exactly what it will take to own your area.</p>
+      <div class="cta-btns">
+        <a href="index.html#contact" class="btn-primary">Get My Free Audit</a>
+        <a href="index.html#contact" class="btn-secondary">Talk to an Expert</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo" style="font-size:1.3rem;">NexaWave</a>
+          <p>Full-service digital marketing agency helping local businesses grow online through local SEO, Google Ads management, and professional visual content production.</p>
+          <div class="contact-info">
+            <a href="mailto:gabriel@nexawavedigi.com">gabriel@nexawavedigi.com</a>
+            <a href="tel:4076835256">(407) 683-5256</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="localized-seo.html">Local SEO</a></li>
+            <li><a href="google-ads.html">Google Ads</a></li>
+            <li><a href="videography.html">Videography</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="index.html#why">Why NexaWave</a></li>
+            <li><a href="index.html#process">Our Process</a></li>
+            <li><a href="index.html#contact">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Get Started</h4>
+          <ul>
+            <li><a href="index.html#contact">Free SEO Audit</a></li>
+            <li><a href="index.html#contact">Free Consultation</a></li>
+            <li><a href="index.html#contact">Request a Quote</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 NexaWave Digital, LLC. All rights reserved.</p>
+        <p style="font-family:'Share Tech Mono',monospace; color:var(--matrix); font-size:0.8rem;">// RANK LOCALLY. GROW GLOBALLY.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('navToggle');
+    const links = document.getElementById('navLinks');
+    toggle.addEventListener('click', () => links.classList.toggle('open'));
+
+    document.querySelectorAll('.faq-q').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.parentElement;
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+      });
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

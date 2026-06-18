@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Videography &amp; Photography Services | NexaWave Digital</title>
+  <meta name="description" content="Professional videography and photography services that stop the scroll and build your brand. Brand films, social media reels, product photography, drone footage, and more." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #050508;
+      --bg2: #07070d;
+      --surface: #0d0d1a;
+      --matrix: #0096ff;
+      --matrix2: #00cfff;
+      --matrix3: #3b5bff;
+      --grad: linear-gradient(90deg, #0096ff, #00cfff, #3b5bff);
+      --text: #e8e8f0;
+      --muted: #7a7a9a;
+      --border: rgba(0, 150, 255, 0.15);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 70px;
+      background: rgba(5, 5, 8, 0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5%;
+      z-index: 1000;
+    }
+
+    .nav-logo {
+      text-decoration: none;
+      font-size: 1.4rem;
+      font-weight: 800;
+      background: var(--grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    .nav-cta {
+      background: var(--grad);
+      color: #fff !important;
+      padding: 0.5rem 1.25rem;
+      border-radius: 6px;
+      font-weight: 600 !important;
+      transition: opacity 0.3s !important;
+      -webkit-text-fill-color: #fff !important;
+    }
+
+    .nav-cta:hover { opacity: 0.85; }
+
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+
+    .nav-toggle span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      padding: 120px 5% 80px;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(0,150,255,0.04) 0%, transparent 60%),
+        repeating-linear-gradient(0deg, transparent, transparent 60px, rgba(0,150,255,0.03) 60px, rgba(0,150,255,0.03) 61px),
+        repeating-linear-gradient(90deg, transparent, transparent 60px, rgba(0,150,255,0.03) 60px, rgba(0,150,255,0.03) 61px);
+      z-index: 0;
+    }
+
+    .hero-scanlines {
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.15) 2px, rgba(0,0,0,0.15) 4px);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .hero-glow {
+      position: absolute;
+      top: 20%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 300px;
+      background: radial-gradient(ellipse, rgba(0,150,255,0.12) 0%, transparent 70%);
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+    }
+
+    .hero-label {
+      font-family: 'Share Tech Mono', monospace;
+      color: var(--matrix);
+      font-size: 0.85rem;
+      letter-spacing: 0.15em;
+      margin-bottom: 1.5rem;
+      display: block;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+    }
+
+    .gradient-text {
+      background: var(--grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero p {
+      font-size: 1.15rem;
+      color: var(--muted);
+      max-width: 620px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.8;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--grad);
+      color: #fff;
+      padding: 0.85rem 2rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.95rem;
+      transition: opacity 0.3s, transform 0.3s;
+      display: inline-block;
+    }
+
+    .btn-primary:hover { opacity: 0.85; transform: translateY(-2px); }
+
+    .btn-secondary {
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 0.85rem 2rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: border-color 0.3s, transform 0.3s;
+      display: inline-block;
+    }
+
+    .btn-secondary:hover { border-color: var(--matrix); transform: translateY(-2px); }
+
+    section { padding: 100px 5%; }
+
+    .section-inner { max-width: 1200px; margin: 0 auto; }
+
+    .section-label {
+      font-family: 'Share Tech Mono', monospace;
+      color: var(--matrix);
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .section-label::before { content: '// '; }
+
+    .section-title {
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 1.2rem;
+    }
+
+    .section-sub {
+      color: var(--muted);
+      font-size: 1.05rem;
+      max-width: 580px;
+      line-height: 1.7;
+      margin-bottom: 3.5rem;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .two-col p {
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 1.25rem;
+      font-size: 1rem;
+    }
+
+    .stat-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .stat-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      transition: border-color 0.3s;
+    }
+
+    .stat-card:hover { border-color: var(--matrix); }
+
+    .stat-num {
+      font-size: 1.6rem;
+      font-weight: 900;
+      background: var(--grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-card p { color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 0; }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 2rem;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+
+    .card:hover { border-color: var(--matrix); transform: translateY(-4px); }
+
+    .card-icon { font-size: 2rem; margin-bottom: 1rem; display: block; }
+    .card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.75rem; }
+    .card p { color: var(--muted); font-size: 0.9rem; line-height: 1.7; margin-bottom: 1rem; }
+
+    .tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+
+    .tag {
+      background: rgba(0,150,255,0.08);
+      border: 1px solid rgba(0,150,255,0.2);
+      color: var(--matrix2);
+      font-size: 0.75rem;
+      padding: 0.25rem 0.6rem;
+      border-radius: 4px;
+      font-family: 'Share Tech Mono', monospace;
+    }
+
+    .process-steps { display: flex; flex-direction: column; }
+
+    .process-step {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 2rem;
+      padding: 2rem 0;
+      border-bottom: 1px solid var(--border);
+      align-items: start;
+    }
+
+    .process-step:last-child { border-bottom: none; }
+
+    .step-num {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 2.5rem;
+      font-weight: 700;
+      background: var(--grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+      padding-top: 0.2rem;
+    }
+
+    .step-content h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .step-content p { color: var(--muted); font-size: 0.95rem; line-height: 1.7; }
+
+    .faq-list { display: flex; flex-direction: column; max-width: 860px; margin: 0 auto; }
+    .faq-item { border-bottom: 1px solid var(--border); }
+
+    .faq-q {
+      width: 100%;
+      background: none;
+      border: none;
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      text-align: left;
+      padding: 1.5rem 0;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      transition: color 0.3s;
+    }
+
+    .faq-q:hover { color: var(--matrix2); }
+
+    .faq-icon {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 1rem;
+      color: var(--matrix);
+      transition: transform 0.3s;
+    }
+
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+    .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+    .faq-item.open .faq-a { max-height: 400px; }
+    .faq-a p { color: var(--muted); font-size: 0.95rem; line-height: 1.8; padding-bottom: 1.5rem; }
+
+    .cta-section {
+      background: linear-gradient(135deg, rgba(0,150,255,0.08) 0%, rgba(59,91,255,0.08) 100%);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .cta-section h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 800; margin-bottom: 1rem; }
+    .cta-section p { color: var(--muted); font-size: 1.05rem; max-width: 540px; margin: 0 auto 2.5rem; line-height: 1.7; }
+    .cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+    footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 60px 5% 30px; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    .footer-brand p { color: var(--muted); font-size: 0.9rem; line-height: 1.7; margin-top: 1rem; max-width: 280px; }
+    .footer-brand .contact-info { margin-top: 1.25rem; }
+    .footer-brand .contact-info a { display: block; color: var(--muted); text-decoration: none; font-size: 0.88rem; margin-bottom: 0.4rem; transition: color 0.3s; }
+    .footer-brand .contact-info a:hover { color: var(--matrix2); }
+
+    .footer-col h4 { font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text); margin-bottom: 1.25rem; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+    .footer-col ul a { color: var(--muted); text-decoration: none; font-size: 0.88rem; transition: color 0.3s; }
+    .footer-col ul a:hover { color: var(--matrix2); }
+
+    .footer-bottom { border-top: 1px solid var(--border); padding-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+    .footer-bottom p { color: var(--muted); font-size: 0.82rem; }
+
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 900px) {
+      .two-col { grid-template-columns: 1fr; gap: 2.5rem; }
+      .cards-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    }
+
+    @media (max-width: 600px) {
+      .cards-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .stat-cards { grid-template-columns: 1fr; }
+      .nav-links { display: none; flex-direction: column; position: absolute; top: 70px; left: 0; right: 0; background: var(--bg); padding: 1.5rem 5%; gap: 1.25rem; border-bottom: 1px solid var(--border); }
+      .nav-links.open { display: flex; }
+      .nav-toggle { display: flex; }
+      .process-step { grid-template-columns: 60px 1fr; gap: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo">NexaWave</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html#services">Services</a></li>
+      <li><a href="index.html#why">Why Us</a></li>
+      <li><a href="index.html#process">Process</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+      <li><a href="index.html#contact" class="nav-cta">Get Free Audit</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-scanlines"></div>
+    <div class="hero-glow"></div>
+    <div class="hero-content">
+      <span class="hero-label">// VIDEOGRAPHY &amp; PHOTOGRAPHY</span>
+      <h1>Visual Content<br /><span class="gradient-text">That Converts</span></h1>
+      <p>We create professional videography and photography that stops the scroll, tells your brand story, and turns viewers into buyers. From brand films and social media reels to product photography and drone footage — we make your business impossible to ignore.</p>
+      <div class="hero-btns">
+        <a href="index.html#contact" class="btn-primary">Get a Free Quote</a>
+        <a href="index.html#services" class="btn-secondary">See Our Work</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT WE PRODUCE -->
+  <section>
+    <div class="section-inner">
+      <div class="reveal" style="text-align:center; margin-bottom:3rem;">
+        <span class="section-label">what we produce</span>
+        <h2 class="section-title">Professional Visual Content <span class="gradient-text">For Every Platform</span></h2>
+        <p class="section-sub" style="margin:0 auto;">From high-impact brand video production and social media reels to stunning commercial photography, we create visual content that performs across every channel your customers use.</p>
+      </div>
+      <div class="cards-grid reveal">
+        <div class="card">
+          <span class="card-icon">🎬</span>
+          <h3>Brand Films</h3>
+          <p>A professionally produced brand film is the most powerful tool for communicating who you are and why customers should trust you. Our corporate video production team handles everything — scripting, direction, cinematography, and post-production — delivering a cinematic brand story that works on your website, at trade shows, and across social media channels.</p>
+          <div class="tags">
+            <span class="tag">Brand Video Production</span>
+            <span class="tag">Corporate Video</span>
+            <span class="tag">Storytelling</span>
+          </div>
+        </div>
+        <div class="card">
+          <span class="card-icon">📱</span>
+          <h3>Social Media Reels</h3>
+          <p>Short-form video dominates every major platform, and reel production is at the core of what we do. We create vertical, scroll-stopping social media reels optimized for Instagram, TikTok, Facebook, and YouTube Shorts — helping your brand stay visible and relevant in the feeds your customers scroll every day.</p>
+          <div class="tags">
+            <span class="tag">Social Media Reels</span>
+            <span class="tag">Short-Form Video</span>
+            <span class="tag">Reel Production</span>
+          </div>
+        </div>
+        <div class="card">
+          <span class="card-icon">📸</span>
+          <h3>Product Photography</h3>
+          <p>Great commercial photography transforms browsers into buyers. Our product photography service captures your items with professional lighting, precise composition, and crisp detail — whether you need clean white-background e-commerce shots, lifestyle context images, or editorial-style brand photography for your marketing campaigns and website.</p>
+          <div class="tags">
+            <span class="tag">Product Photography</span>
+            <span class="tag">Commercial Photography</span>
+            <span class="tag">E-Commerce Imagery</span>
+          </div>
+        </div>
+        <div class="card">
+          <span class="card-icon">🚁</span>
+          <h3>Drone Footage</h3>
+          <p>Drone videography adds a dimension of production value that instantly elevates any brand video, property listing, or event coverage. Our licensed drone operators capture stunning aerial footage that gives your audience a perspective no ground-level camera can match — perfect for real estate, construction, events, and cinematic brand films.</p>
+          <div class="tags">
+            <span class="tag">Drone Videography</span>
+            <span class="tag">Aerial Photography</span>
+            <span class="tag">Licensed Operators</span>
+          </div>
+        </div>
+        <div class="card">
+          <span class="card-icon">👤</span>
+          <h3>Corporate Headshots</h3>
+          <p>Your team's professional image matters. Our corporate photography sessions deliver polished, consistent headshots for your entire team — perfect for LinkedIn profiles, your website's About page, press releases, and marketing materials. We make the process quick and comfortable so everyone walks away looking their absolute best.</p>
+          <div class="tags">
+            <span class="tag">Corporate Photography</span>
+            <span class="tag">Headshots</span>
+            <span class="tag">Team Photos</span>
+          </div>
+        </div>
+        <div class="card">
+          <span class="card-icon">🎉</span>
+          <h3>Event Coverage</h3>
+          <p>Your company events, product launches, grand openings, and conferences deserve to be documented beautifully. Our event videography and photography team captures the energy, key moments, and brand interactions that you can use for future marketing videos, social media content, internal communications, and testimonial compilation reels.</p>
+          <div class="tags">
+            <span class="tag">Event Videography</span>
+            <span class="tag">Event Photography</span>
+            <span class="tag">Marketing Videos</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY VISUAL CONTENT MATTERS -->
+  <section style="background: var(--bg2);">
+    <div class="section-inner">
+      <div class="reveal">
+        <span class="section-label">why it matters</span>
+        <h2 class="section-title">Visual Content Is Your <span class="gradient-text">Biggest Growth Lever</span></h2>
+      </div>
+      <div class="two-col reveal">
+        <div>
+          <p>Video marketing has fundamentally changed how customers discover and evaluate businesses. In a world where attention spans are measured in seconds, professional videography services give your brand the ability to communicate value, emotion, and trust faster than any block of text ever could. Businesses that invest in brand video production consistently report higher website engagement, lower bounce rates, and more time spent on page — all signals that translate directly into more inquiries and more sales.</p>
+          <p>Social media reels and short-form video content have become the dominant currency of organic reach on every major platform. The Instagram, TikTok, and YouTube algorithms actively prioritize video content — especially reels — meaning that brands investing in regular reel production gain massive organic distribution advantages over competitors relying on static images or text posts alone. Professional social media video content that's shot, edited, and optimized correctly can generate thousands of views without a dollar of paid promotion, making it one of the highest-ROI marketing investments available to local businesses today.</p>
+          <p>Beyond social media, commercial photography and professional brand photography directly impact your bottom line at every touchpoint in the customer journey. Studies consistently show that professional photos on websites, Google Business Profiles, and product listings dramatically increase conversion rates — because buyers make instant, emotional judgments about brand credibility based on visual quality. When your brand looks polished and professional, customers trust you more, spend more, and refer more. Our local videography and photography services ensure your visuals make the right first impression every single time.</p>
+        </div>
+        <div>
+          <div class="stat-cards">
+            <div class="stat-card">
+              <span class="stat-num">1200%</span>
+              <p>more shares generated by video content compared to text and image posts combined — making video marketing the highest-reach format available.</p>
+            </div>
+            <div class="stat-card">
+              <span class="stat-num">84%</span>
+              <p>of consumers say they've been convinced to buy a product or service after watching a brand video — a testament to the power of brand video production.</p>
+            </div>
+            <div class="stat-card">
+              <span class="stat-num">22%</span>
+              <p>more engagement earned by social media reels compared to standard video posts, making reel production essential for organic growth.</p>
+            </div>
+            <div class="stat-card">
+              <span class="stat-num">94%</span>
+              <p>increase in conversion rates for businesses using professional commercial photography compared to those using amateur or stock images on their sites.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section>
+    <div class="section-inner">
+      <div class="reveal" style="text-align:center; margin-bottom:3rem;">
+        <span class="section-label">our process</span>
+        <h2 class="section-title">How We Bring Your <span class="gradient-text">Vision to Life</span></h2>
+        <p class="section-sub" style="margin:0 auto;">A collaborative, detail-oriented creative process that ensures every professional videography and photography project delivers content you're proud to put your brand name on.</p>
+      </div>
+      <div class="process-steps reveal">
+        <div class="process-step">
+          <div class="step-num">01</div>
+          <div class="step-content">
+            <h3>Creative Brief &amp; Concept</h3>
+            <p>Every great professional videography project starts with a thorough discovery conversation. We learn about your brand, your audience, your competitors, and the specific results you want this visual content to achieve. From there we develop a creative concept — visual style, tone, key messages, and shot list — that aligns your brand video production with your marketing objectives before a single camera is picked up.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="step-num">02</div>
+          <div class="step-content">
+            <h3>Pre-Production Planning</h3>
+            <p>Flawless shoot days don't happen by accident — they're the result of meticulous pre-production. We handle location scouting or studio booking, talent coordination, equipment logistics, shot scheduling, and script or storyboard development. For drone videography shoots, we also handle all FAA airspace clearances and safety planning so everything runs smoothly and legally on shoot day.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="step-num">03</div>
+          <div class="step-content">
+            <h3>Shoot Day</h3>
+            <p>Our local videography and photography team arrives fully equipped and prepared. Whether it's a brand film production, a social media reel shoot, a commercial photography session, or a corporate photography day for your entire team, we work efficiently and professionally to capture everything on the shot list — and stay alert for the spontaneous moments that often become the best frames in the final edit.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="step-num">04</div>
+          <div class="step-content">
+            <h3>Post-Production &amp; Editing</h3>
+            <p>This is where the raw footage and photos are transformed into polished, on-brand visual content. Our editors apply color grading, motion graphics, music, sound design, and pacing that match your brand identity and the platform the content is being made for. For reel production, we optimize aspect ratios, captions, and hooks specifically for the algorithms that determine organic reach on each platform.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="step-num">05</div>
+          <div class="step-content">
+            <h3>Delivery &amp; Distribution</h3>
+            <p>We deliver all final video marketing assets and commercial photography in every format and resolution you need — website-optimized, social-ready, and print-quality where applicable. For clients who want us to handle deployment, we can also manage the posting strategy for your social media video content, ensuring each piece is published with the right caption, hashtags, and timing to maximize organic reach and engagement from day one.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section style="background: var(--bg2);">
+    <div class="section-inner">
+      <div class="reveal" style="text-align:center; margin-bottom:3rem;">
+        <span class="section-label">faq</span>
+        <h2 class="section-title">Questions About <span class="gradient-text">Videography &amp; Photography</span></h2>
+      </div>
+      <div class="faq-list reveal">
+        <div class="faq-item">
+          <button class="faq-q">How long does a video production take?<span class="faq-icon">+</span></button>
+          <div class="faq-a"><p>The timeline for professional videography services varies based on the scope and complexity of the project. A straightforward social media reel production — shoot and edit — can typically be turned around in 5 to 7 business days. More involved brand video production projects with multiple locations, talent, scripting, and full post-production generally take 2 to 4 weeks from creative brief to final delivery. Corporate photography sessions are often delivered as edited, high-resolution images within 5 to 7 business days. We discuss turnaround expectations and set clear milestones during the creative brief stage so there are never any surprises about when your content will be ready to publish.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Do you travel for shoots?<span class="faq-icon">+</span></button>
+          <div class="faq-a"><p>Yes — our local videography team is based in Central Florida and regularly travels throughout the greater Orlando area and beyond for brand video production, corporate photography, and event coverage projects. For larger brand films, drone videography assignments, or corporate video production projects that require travel outside our standard service area, we're happy to accommodate with a travel fee discussed and agreed upon upfront. If your business operates across multiple locations and you need consistent commercial photography or video marketing content at each site, we can plan multi-day shoots to cover everything efficiently in a single trip.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">What equipment do you use?<span class="faq-icon">+</span></button>
+          <div class="faq-a"><p>We shoot on professional-grade cinema cameras producing 4K and 6K footage with full dynamic range — the same equipment used in commercial advertising productions. Our lighting kit includes LED panels, softboxes, and portable strobes capable of creating controlled, flattering light in any environment, whether we're on a product photography set or outdoors for an event shoot. For drone videography, we fly DJI professional drones equipped with stabilized gimbals and high-resolution cameras capable of capturing smooth, cinematic aerial footage in 4K. During post-production, we use industry-standard software — Adobe Premiere Pro, After Effects, DaVinci Resolve, and Lightroom — to deliver polished, broadcast-quality final assets.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Can you create content for both social media and websites?<span class="faq-icon">+</span></button>
+          <div class="faq-a"><p>Absolutely — and this is actually one of the biggest advantages of working with a full-service videography and photography team. During a single shoot day, we capture footage and photos that we then edit into multiple formats for different platforms: horizontal 16:9 cuts for your website and YouTube, vertical 9:16 cuts optimized for Instagram Reels, TikTok, and Facebook Reels, and square 1:1 formats for feed posts. The same is true for commercial photography — we capture images at resolutions and compositions suitable for everything from website hero banners to social media posts to print advertising. This approach maximizes the value of every shoot day and ensures your brand photography looks consistent and professional across every customer touchpoint.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Do you provide raw footage?<span class="faq-icon">+</span></button>
+          <div class="faq-a"><p>By default, our professional videography services deliverables include fully edited, color-graded final video files and retouched, print-ready photos — everything you need to publish immediately across your marketing channels. Raw, unedited footage can be provided as an add-on for an additional fee, as it represents a significant amount of storage and file transfer. For commercial photography, we similarly deliver professionally retouched final images rather than unedited RAW files as standard. If having access to raw assets is important for your workflow — for example, if you have an in-house editor who will create additional cuts — just let us know during the project scoping phase and we'll build it into the package.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA SECTION -->
+  <section class="cta-section">
+    <div class="section-inner reveal">
+      <span class="section-label" style="display:flex; justify-content:center;">get started</span>
+      <h2>Ready to <span class="gradient-text">Elevate Your Brand?</span></h2>
+      <p>Let's create professional videography and photography that stops the scroll and drives real results. Get in touch for a free creative consultation and custom quote.</p>
+      <div class="cta-btns">
+        <a href="index.html#contact" class="btn-primary">Get a Free Quote</a>
+        <a href="index.html#contact" class="btn-secondary">Talk to Our Team</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo" style="font-size:1.3rem;">NexaWave</a>
+          <p>Full-service digital marketing agency helping local businesses grow online through local SEO, Google Ads management, and professional visual content production.</p>
+          <div class="contact-info">
+            <a href="mailto:gabriel@nexawavedigi.com">gabriel@nexawavedigi.com</a>
+            <a href="tel:4076835256">(407) 683-5256</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="localized-seo.html">Local SEO</a></li>
+            <li><a href="google-ads.html">Google Ads</a></li>
+            <li><a href="videography.html">Videography</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="index.html#why">Why NexaWave</a></li>
+            <li><a href="index.html#process">Our Process</a></li>
+            <li><a href="index.html#contact">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Get Started</h4>
+          <ul>
+            <li><a href="index.html#contact">Free Consultation</a></li>
+            <li><a href="index.html#contact">Request a Quote</a></li>
+            <li><a href="index.html#contact">Book a Shoot</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 NexaWave Digital, LLC. All rights reserved.</p>
+        <p style="font-family:'Share Tech Mono',monospace; color:var(--matrix); font-size:0.8rem;">// TELL YOUR STORY. BUILD YOUR BRAND.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('navToggle');
+    const links = document.getElementById('navLinks');
+    toggle.addEventListener('click', () => links.classList.toggle('open'));
+
+    document.querySelectorAll('.faq-q').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.parentElement;
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+      });
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Google Ads Management | NexaWave Digital</title>
+  <meta name="description" content="Data-driven Google Ads management that maximizes ROAS and reduces cost per click. NexaWave Digital — the Google Ads agency built for small business growth." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #050508;
+      --bg2: #07070d;
+      --surface: #0d0d1a;
+      --matrix: #0096ff;
+      --matrix2: #00cfff;
+      --matrix3: #3b5bff;
+      --grad: linear-gradient(90deg, #0096ff, #00cfff, #3b5bff);
+      --text: #e8e8f0;
+      --muted: #7a7a9a;
+      --border: rgba(0, 150, 255, 0.15);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 70px;
+      background: rgba(5, 5, 8, 0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5%;
+      z-index: 1000;
+    }
+
+    .nav-logo {
+      text-decoration: none;
+      font-size: 1.4rem;
+      font-weight: 800;
+      background: var(--grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    .nav-cta {
+      background: var(--grad);
+      color: #fff !important;
+      padding: 0.5rem 1.25rem;
+      border-radius: 6px;
+      font-weight: 600 !important;
+      transition: opacity 0.3s !important;
+      -webkit-text-fill-color: #fff !important;
+    }
+
+    .nav-cta:hover { opacity: 0.85; }
+
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+
+    .nav-toggle span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      padding: 120px 5% 80px;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(0,150,255,0.04) 0%, transparent 60%),
+        repeating-linear-gradient(0deg, transparent, transparent 60px, rgba(0,150,255,0.03) 60px, rgba(0,150,255,0.03) 61px),
+        repeating-linear-gradient(90deg, transparent, transparent 60px, rgba(0,150,255,0.03) 60px, rgba(0,150,255,0.03) 61px);
+      z-index: 0;
+    }
+
+    .hero-scanlines {
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.15) 2px, rgba(0,0,0,0.15) 4px);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .hero-glow {
+      position: absolute;
+      top: 20%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 300px;
+      background: radial-gradient(ellipse, rgba(0,150,255,0.12) 0%, transparent 70%);
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+    }
+
+    .hero-label {
+      font-family: 'Share Tech Mono', monospace;
+      color: var(--matrix);
+      font-size: 0.85rem;
+      letter-spacing: 0.15em;
+      margin-bottom: 1.5rem;
+      display: block;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+    }
+
+    .gradient-text {
+      background: var(--grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero p {
+      font-size: 1.15rem;
+      color: var(--muted);
+      max-width: 620px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.8;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--grad);
+      color: #fff;
+      padding: 0.85rem 2rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.95rem;
+      transition: opacity 0.3s, transform 0.3s;
+      display: inline-block;
+    }
+
+    .btn-primary:hover { opacity: 0.85; transform: translateY(-2px); }
+
+    .btn-secondary {
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 0.85rem 2rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: border-color 0.3s, transform 0.3s;
+      display: inline-block;
+    }
+
+    .btn-secondary:hover { border-color: var(--matrix); transform: translateY(-2px); }
+
+    section { padding: 100px 5%; }
+
+    .section-inner { max-width: 1200px; margin: 0 auto; }
+
+    .section-label {
+      font-family: 'Share Tech Mono', monospace;
+      color: var(--matrix);
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .section-label::before { content: '// '; }
+
+    .section-title {
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 1.2rem;
+    }
+
+    .section-sub {
+      color: var(--muted);
+      font-size: 1.05rem;
+      max-width: 580px;
+      line-height: 1.7;
+      margin-bottom: 3.5rem;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .two-col p {
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 1.25rem;
+      font-size: 1rem;
+    }
+
+    .stat-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .stat-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      transition: border-color 0.3s;
+    }
+
+    .stat-card:hover { border-color: var(--matrix); }
+
+    .stat-num {
+      font-size: 1.6rem;
+      font-weight: 900;
+      background: var(--grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-card p {
+      color: var(--muted);
+      font-size: 0.88rem;
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 2rem;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+
+    .card:hover { border-color: var(--matrix); transform: translateY(-4px); }
+
+    .card-icon { font-size: 2rem; margin-bottom: 1rem; display: block; }
+
+    .card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.75rem; }
+
+    .card p { color: var(--muted); font-size: 0.9rem; line-height: 1.7; margin-bottom: 1rem; }
+
+    .tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+
+    .tag {
+      background: rgba(0,150,255,0.08);
+      border: 1px solid rgba(0,150,255,0.2);
+      color: var(--matrix2);
+      font-size: 0.75rem;
+      padding: 0.25rem 0.6rem;
+      border-radius: 4px;
+      font-family: 'Share Tech Mono', monospace;
+    }
+
+    .process-steps { display: flex; flex-direction: column; }
+
+    .process-step {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 2rem;
+      padding: 2rem 0;
+      border-bottom: 1px solid var(--border);
+      align-items: start;
+    }
+
+    .process-step:last-child { border-bottom: none; }
+
+    .step-num {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 2.5rem;
+      font-weight: 700;
+      background: var(--grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+      padding-top: 0.2rem;
+    }
+
+    .step-content h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .step-content p { color: var(--muted); font-size: 0.95rem; line-height: 1.7; }
+
+    .faq-list { display: flex; flex-direction: column; max-width: 860px; margin: 0 auto; }
+
+    .faq-item { border-bottom: 1px solid var(--border); }
+
+    .faq-q {
+      width: 100%;
+      background: none;
+      border: none;
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      text-align: left;
+      padding: 1.5rem 0;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      transition: color 0.3s;
+    }
+
+    .faq-q:hover { color: var(--matrix2); }
+
+    .faq-icon {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 1rem;
+      color: var(--matrix);
+      transition: transform 0.3s;
+    }
+
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+
+    .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+    .faq-item.open .faq-a { max-height: 400px; }
+
+    .faq-a p { color: var(--muted); font-size: 0.95rem; line-height: 1.8; padding-bottom: 1.5rem; }
+
+    .cta-section {
+      background: linear-gradient(135deg, rgba(0,150,255,0.08) 0%, rgba(59,91,255,0.08) 100%);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .cta-section h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 800; margin-bottom: 1rem; }
+
+    .cta-section p { color: var(--muted); font-size: 1.05rem; max-width: 540px; margin: 0 auto 2.5rem; line-height: 1.7; }
+
+    .cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+    footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 60px 5% 30px; }
+
+    .footer-inner { max-width: 1200px; margin: 0 auto; }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    .footer-brand p { color: var(--muted); font-size: 0.9rem; line-height: 1.7; margin-top: 1rem; max-width: 280px; }
+    .footer-brand .contact-info { margin-top: 1.25rem; }
+    .footer-brand .contact-info a { display: block; color: var(--muted); text-decoration: none; font-size: 0.88rem; margin-bottom: 0.4rem; transition: color 0.3s; }
+    .footer-brand .contact-info a:hover { color: var(--matrix2); }
+
+    .footer-col h4 { font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text); margin-bottom: 1.25rem; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+    .footer-col ul a { color: var(--muted); text-decoration: none; font-size: 0.88rem; transition: color 0.3s; }
+    .footer-col ul a:hover { color: var(--matrix2); }
+
+    .footer-bottom { border-top: 1px solid var(--border); padding-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+    .footer-bottom p { color: var(--muted); font-size: 0.82rem; }
+
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 900px) {
+      .two-col { grid-template-columns: 1fr; gap: 2.5rem; }
+      .cards-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    }
+
+    @media (max-width: 600px) {
+      .cards-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .stat-cards { grid-template-columns: 1fr; }
+      .nav-links { display: none; flex-direction: column; position: absolute; top: 70px; left: 0; right: 0; background: var(--bg); padding: 1.5rem 5%; gap: 1.25rem; border-bottom: 1px solid var(--border); }
+      .nav-links.open { display: flex; }
+      .nav-toggle { display: flex; }
+      .process-step { grid-template-columns: 60px 1fr; gap: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo">NexaWave</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html#services">Services</a></li>
+      <li><a href="index.html#why">Why Us</a></li>
+      <li><a href="index.html#process">Process</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+      <li><a href="index.html#contact" class="nav-cta">Get Free Audit</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-scanlines"></div>
+    <div class="hero-glow"></div>
+    <div class="hero-content">
+      <span class="hero-label">// GOOGLE ADS MANAGEMENT</span>
+      <h1>Turn Ad Spend<br /><span class="gradient-text">Into Revenue</span></h1>
+      <p>We run data-driven Google Ads campaigns that put your business in front of buyers the moment they're ready to act — maximizing your ROAS and systematically reducing cost per click through relentless optimization. Stop guessing. Start growing.</p>
+      <div class="hero-btns">
+        <a href="index.html#contact" class="btn-primary">Get Free Ads Audit</a>
+        <a href="index.html#services" class="btn-secondary">See Our Results</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY GOOGLE ADS -->
+  <section style="background: var(--bg2);">
+    <div class="section-inner">
+      <div class="reveal">
+        <span class="section-label">why google ads</span>
+        <h2 class="section-title">The Fastest Path to <span class="gradient-text">Front Page Visibility</span></h2>
+      </div>
+      <div class="two-col reveal">
+        <div>
+          <p>Google Ads management is the most powerful tool available to businesses that need results now. Unlike organic search, which can take months to produce rankings, a well-built Google Ads campaign management strategy delivers first-page visibility within 24 hours of launch. Pay-per-click advertising works because it intercepts buyers precisely when they're searching for what you offer — not while they're scrolling social media or watching videos, but at the exact moment of purchase intent. That's why Google Ads for small business consistently outperforms almost every other paid channel for direct revenue generation.</p>
+          <p>What separates a profitable Google Ads campaign from one that burns through budget is relentless, intelligent optimization. As a dedicated Google Ads agency, we treat your campaigns like a living system — constantly refining keyword match types, testing ad copy variations, tightening audience targeting, and adjusting bids based on real performance data. Our paid search advertising approach focuses obsessively on reducing cost per click while simultaneously improving conversion rates, so every dollar of ad spend optimization compounds into a stronger return over time.</p>
+          <p>Local Google Ads are especially powerful for businesses that serve a specific geographic market. We build hyper-targeted campaigns that only show ads to people in your service area who are actively searching for exactly what you offer. Combined with precise conversion tracking setup, you'll know exactly which keywords, ads, and landing pages are generating phone calls, form submissions, and actual revenue — giving you complete visibility into your Google Ads campaign management performance and the confidence to invest more as results compound.</p>
+        </div>
+        <div>
+          <div class="stat-cards">
+            <div class="stat-card">
+              <span class="stat-num">$2</span>
+              <p>in revenue generated for every $1 spent on Google Ads — businesses that optimize correctly see even stronger returns.</p>
+            </div>
+            <div class="stat-card">
+              <span class="stat-num">63%</span>
+              <p>of people click on Google Ads when they're ready to make a purchase, making search ads management essential for capturing buyers.</p>
+            </div>
+            <div class="stat-card">
+              <span class="stat-num">200%+</span>
+              <p>average Google Ads ROAS is achievable with proper campaign structure, bid management, and ongoing ad spend optimization.</p>
+            </div>
+            <div class="stat-card">
+              <span class="stat-num">24hrs</span>
+              <p>to first-page visibility — Google Ads campaign management delivers results immediately while your SEO builds long-term momentum.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT'S INCLUDED -->
+  <section>
+    <div class="section-inner">
+      <div class="reveal" style="text-align:center; margin-bottom:3rem;">
+        <span class="section-label">what's included</span>
+        <h2 class="section-title">Full-Service <span class="gradient-text">PPC Management</span></h2>
+        <p class="section-sub" style="margin:0 auto;">Our Google Ads management covers every layer of a high-performing paid search campaign — from strategy and setup through creative execution and continuous optimization for maximum ROAS.</p>
+      </div>
+      <div class="cards-grid reveal">
+        <div class="card">
+          <span class="card-icon">🎯</span>
+          <h3>Campaign Strategy &amp; Setup</h3>
+          <p>Every high-performing Google Ads campaign starts with a rock-solid foundation. We build your campaign architecture from scratch — structuring ad groups, match types, and targeting parameters to maximize relevance scores and minimize wasted ad spend from day one of your Google Ads campaign management.</p>
+          <div class="tags">
+            <span class="tag">Campaign Architecture</span>
+            <span class="tag">Ad Group Structure</span>
+            <span class="tag">Targeting Setup</span>
+          </div>
+        </div>
+        <div class="card">
+          <span class="card-icon">🔍</span>
+          <h3>Keyword Research &amp; Negative Keywords</h3>
+          <p>We identify every high-intent paid search advertising keyword your buyers are using and build comprehensive negative keyword lists to prevent your budget from being wasted on irrelevant searches. Precise keyword selection is how we reduce cost per click while keeping conversion volume high.</p>
+          <div class="tags">
+            <span class="tag">Intent Mapping</span>
+            <span class="tag">Negative Keywords</span>
+            <span class="tag">Match Type Strategy</span>
+          </div>
+        </div>
+        <div class="card">
+          <span class="card-icon">✍️</span>
+          <h3>Ad Copywriting &amp; A/B Testing</h3>
+          <p>Compelling ad copy is what converts clicks into customers. Our team writes multiple ad variations for every campaign and runs systematic A/B testing to identify which headlines, descriptions, and calls-to-action drive the highest click-through rates and lowest cost per conversion in your Google Ads optimization.</p>
+          <div class="tags">
+            <span class="tag">Ad Copywriting</span>
+            <span class="tag">A/B Testing</span>
+            <span class="tag">CTR Optimization</span>
+          </div>
+        </div>
+        <div class="card">
+          <span class="card-icon">💰</span>
+          <h3>Bid Management &amp; Budget Optimization</h3>
+          <p>Smart bid management is the engine of ad spend optimization. We use a combination of automated bidding strategies and manual adjustments to ensure your budget is always allocated toward the keywords, times of day, and devices that generate the highest ROAS for your business.</p>
+          <div class="tags">
+            <span class="tag">Smart Bidding</span>
+            <span class="tag">Budget Allocation</span>
+            <span class="tag">ROAS Optimization</span>
+          </div>
+        </div>
+        <div class="card">
+          <span class="card-icon">📊</span>
+          <h3>Conversion Tracking Setup</h3>
+          <p>You can't optimize what you can't measure. We implement full conversion tracking setup — tracking phone calls, form fills, purchases, and other key actions — so your Google Ads campaign management decisions are always based on actual revenue data, not vanity metrics like impressions or clicks.</p>
+          <div class="tags">
+            <span class="tag">Call Tracking</span>
+            <span class="tag">Goal Configuration</span>
+            <span class="tag">Analytics Integration</span>
+          </div>
+        </div>
+        <div class="card">
+          <span class="card-icon">📈</span>
+          <h3>Monthly Reporting &amp; Insights</h3>
+          <p>Clear, actionable monthly reports show exactly how your PPC management services are performing — including impressions, clicks, cost per click, conversions, and ROAS. We translate the numbers into plain English recommendations so you always understand where your ad budget is going and what it's returning.</p>
+          <div class="tags">
+            <span class="tag">Performance Reports</span>
+            <span class="tag">ROAS Dashboard</span>
+            <span class="tag">Growth Insights</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section style="background: var(--bg2);">
+    <div class="section-inner">
+      <div class="reveal" style="text-align:center; margin-bottom:3rem;">
+        <span class="section-label">our process</span>
+        <h2 class="section-title">How We Build <span class="gradient-text">Profitable Campaigns</span></h2>
+        <p class="section-sub" style="margin:0 auto;">A disciplined Google Ads campaign management process built to eliminate wasted spend, maximize ROAS, and scale what's working as fast as the data allows.</p>
+      </div>
+      <div class="process-steps reveal">
+        <div class="process-step">
+          <div class="step-num">01</div>
+          <div class="step-content">
+            <h3>Account Audit &amp; Research</h3>
+            <p>If you have an existing Google Ads account, we start with a thorough audit — identifying wasted spend, poor-performing campaigns, missing negative keywords, and untapped opportunities. For new accounts, we conduct deep competitor and keyword research to understand exactly what's working in your market before investing a single dollar in paid search advertising.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="step-num">02</div>
+          <div class="step-content">
+            <h3>Campaign Architecture</h3>
+            <p>We design your Google Ads campaign management structure from the ground up — organizing campaigns by service, location, and intent, and building tightly themed ad groups that maximize quality scores. High quality scores directly reduce cost per click and improve ad position, giving your budget more leverage in every auction you enter.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="step-num">03</div>
+          <div class="step-content">
+            <h3>Ad Creation &amp; Launch</h3>
+            <p>Our copywriting team crafts compelling, conversion-focused ads tailored to each ad group's specific keywords and intent. We build out all ad extensions — sitelinks, callouts, structured snippets, and call extensions — to maximize your ad's real estate on the search results page and give buyers every reason to click your paid search advertising over a competitor's.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="step-num">04</div>
+          <div class="step-content">
+            <h3>Optimization &amp; Testing</h3>
+            <p>Once campaigns are live, the real Google Ads optimization work begins. We analyze search term reports weekly, pause underperforming keywords, expand negative keyword lists, test new ad copy, adjust bids by device and time of day, and refine landing page alignment — every change made with one goal in mind: improving your ROAS while reducing cost per click.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="step-num">05</div>
+          <div class="step-content">
+            <h3>Scale &amp; Reporting</h3>
+            <p>When we find keywords, ads, and landing pages that convert profitably, we scale them deliberately. Monthly reporting sessions walk you through your Google Ads campaign management performance in plain language — what's working, what we're fixing, and exactly where we're taking the account next to grow your ROAS and expand your reach in the market.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section>
+    <div class="section-inner">
+      <div class="reveal" style="text-align:center; margin-bottom:3rem;">
+        <span class="section-label">faq</span>
+        <h2 class="section-title">Questions About <span class="gradient-text">Google Ads Management</span></h2>
+      </div>
+      <div class="faq-list reveal">
+        <div class="faq-item">
+          <button class="faq-q">How much should I spend on Google Ads?<span class="faq-icon">+</span></button>
+          <div class="faq-a"><p>The right Google Ads budget depends on your industry, your market's competition level, and your revenue goals. For most small businesses, we recommend starting with a minimum of $1,000 to $2,000 per month in ad spend to gather enough data for meaningful Google Ads optimization decisions — though some highly competitive industries require more to compete effectively. As a Google Ads agency, our management fee is separate from your ad spend, which goes directly to Google. We'll provide a realistic budget recommendation during your free audit based on your specific market and the cost-per-click rates for your target keywords, so you can make an informed decision before committing to any paid search advertising investment.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">How quickly will I see results from Google Ads?<span class="faq-icon">+</span></button>
+          <div class="faq-a"><p>One of the biggest advantages of Google Ads campaign management over organic SEO is speed — your ads can appear on page one within 24 hours of a campaign launching. That said, the first 30 to 60 days of any new campaign are a learning and optimization phase during which we gather conversion data, refine targeting, and tighten the account structure for maximum efficiency. Most clients see their cost per click stabilize and their ROAS improve significantly between months two and three as our Google Ads optimization work takes effect and Google's machine learning algorithms gather enough conversion data to bid more intelligently on your behalf.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">What is ROAS and what should I expect?<span class="faq-icon">+</span></button>
+          <div class="faq-a"><p>ROAS stands for Return on Ad Spend — it's the revenue you generate for every dollar spent on paid search advertising. A ROAS of 200% means you're generating $2 in revenue for every $1 spent; 400% means $4 per dollar. What constitutes a "good" ROAS varies by industry and business model, but our Google Ads management goal is always to push your ROAS as high as possible while maintaining sufficient conversion volume to grow your business. In highly competitive local markets with well-optimized campaigns and strong landing pages, ROAS of 300% to 600% or higher is regularly achievable. We set realistic ROAS targets with every client during onboarding based on their industry benchmarks and business economics.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Do you require long-term contracts?<span class="faq-icon">+</span></button>
+          <div class="faq-a"><p>We don't lock clients into rigid long-term contracts because we believe results should be what keeps the relationship going, not paperwork. We do ask for an initial 90-day commitment for new Google Ads campaign management engagements, because that's the minimum time needed to fully build, test, and optimize a campaign to the point where you can fairly evaluate performance and your true Google Ads ROAS. After the initial period, we work on a month-to-month basis. Our clients stay because their campaigns are profitable and growing — not because they're contractually obligated to. Transparency and performance are the foundation of how we operate as a PPC management services provider.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">What types of Google Ads campaigns do you manage?<span class="faq-icon">+</span></button>
+          <div class="faq-a"><p>Our Google Ads management services cover the full range of campaign types available on the platform. Search campaigns — text ads that appear when people search specific keywords — form the backbone of most of our clients' paid search advertising strategies because they capture high-intent buyers at the moment of purchase. We also manage Performance Max campaigns for businesses looking to reach across Google's entire network, Local Services Ads for service-area businesses that want to appear at the very top of local Google searches, remarketing campaigns to re-engage visitors who didn't convert, and Google Shopping campaigns for e-commerce businesses. During your free audit, we'll recommend the right mix of Google Ads campaign management types for your specific goals and budget.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA SECTION -->
+  <section class="cta-section">
+    <div class="section-inner reveal">
+      <span class="section-label" style="display:flex; justify-content:center;">get started</span>
+      <h2>Ready to <span class="gradient-text">Maximize Your Ad Spend?</span></h2>
+      <p>Stop letting your Google Ads budget leak. Get a free account audit and find out exactly how we'll cut your cost per click and grow your ROAS starting this month.</p>
+      <div class="cta-btns">
+        <a href="index.html#contact" class="btn-primary">Get My Free Audit</a>
+        <a href="index.html#contact" class="btn-secondary">Talk to an Expert</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo" style="font-size:1.3rem;">NexaWave</a>
+          <p>Full-service digital marketing agency helping local businesses grow online through local SEO, Google Ads management, and professional visual content production.</p>
+          <div class="contact-info">
+            <a href="mailto:gabriel@nexawavedigi.com">gabriel@nexawavedigi.com</a>
+            <a href="tel:4076835256">(407) 683-5256</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="localized-seo.html">Local SEO</a></li>
+            <li><a href="google-ads.html">Google Ads</a></li>
+            <li><a href="videography.html">Videography</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="index.html#why">Why NexaWave</a></li>
+            <li><a href="index.html#process">Our Process</a></li>
+            <li><a href="index.html#contact">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Get Started</h4>
+          <ul>
+            <li><a href="index.html#contact">Free Ads Audit</a></li>
+            <li><a href="index.html#contact">Free Consultation</a></li>
+            <li><a href="index.html#contact">Request a Quote</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 NexaWave Digital, LLC. All rights reserved.</p>
+        <p style="font-family:'Share Tech Mono',monospace; color:var(--matrix); font-size:0.8rem;">// SPEND SMARTER. SCALE FASTER.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('navToggle');
+    const links = document.getElementById('navLinks');
+    toggle.addEventListener('click', () => links.classList.toggle('open'));
+
+    document.querySelectorAll('.faq-q').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.parentElement;
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+      });
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

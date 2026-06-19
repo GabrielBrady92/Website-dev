@@ -1675,10 +1675,16 @@ function initAnimations(){
   });
 
   /* ── Services reel section title ── */
-  animSectionTitle('.services-reel-header h2');
+  gsap.from('.services-reel-header h2', {
+    opacity:0, y:30, duration:0.8, ease:'power3.out',
+    scrollTrigger:{ trigger:'.services-reel-section', start:'top 80%' }
+  });
 
   /* ── Why Us ── */
-  animSectionTitle('#why .section-title');
+  gsap.from('#why .section-title', {
+    opacity:0, y:30, duration:0.8, ease:'power3.out',
+    scrollTrigger:{ trigger:'#why', start:'top 80%' }
+  });
 
   gsap.from('.terminal-window',{
     opacity:0, x:-60, duration:1, ease:'power3.out',
@@ -1717,7 +1723,10 @@ function initAnimations(){
   });
 
   /* ── Testimonials ── */
-  animSectionTitle('#testimonials .section-title');
+  gsap.from('#testimonials .section-title', {
+    opacity:0, y:30, duration:0.8, ease:'power3.out',
+    scrollTrigger:{ trigger:'#testimonials', start:'top 80%' }
+  });
 
   gsap.to('.tcard',{
     clipPath:'inset(0 0 0% 0)', duration:0.9, stagger:0.15, ease:'power4.out',
@@ -1729,10 +1738,16 @@ function initAnimations(){
   });
 
   /* ── CTA ── */
-  animSectionTitle('#cta .cta-title');
+  gsap.from('#cta .cta-title', {
+    opacity:0, y:30, duration:0.8, ease:'power3.out',
+    scrollTrigger:{ trigger:'#cta', start:'top 80%' }
+  });
 
   /* ── Contact ── */
-  animSectionTitle('#contact .section-title');
+  gsap.from('#contact .section-title', {
+    opacity:0, y:30, duration:0.8, ease:'power3.out',
+    scrollTrigger:{ trigger:'#contact', start:'top 80%' }
+  });
 
   gsap.from('.contact-form',{
     opacity:0, y:50, duration:1, ease:'power3.out',

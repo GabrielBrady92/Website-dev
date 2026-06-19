@@ -322,8 +322,8 @@
     @keyframes stream { 0%{left:-30%} 100%{left:130%} }
 
     /* ── NAV LOGO image ── */
-    .nav-logo-img { height: 38px; width: auto; display: block; mix-blend-mode: lighten; }
-    .flogo-img    { height: 34px; width: auto; display: block; mix-blend-mode: lighten; }
+    .nav-logo-img { height: 44px; width: auto; display: block; mix-blend-mode: lighten; filter: brightness(1.1); }
+    .flogo-img    { height: 38px; width: auto; display: block; mix-blend-mode: lighten; filter: brightness(1.1); }
 
     /* ── Video thumbnail in browser chrome ── */
     .browser-thumb {
@@ -876,7 +876,7 @@
 <!-- NAV -->
 <nav id="navbar">
   <a href="#hero" class="nav-logo">
-    <img src="nexawave-logo.svg" alt="NexaWave Digital" class="nav-logo-img" />
+    <img src="nexawave-digital.svg" alt="NexaWave Digital" class="nav-logo-img" />
   </a>
   <ul class="nav-links">
     <li><a href="#our-work">Work</a></li>
@@ -970,10 +970,10 @@
             <div class="b-dots"><span class="b-dot"></span><span class="b-dot"></span><span class="b-dot"></span></div>
             <div class="b-url"><span class="b-lock">🔒</span> north2southflo.com</div>
           </div>
-          <div class="browser-thumb-wrap" onclick="openVideo('RQnuKPvxPng','17')">
-            <img class="browser-thumb" src="https://img.youtube.com/vi/RQnuKPvxPng/maxresdefault.jpg" alt="North 2 South Renovations video" />
-            <div class="play-btn"><div class="play-circle"><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff"><polygon points="5,3 19,12 5,21"/></svg></div></div>
-          </div>
+          <video class="browser-thumb" autoplay muted loop playsinline>
+            <source src="best.mov" type="video/quicktime" />
+            <source src="best.mov" type="video/mp4" />
+          </video>
         </div>
         <div class="reel-slide-info">
           <div class="reel-slide-num">01 //</div>
@@ -1054,7 +1054,7 @@
       <!-- Logo reveal -->
       <div class="reel-slide-logo">
         <div class="logo-divline"></div>
-        <img src="nexawave-logo.svg" alt="NexaWave Digital" style="height:110px;width:auto;mix-blend-mode:lighten;filter:drop-shadow(0 0 40px rgba(0,150,255,0.35));" />
+        <img src="nexawave-digital.svg" alt="NexaWave Digital" style="height:110px;width:auto;mix-blend-mode:lighten;filter:drop-shadow(0 0 40px rgba(0,150,255,0.35));" />
         <div class="logo-big-name">NexaWave Digital</div>
         <div class="logo-big-tag">// Your Vision. Our Execution.</div>
         <div class="logo-divline"></div>
@@ -1336,7 +1336,7 @@
   <div class="container">
     <div class="footer-grid">
       <div>
-        <div class="flogo-wrap"><img src="nexawave-logo.svg" alt="NexaWave Digital" class="flogo-img" /></div>
+        <div class="flogo-wrap"><img src="nexawave-digital.svg" alt="NexaWave Digital" class="flogo-img" /></div>
         <p class="fdesc">Full-service digital marketing agency helping local businesses grow through smart strategy, stunning creative, and data-driven execution.</p>
         <div class="fsocials"><a href="#" class="fsoc">f</a><a href="#" class="fsoc">ig</a><a href="#" class="fsoc">in</a><a href="#" class="fsoc">yt</a></div>
       </div>

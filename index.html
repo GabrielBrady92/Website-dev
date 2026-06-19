@@ -301,7 +301,6 @@
     .section-title {
       font-size: clamp(32px, 4vw, 56px); font-weight: 800;
       line-height: 1.05; letter-spacing: -2px; margin-bottom: 16px;
-      overflow: hidden;
     }
     .section-title .word { display: inline-block; overflow: hidden; margin-right: 0.2em; }
     .section-title .char { display: inline-block; }
@@ -1608,7 +1607,18 @@ function initAnimations(){
   });
 
   /* ── Process ── */
-  animSectionTitle('#process .section-title');
+  gsap.from('#process .section-title', {
+    opacity:0, y:30, duration:0.8, ease:'power3.out',
+    scrollTrigger:{ trigger:'#process', start:'top 80%' }
+  });
+  gsap.from('#process .section-label', {
+    opacity:0, x:-20, duration:0.6, ease:'power3.out',
+    scrollTrigger:{ trigger:'#process', start:'top 80%' }
+  });
+  gsap.from('#process .section-desc', {
+    opacity:0, y:20, duration:0.6, ease:'power3.out', delay:0.15,
+    scrollTrigger:{ trigger:'#process', start:'top 80%' }
+  });
 
   gsap.from('.pstep-circle',{
     opacity:0, y:30, duration:0.7, stagger:0.15, ease:'back.out(1.5)',

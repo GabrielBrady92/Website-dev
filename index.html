@@ -329,8 +329,9 @@
     .browser-thumb {
       width: 100%; height: 420px; display: block;
       border-radius: 0 0 12px 12px; object-fit: cover;
-      object-position: center; cursor: none;
+      object-position: center; cursor: none; vertical-align: top;
     }
+    video.browser-thumb { background: #000; }
     .browser-thumb-wrap {
       position: relative; cursor: none;
     }
@@ -454,12 +455,7 @@
       display: block; border-radius: 0 0 12px 12px;
     }
 
-    /* Image reveal overlay */
-    .reel-slide-inner::before {
-      content: ''; position: absolute; inset: 0; z-index: 2;
-      background: var(--grad-d); border-radius: 12px;
-      transform-origin: left;
-    }
+    /* Image reveal overlay removed — was covering slide content */
 
     /* Slide info */
     .reel-slide-info {

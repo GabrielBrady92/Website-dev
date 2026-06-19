@@ -670,7 +670,6 @@
       background:var(--surface);border:1px solid var(--border2);
       border-radius:10px;overflow:hidden;
       box-shadow:0 0 80px rgba(0,150,255,0.06);
-      transform: translateX(-60px); opacity: 0; /* GSAP */
     }
     .terminal-bar {
       background:var(--surface2);padding:12px 20px;
@@ -688,14 +687,13 @@
       display:flex;align-items:center;gap:14px;padding:14px 16px;
       background:rgba(0,150,255,0.03);border:1px solid var(--border);border-radius:4px;
       transition:border-color 0.3s,background 0.3s;
-      opacity:0; transform:translateX(-20px); /* GSAP */
     }
     .metric-row:hover { border-color:var(--border2);background:rgba(0,150,255,0.06); }
     .micon { width:38px;height:38px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;background:rgba(0,150,255,0.08); }
     .mlabel { font-family:var(--mono);font-size:10px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:4px; }
     .mvalue { font-size:17px;font-weight:700;font-family:var(--mono);background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text; }
 
-    .why-right { transform:translateX(60px);opacity:0; /* GSAP */ }
+    .why-right { }
 
     .why-points { display:grid;gap:36px; }
     .why-point { display:flex;gap:20px; }
@@ -728,7 +726,6 @@
       display:flex;align-items:center;justify-content:center;font-family:var(--mono);
       font-size:18px;color:var(--matrix);margin:0 auto 28px;
       background:rgba(0,150,255,0.04);box-shadow:0 0 20px rgba(0,150,255,0.1);
-      opacity:0;transform:translateY(30px); /* GSAP */
       transition:background 0.3s,box-shadow 0.3s;
     }
     .pstep-circle:hover { background:rgba(0,150,255,0.1);box-shadow:0 0 35px rgba(0,150,255,0.3); }
@@ -1570,24 +1567,24 @@ function initAnimations(){
   /* ── Why Us ── */
   animSectionTitle('#why .section-title');
 
-  gsap.to('.terminal-window',{
-    opacity:1, x:0, duration:1, ease:'power3.out',
+  gsap.from('.terminal-window',{
+    opacity:0, x:-60, duration:1, ease:'power3.out',
     scrollTrigger:{ trigger:'.why-grid', start:'top 70%' }
   });
-  gsap.to('.metric-row',{
-    opacity:1, x:0, duration:0.6, stagger:0.12, ease:'power3.out',
+  gsap.from('.metric-row',{
+    opacity:0, x:-20, duration:0.6, stagger:0.12, ease:'power3.out',
     scrollTrigger:{ trigger:'.terminal-body', start:'top 75%' }
   });
-  gsap.to('.why-right',{
-    opacity:1, x:0, duration:1, ease:'power3.out',
+  gsap.from('.why-right',{
+    opacity:0, x:60, duration:1, ease:'power3.out',
     scrollTrigger:{ trigger:'.why-grid', start:'top 70%' }
   });
 
   /* ── Process ── */
   animSectionTitle('#process .section-title');
 
-  gsap.to('.pstep-circle',{
-    opacity:1, y:0, duration:0.7, stagger:0.15, ease:'back.out(1.5)',
+  gsap.from('.pstep-circle',{
+    opacity:0, y:30, duration:0.7, stagger:0.15, ease:'back.out(1.5)',
     scrollTrigger:{ trigger:'.process-steps', start:'top 75%' }
   });
   gsap.to('#processLineFill',{

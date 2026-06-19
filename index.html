@@ -856,19 +856,100 @@
       .testimonials-grid{grid-template-columns:1fr 1fr;}
       .contact-grid{grid-template-columns:1fr;gap:48px;}
     }
+
     @media(max-width:768px){
-      section{padding:80px 0;}
-      .hero-inner{padding:60px 28px 48px;}
-      .hero-title{letter-spacing:-2px;}
-      .nav-links{display:none;}
-      .hamburger{display:flex;}
-      .services-grid,.testimonials-grid{grid-template-columns:1fr;}
-      .form-row{grid-template-columns:1fr;}
-      .footer-grid{grid-template-columns:1fr;}
-      .container{padding:0 28px;}
-      nav{padding:0 28px;}
-      body{cursor:auto;}
-      #cursor-dot,#cursor-ring{display:none;}
+      /* Base */
+      section { padding: 64px 0; }
+      .container { padding: 0 20px; }
+      nav { padding: 0 20px; }
+      body { cursor: auto; }
+      #cursor-dot, #cursor-ring { display: none; }
+
+      /* Nav */
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .logo-wordmark-main { font-size: 15px; }
+      .logo-wordmark-sub  { font-size: 8px; letter-spacing: 2px; }
+      .nav-cta { display: none; }
+
+      /* Hero */
+      .hero-inner { padding: 48px 20px 40px; }
+      .hero-title  { font-size: clamp(38px, 10vw, 64px); letter-spacing: -2px; }
+      .hero-sub    { font-size: 15px; margin-top: 24px; }
+      .hero-actions { flex-direction: column; gap: 12px; margin-top: 28px; }
+      .hero-actions a { text-align: center; justify-content: center; }
+      .hero-stats  { gap: 24px; margin-top: 48px; }
+      .stat-num    { font-size: 32px; }
+
+      /* Work Reel — convert to native swipe scroll */
+      .reel-section { height: auto; padding: 0 0 48px; }
+      .reel-sticky  { position: relative; height: auto; overflow: visible; flex-direction: column; align-items: flex-start; }
+      .reel-sticky-bg { display: none; }
+      .reel-header  { position: relative; top: auto; left: auto; padding: 40px 20px 20px; }
+      .reel-counter { display: none; }
+      .reel-hint    { display: none; }
+      .reel-track   {
+        overflow-x: auto; scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        padding: 0 20px 20px; gap: 16px; padding-top: 0;
+        scrollbar-width: none;
+      }
+      .reel-track::-webkit-scrollbar { display: none; }
+      .reel-slide   { width: min(300px, 82vw); scroll-snap-align: start; }
+      .reel-slide-logo { width: min(280px, 82vw); padding: 40px 24px; }
+      .browser-thumb,
+      .browser-yt-wrap { height: 190px; }
+      video.browser-thumb { height: 190px; }
+      .reel-slide-name { font-size: 16px; }
+
+      /* Services Reel — native swipe */
+      .services-reel-section { height: auto; padding: 0 0 48px; }
+      .services-reel-sticky  { position: relative; height: auto; overflow: visible; flex-direction: column; align-items: flex-start; }
+      .services-reel-bg { display: none; }
+      .services-reel-header { position: relative; top: auto; left: auto; padding: 40px 20px 20px; }
+      .services-reel-counter { display: none; }
+      .services-reel-track {
+        overflow-x: auto; scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        padding: 0 20px 20px; gap: 16px; padding-top: 0;
+        scrollbar-width: none;
+      }
+      .services-reel-track::-webkit-scrollbar { display: none; }
+      .service-reel-card { width: min(290px, 82vw); scroll-snap-align: start; clip-path: none; }
+      .src-thumb { height: 180px; }
+      .src-thumb-icon { font-size: 56px; }
+
+      /* Platforms */
+      .platform-item { min-width: 110px; padding: 14px 20px; }
+
+      /* Why Us */
+      .why-grid { grid-template-columns: 1fr; gap: 36px; }
+
+      /* Process */
+      .process-steps { grid-template-columns: 1fr 1fr; gap: 32px; }
+      .process-header { margin-bottom: 48px; }
+      .process-line { display: none; }
+
+      /* Testimonials */
+      .testimonials-grid { grid-template-columns: 1fr; }
+
+      /* Contact */
+      .contact-grid { grid-template-columns: 1fr; gap: 36px; }
+      .contact-form { padding: 28px 20px; }
+      .form-row { grid-template-columns: 1fr; }
+
+      /* Footer */
+      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+      footer { padding: 48px 0 24px; }
+
+      /* Logo reveal in reel */
+      .logo-wordmark-lg .logo-wordmark-main { font-size: 26px; }
+    }
+
+    @media(max-width:420px){
+      .hero-title { font-size: clamp(32px, 11vw, 52px); }
+      .process-steps { grid-template-columns: 1fr; }
+      .reel-slide, .service-reel-card { width: 88vw; }
     }
   </style>
 </head>
@@ -1537,43 +1618,49 @@ function initAnimations(){
   gsap.to('.hero-orb-1',{ yPercent:20, ease:'none', scrollTrigger:{ trigger:'#hero', start:'top top', end:'bottom top', scrub:true }});
   gsap.to('.hero-orb-2',{ yPercent:-15, ease:'none', scrollTrigger:{ trigger:'#hero', start:'top top', end:'bottom top', scrub:true }});
 
-  /* ── Work Reel (horizontal scroll) ── */
+  /* ── Work Reel (horizontal scroll — desktop only) ── */
   const track  = document.getElementById('reelTrack');
   const slides = gsap.utils.toArray('.reel-slide, .reel-slide-logo');
   const counter = document.getElementById('reelCurrent');
 
-  const reelST = ScrollTrigger.create({
-    trigger: '.reel-section',
-    pin: '.reel-sticky',
-    start: 'top top',
-    end: () => '+=' + (track.scrollWidth - innerWidth + 160),
-    scrub: 1.2,
-    snap: { snapTo: 1/(slides.length-1), duration:{min:0.3,max:0.8}, ease:'power2.inOut' },
-    animation: gsap.to(track, { x: ()=>-(track.scrollWidth - innerWidth + 80), ease:'none' }),
-    onUpdate: self => {
-      const idx = Math.round(self.progress * (slides.length-1));
-      counter.textContent = String(idx+1).padStart(2,'0');
-    }
-  });
+  const isMobile = window.innerWidth <= 768;
 
-  /* ── Services Reel (horizontal scroll) ── */
+  if(!isMobile){
+    const reelST = ScrollTrigger.create({
+      trigger: '.reel-section',
+      pin: '.reel-sticky',
+      start: 'top top',
+      end: () => '+=' + (track.scrollWidth - innerWidth + 160),
+      scrub: 1.2,
+      snap: { snapTo: 1/(slides.length-1), duration:{min:0.3,max:0.8}, ease:'power2.inOut' },
+      animation: gsap.to(track, { x: ()=>-(track.scrollWidth - innerWidth + 80), ease:'none' }),
+      onUpdate: self => {
+        const idx = Math.round(self.progress * (slides.length-1));
+        counter.textContent = String(idx+1).padStart(2,'0');
+      }
+    });
+  }
+
+  /* ── Services Reel (horizontal scroll — desktop only) ── */
   const svcTrack  = document.getElementById('svcTrack');
   const svcCards  = gsap.utils.toArray('.service-reel-card');
   const svcCounter = document.getElementById('svcCurrent');
 
-  ScrollTrigger.create({
-    trigger: '.services-reel-section',
-    pin: '.services-reel-sticky',
-    start: 'top top',
-    end: () => '+=' + (svcTrack.scrollWidth - innerWidth + 160),
-    scrub: 1.2,
-    snap: { snapTo: 1/(svcCards.length-1), duration:{min:0.3,max:0.8}, ease:'power2.inOut' },
-    animation: gsap.to(svcTrack, { x: ()=>-(svcTrack.scrollWidth - innerWidth + 80), ease:'none' }),
-    onUpdate: self => {
-      const idx = Math.round(self.progress * (svcCards.length-1));
-      svcCounter.textContent = String(idx+1).padStart(2,'0');
-    }
-  });
+  if(!isMobile){
+    ScrollTrigger.create({
+      trigger: '.services-reel-section',
+      pin: '.services-reel-sticky',
+      start: 'top top',
+      end: () => '+=' + (svcTrack.scrollWidth - innerWidth + 160),
+      scrub: 1.2,
+      snap: { snapTo: 1/(svcCards.length-1), duration:{min:0.3,max:0.8}, ease:'power2.inOut' },
+      animation: gsap.to(svcTrack, { x: ()=>-(svcTrack.scrollWidth - innerWidth + 80), ease:'none' }),
+      onUpdate: self => {
+        const idx = Math.round(self.progress * (svcCards.length-1));
+        svcCounter.textContent = String(idx+1).padStart(2,'0');
+      }
+    });
+  }
 
   // Reveal service cards as track scrolls
   gsap.to('.service-reel-card', {

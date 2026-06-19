@@ -321,13 +321,25 @@
     }
     @keyframes stream { 0%{left:-30%} 100%{left:130%} }
 
-    /* ── NAV LOGO image ── */
-    .logo-blue {
-      mix-blend-mode: lighten;
-      filter: brightness(0) saturate(100%) invert(42%) sepia(99%) saturate(1400%) hue-rotate(193deg) brightness(110%) contrast(105%);
+    /* ── NAV LOGO text ── */
+    .nav-logo-img, .flogo-img { display: none; }
+    .logo-wordmark {
+      display: flex; flex-direction: column; line-height: 1.1;
     }
-    .nav-logo-img { height: 44px; width: auto; display: block; }
-    .flogo-img    { height: 38px; width: auto; display: block; }
+    .logo-wordmark-main {
+      font-size: 18px; font-weight: 800; letter-spacing: -0.5px;
+      color: var(--matrix); font-family: 'Inter', sans-serif;
+    }
+    .logo-wordmark-main span { color: var(--cyan); }
+    .logo-wordmark-sub {
+      font-size: 9px; font-family: var(--mono); letter-spacing: 3px;
+      text-transform: uppercase; color: rgba(0,150,255,0.55);
+    }
+    .logo-wordmark-lg {
+      text-align: center;
+    }
+    .logo-wordmark-lg .logo-wordmark-main { font-size: 36px; letter-spacing: -1px; }
+    .logo-wordmark-lg .logo-wordmark-sub  { font-size: 12px; letter-spacing: 4px; margin-top: 6px; }
 
     /* ── Video thumbnail in browser chrome ── */
     .browser-thumb {
@@ -880,7 +892,10 @@
 <!-- NAV -->
 <nav id="navbar">
   <a href="#hero" class="nav-logo">
-    <img src="nexawave-digital.svg" alt="NexaWave Digital" class="nav-logo-img logo-blue" />
+    <div class="logo-wordmark">
+      <div class="logo-wordmark-main">Nexa<span>Wave</span></div>
+      <div class="logo-wordmark-sub">Digital, LLC</div>
+    </div>
   </a>
   <ul class="nav-links">
     <li><a href="#our-work">Work</a></li>
@@ -1060,7 +1075,10 @@
       <!-- Logo reveal -->
       <div class="reel-slide-logo">
         <div class="logo-divline"></div>
-        <img src="nexawave-digital.svg" alt="NexaWave Digital" class="logo-blue" style="height:110px;width:auto;filter:brightness(0) saturate(100%) invert(42%) sepia(99%) saturate(1400%) hue-rotate(193deg) brightness(110%) contrast(105%) drop-shadow(0 0 30px rgba(0,150,255,0.5));" />
+        <div class="logo-wordmark logo-wordmark-lg">
+          <div class="logo-wordmark-main">Nexa<span>Wave</span></div>
+          <div class="logo-wordmark-sub">Digital, LLC</div>
+        </div>
         <div class="logo-big-name">NexaWave Digital</div>
         <div class="logo-big-tag">// Your Vision. Our Execution.</div>
         <div class="logo-divline"></div>
@@ -1342,7 +1360,12 @@
   <div class="container">
     <div class="footer-grid">
       <div>
-        <div class="flogo-wrap"><img src="nexawave-digital.svg" alt="NexaWave Digital" class="flogo-img logo-blue" /></div>
+        <div class="flogo-wrap">
+          <div class="logo-wordmark">
+            <div class="logo-wordmark-main">Nexa<span>Wave</span></div>
+            <div class="logo-wordmark-sub">Digital, LLC</div>
+          </div>
+        </div>
         <p class="fdesc">Full-service digital marketing agency helping local businesses grow through smart strategy, stunning creative, and data-driven execution.</p>
         <div class="fsocials"><a href="#" class="fsoc">f</a><a href="#" class="fsoc">ig</a><a href="#" class="fsoc">in</a><a href="#" class="fsoc">yt</a></div>
       </div>

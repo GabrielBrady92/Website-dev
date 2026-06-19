@@ -332,6 +332,13 @@
       object-position: center; cursor: none; vertical-align: top;
     }
     video.browser-thumb { background: #000; }
+    .browser-yt-wrap {
+      position: relative; height: 420px; overflow: hidden;
+      border-radius: 0 0 12px 12px; pointer-events: none;
+    }
+    .browser-yt-wrap iframe {
+      width: 100%; height: 100%; border: none; display: block;
+    }
     .browser-thumb-wrap {
       position: relative; cursor: none;
     }
@@ -987,9 +994,10 @@
             <div class="b-dots"><span class="b-dot"></span><span class="b-dot"></span><span class="b-dot"></span></div>
             <div class="b-url"><span class="b-lock">🔒</span> nextwavepro.com</div>
           </div>
-          <div class="browser-thumb-wrap" onclick="openVideo('dnwB7x2snPY','0')">
-            <img class="browser-thumb" src="https://img.youtube.com/vi/dnwB7x2snPY/maxresdefault.jpg" alt="NexaWave Productions video" />
-            <div class="play-btn"><div class="play-circle"><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff"><polygon points="5,3 19,12 5,21"/></svg></div></div>
+          <div class="browser-yt-wrap">
+            <iframe class="browser-thumb"
+              src="https://www.youtube.com/embed/dnwB7x2snPY?autoplay=1&mute=1&loop=1&playlist=dnwB7x2snPY&rel=0&modestbranding=1&playsinline=1"
+              allow="autoplay; encrypted-media" allowfullscreen></iframe>
           </div>
         </div>
         <div class="reel-slide-info">
@@ -1009,9 +1017,10 @@
             <div class="b-dots"><span class="b-dot"></span><span class="b-dot"></span><span class="b-dot"></span></div>
             <div class="b-url"><span class="b-lock">🔒</span> teamdmsi.com</div>
           </div>
-          <div class="browser-thumb-wrap" onclick="openVideo('ifW8JQk_P-M','0')">
-            <img class="browser-thumb" src="https://img.youtube.com/vi/ifW8JQk_P-M/maxresdefault.jpg" alt="Team DMSI video" />
-            <div class="play-btn"><div class="play-circle"><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff"><polygon points="5,3 19,12 5,21"/></svg></div></div>
+          <div class="browser-yt-wrap">
+            <iframe class="browser-thumb"
+              src="https://www.youtube.com/embed/ifW8JQk_P-M?autoplay=1&mute=1&loop=1&playlist=ifW8JQk_P-M&rel=0&modestbranding=1&playsinline=1"
+              allow="autoplay; encrypted-media" allowfullscreen></iframe>
           </div>
         </div>
         <div class="reel-slide-info">
@@ -1031,9 +1040,10 @@
             <div class="b-dots"><span class="b-dot"></span><span class="b-dot"></span><span class="b-dot"></span></div>
             <div class="b-url"><span class="b-lock">🔒</span> renownedhearingcenters.com</div>
           </div>
-          <div class="browser-thumb-wrap" onclick="openVideo('RQnuKPvxPng','29')">
-            <img class="browser-thumb" src="https://img.youtube.com/vi/RQnuKPvxPng/maxresdefault.jpg" alt="Renowned Hearing Centers video" />
-            <div class="play-btn"><div class="play-circle"><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff"><polygon points="5,3 19,12 5,21"/></svg></div></div>
+          <div class="browser-yt-wrap">
+            <iframe class="browser-thumb"
+              src="https://www.youtube.com/embed/RQnuKPvxPng?start=29&autoplay=1&mute=1&loop=1&playlist=RQnuKPvxPng&rel=0&modestbranding=1&playsinline=1"
+              allow="autoplay; encrypted-media" allowfullscreen></iframe>
           </div>
         </div>
         <div class="reel-slide-info">

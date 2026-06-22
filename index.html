@@ -898,9 +898,44 @@
         background: var(--border2); transition: background 0.2s, transform 0.2s;
       }
       .reel-dot.active { background: var(--matrix); transform: scale(1.4); }
+
+      /* ── Services Reel: native snap carousel on mobile ── */
+      .services-reel-section { height: auto; }
+      .services-reel-sticky {
+        position: relative; height: auto;
+        overflow: visible; display: block;
+        padding: 60px 0 48px;
+      }
+      .services-reel-header { position: relative; top: auto; left: auto; padding: 0 20px 24px; }
+      .services-reel-counter { position: relative; top: auto; right: auto; padding: 0 20px 16px; text-align: right; }
+      .services-reel-track {
+        display: flex; flex-direction: row;
+        overflow-x: scroll; overflow-y: hidden;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        gap: 0; padding: 0 20px; padding-bottom: 16px;
+        scrollbar-width: none;
+      }
+      .services-reel-track::-webkit-scrollbar { display: none; }
+      .service-reel-card {
+        flex-shrink: 0;
+        width: calc(100vw - 40px);
+        scroll-snap-align: start;
+        margin-right: 16px;
+        clip-path: none;
+      }
+      .service-reel-card:last-child { margin-right: 0; }
+      .svc-dots {
+        display: flex; justify-content: center; gap: 8px; margin-top: 16px;
+      }
+      .svc-dot {
+        width: 6px; height: 6px; border-radius: 50%;
+        background: var(--border2); transition: background 0.2s, transform 0.2s;
+      }
+      .svc-dot.active { background: var(--matrix); transform: scale(1.4); }
     }
     @media(min-width:769px){
-      .reel-dots { display: none; }
+      .reel-dots, .svc-dots { display: none; }
     }
   </style>
 </head>
@@ -1215,6 +1250,14 @@
       </div>
 
     </div><!-- /services-reel-track -->
+
+    <div class="svc-dots" id="svcDots">
+      <div class="svc-dot active"></div>
+      <div class="svc-dot"></div>
+      <div class="svc-dot"></div>
+      <div class="svc-dot"></div>
+    </div>
+
   </div><!-- /services-reel-sticky -->
 </div><!-- /services-reel-section -->
 
@@ -1598,24 +1641,43 @@ function initAnimations(){
     }, { passive: true });
   }
 
-  /* ── Services Reel (horizontal scroll) ── */
+  /* ── Services Reel ── */
   const svcTrack  = document.getElementById('svcTrack');
   const svcCards  = gsap.utils.toArray('.service-reel-card');
   const svcCounter = document.getElementById('svcCurrent');
+  const svcDots   = document.querySelectorAll('#svcDots .svc-dot');
 
-  ScrollTrigger.create({
-    trigger: '.services-reel-section',
-    pin: '.services-reel-sticky',
-    start: 'top top',
-    end: () => '+=' + (svcTrack.scrollWidth - innerWidth + 160),
-    scrub: 1.2,
-    snap: { snapTo: 1/(svcCards.length-1), duration:{min:0.3,max:0.8}, ease:'power2.inOut' },
-    animation: gsap.to(svcTrack, { x: ()=>-(svcTrack.scrollWidth - innerWidth + 80), ease:'none' }),
-    onUpdate: self => {
-      const idx = Math.round(self.progress * (svcCards.length-1));
-      svcCounter.textContent = String(idx+1).padStart(2,'0');
-    }
-  });
+  if (window.innerWidth > 768) {
+    /* Desktop: GSAP horizontal scroll */
+    ScrollTrigger.create({
+      trigger: '.services-reel-section',
+      pin: '.services-reel-sticky',
+      start: 'top top',
+      end: () => '+=' + (svcTrack.scrollWidth - innerWidth + 160),
+      scrub: 1.2,
+      snap: { snapTo: 1/(svcCards.length-1), duration:{min:0.3,max:0.8}, ease:'power2.inOut' },
+      animation: gsap.to(svcTrack, { x: ()=>-(svcTrack.scrollWidth - innerWidth + 80), ease:'none' }),
+      onUpdate: self => {
+        const idx = Math.round(self.progress * (svcCards.length-1));
+        svcCounter.textContent = String(idx+1).padStart(2,'0');
+      }
+    });
+
+    // Reveal service cards as track scrolls (desktop only — mobile uses snap)
+    gsap.to('.service-reel-card', {
+      clipPath:'inset(0 0 0% 0)', duration:0.9, stagger:0.1, ease:'power4.out',
+      scrollTrigger:{ trigger:'.services-reel-section', start:'top 80%' }
+    });
+  } else {
+    /* Mobile: native scroll-snap — update counter + dots */
+    svcCards.forEach(c => { c.style.clipPath = 'none'; });
+    svcTrack.addEventListener('scroll', () => {
+      const slideWidth = svcTrack.clientWidth;
+      const idx = Math.round(svcTrack.scrollLeft / slideWidth);
+      svcCounter.textContent = String(idx + 1).padStart(2, '0');
+      svcDots.forEach((d, i) => d.classList.toggle('active', i === idx));
+    }, { passive: true });
+  }
 
   // Recompute GSAP scroll distances on resize/zoom (desktop only)
   let resizeTimer;
@@ -1624,12 +1686,6 @@ function initAnimations(){
     resizeTimer = setTimeout(() => {
       if (window.innerWidth > 768) ScrollTrigger.refresh();
     }, 200);
-  });
-
-  // Reveal service cards as track scrolls
-  gsap.to('.service-reel-card', {
-    clipPath:'inset(0 0 0% 0)', duration:0.9, stagger:0.1, ease:'power4.out',
-    scrollTrigger:{ trigger:'.services-reel-section', start:'top 80%' }
   });
 
   // Card hover lift

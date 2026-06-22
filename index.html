@@ -855,6 +855,52 @@
       nav{padding:0 28px;}
       body{cursor:auto;}
       #cursor-dot,#cursor-ring{display:none;}
+
+      /* ── Work Reel: native snap carousel on mobile ── */
+      .reel-section { height: auto; }
+      .reel-sticky {
+        position: relative; height: auto;
+        overflow: visible; display: block;
+        padding: 60px 0 48px;
+      }
+      .reel-header { position: relative; top: auto; left: auto; padding: 0 20px 24px; }
+      .reel-counter { position: relative; top: auto; right: auto; padding: 0 20px 16px; text-align: right; }
+      .reel-hint { display: none; }
+      .reel-track {
+        display: flex; flex-direction: row;
+        overflow-x: scroll; overflow-y: hidden;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        gap: 0; padding: 0 20px;
+        padding-bottom: 16px;
+        /* hide scrollbar visually but keep it functional */
+        scrollbar-width: none;
+      }
+      .reel-track::-webkit-scrollbar { display: none; }
+      .reel-slide, .reel-slide-logo {
+        flex-shrink: 0;
+        width: calc(100vw - 40px);
+        scroll-snap-align: start;
+        margin-right: 16px;
+      }
+      .reel-slide:last-child, .reel-slide-logo:last-child { margin-right: 0; }
+      .reel-slide-logo {
+        display: flex; flex-direction: column; align-items: center;
+        justify-content: center; padding: 40px 20px; min-height: 300px;
+      }
+
+      /* Dot indicators */
+      .reel-dots {
+        display: flex; justify-content: center; gap: 8px; margin-top: 16px;
+      }
+      .reel-dot {
+        width: 6px; height: 6px; border-radius: 50%;
+        background: var(--border2); transition: background 0.2s, transform 0.2s;
+      }
+      .reel-dot.active { background: var(--matrix); transform: scale(1.4); }
+    }
+    @media(min-width:769px){
+      .reel-dots { display: none; }
     }
   </style>
 </head>
@@ -1064,6 +1110,16 @@
       </div>
 
     </div><!-- /reel-track -->
+
+    <!-- Mobile dot indicators (hidden on desktop via JS-added class) -->
+    <div class="reel-dots" id="reelDots">
+      <div class="reel-dot active"></div>
+      <div class="reel-dot"></div>
+      <div class="reel-dot"></div>
+      <div class="reel-dot"></div>
+      <div class="reel-dot"></div>
+    </div>
+
   </div><!-- /reel-sticky -->
 </div><!-- /reel-section -->
 
@@ -1511,24 +1567,36 @@ function initAnimations(){
   gsap.to('.hero-orb-1',{ yPercent:20, ease:'none', scrollTrigger:{ trigger:'#hero', start:'top top', end:'bottom top', scrub:true }});
   gsap.to('.hero-orb-2',{ yPercent:-15, ease:'none', scrollTrigger:{ trigger:'#hero', start:'top top', end:'bottom top', scrub:true }});
 
-  /* ── Work Reel (horizontal scroll) ── */
+  /* ── Work Reel ── */
   const track  = document.getElementById('reelTrack');
   const slides = gsap.utils.toArray('.reel-slide, .reel-slide-logo');
   const counter = document.getElementById('reelCurrent');
+  const dots   = document.querySelectorAll('#reelDots .reel-dot');
 
-  const reelST = ScrollTrigger.create({
-    trigger: '.reel-section',
-    pin: '.reel-sticky',
-    start: 'top top',
-    end: () => '+=' + (track.scrollWidth - innerWidth + 160),
-    scrub: 1.2,
-    snap: { snapTo: 1/(slides.length-1), duration:{min:0.3,max:0.8}, ease:'power2.inOut' },
-    animation: gsap.to(track, { x: ()=>-(track.scrollWidth - innerWidth + 80), ease:'none' }),
-    onUpdate: self => {
-      const idx = Math.round(self.progress * (slides.length-1));
-      counter.textContent = String(idx+1).padStart(2,'0');
-    }
-  });
+  if (window.innerWidth > 768) {
+    /* Desktop: GSAP horizontal scroll */
+    ScrollTrigger.create({
+      trigger: '.reel-section',
+      pin: '.reel-sticky',
+      start: 'top top',
+      end: () => '+=' + (track.scrollWidth - innerWidth + 160),
+      scrub: 1.2,
+      snap: { snapTo: 1/(slides.length-1), duration:{min:0.3,max:0.8}, ease:'power2.inOut' },
+      animation: gsap.to(track, { x: ()=>-(track.scrollWidth - innerWidth + 80), ease:'none' }),
+      onUpdate: self => {
+        const idx = Math.round(self.progress * (slides.length-1));
+        counter.textContent = String(idx+1).padStart(2,'0');
+      }
+    });
+  } else {
+    /* Mobile: native scroll-snap — update counter + dots on scroll */
+    track.addEventListener('scroll', () => {
+      const slideWidth = track.clientWidth;
+      const idx = Math.round(track.scrollLeft / slideWidth);
+      counter.textContent = String(idx + 1).padStart(2, '0');
+      dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+    }, { passive: true });
+  }
 
   /* ── Services Reel (horizontal scroll) ── */
   const svcTrack  = document.getElementById('svcTrack');
@@ -1549,11 +1617,13 @@ function initAnimations(){
     }
   });
 
-  // Recompute horizontal scroll end/animation on resize (handles zoom-out reflow)
+  // Recompute GSAP scroll distances on resize/zoom (desktop only)
   let resizeTimer;
   window.addEventListener('resize', () => {
     clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(() => { ScrollTrigger.refresh(); }, 200);
+    resizeTimer = setTimeout(() => {
+      if (window.innerWidth > 768) ScrollTrigger.refresh();
+    }, 200);
   });
 
   // Reveal service cards as track scrolls

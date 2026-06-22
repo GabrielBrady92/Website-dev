@@ -11,6 +11,7 @@
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { min-width: 320px; }
 
     :root {
       --bg:       #050508;
@@ -36,8 +37,9 @@
       font-family: 'Inter', sans-serif;
       background: var(--bg);
       color: var(--text);
-      overflow-x: hidden;
+      overflow-x: clip;
       line-height: 1.6;
+      min-width: 320px;
       cursor: none;
     }
 
@@ -397,7 +399,7 @@
     }
 
     .reel-header {
-      position: absolute; top: 36px; left: 48px; z-index: 10;
+      position: absolute; top: 36px; left: clamp(20px, 5vw, 48px); z-index: 10;
     }
     .reel-header .section-label { margin-bottom: 4px; }
     .reel-header h2 {
@@ -405,20 +407,19 @@
     }
 
     .reel-counter {
-      position: absolute; top: 36px; right: 48px; z-index: 10;
+      position: absolute; top: 36px; right: clamp(20px, 5vw, 48px); z-index: 10;
       font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: 2px;
     }
     .reel-counter span { color: var(--matrix); font-size: 18px; font-weight: 700; }
 
     .reel-track {
       display: flex; align-items: center;
-      gap: 32px; padding: 0 80px;
+      gap: clamp(16px, 2.5vw, 32px); padding: 100px clamp(20px, 5vw, 80px) 0;
       will-change: transform;
-      padding-top: 100px;
     }
 
     .reel-slide {
-      flex-shrink: 0; width: min(820px, 80vw);
+      flex-shrink: 0; width: min(820px, max(280px, 80vw));
       position: relative;
     }
 
@@ -556,26 +557,26 @@
       background-size: 60px 60px;
     }
     .services-reel-header {
-      position: absolute; top: 36px; left: 48px; z-index: 10;
+      position: absolute; top: 36px; left: clamp(20px, 5vw, 48px); z-index: 10;
     }
     .services-reel-header .section-label { margin-bottom: 4px; }
     .services-reel-header h2 {
       font-size: clamp(22px,2.5vw,34px); font-weight: 800; letter-spacing: -1px;
     }
     .services-reel-counter {
-      position: absolute; top: 36px; right: 48px; z-index: 10;
+      position: absolute; top: 36px; right: clamp(20px, 5vw, 48px); z-index: 10;
       font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: 2px;
     }
     .services-reel-counter span { color: var(--matrix); font-size: 18px; font-weight: 700; }
 
     .services-reel-track {
       display: flex; align-items: center;
-      gap: 28px; padding: 0 80px;
-      will-change: transform; padding-top: 100px;
+      gap: clamp(14px, 2vw, 28px); padding: 100px clamp(20px, 5vw, 80px) 0;
+      will-change: transform;
     }
 
     .service-reel-card {
-      flex-shrink: 0; width: min(460px, 80vw);
+      flex-shrink: 0; width: min(460px, max(260px, 80vw));
       background: var(--surface); border: 1px solid var(--border);
       border-radius: 14px; overflow: hidden; cursor: none;
       position: relative;
@@ -1546,6 +1547,13 @@ function initAnimations(){
       const idx = Math.round(self.progress * (svcCards.length-1));
       svcCounter.textContent = String(idx+1).padStart(2,'0');
     }
+  });
+
+  // Recompute horizontal scroll end/animation on resize (handles zoom-out reflow)
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => { ScrollTrigger.refresh(); }, 200);
   });
 
   // Reveal service cards as track scrolls

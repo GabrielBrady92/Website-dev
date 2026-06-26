@@ -1584,13 +1584,20 @@ function initAnimations(){
   // Split hero title lines character by character
   const heroLines = document.querySelectorAll('.hero-title-line');
   heroLines.forEach((line, li) => {
-    const split = new SplitType(line, { types:'chars' });
-    heroTL.from(split.chars, {
-      opacity:0, y:80, rotateX:-60,
-      stagger:0.018, duration:0.7,
-      ease:'back.out(1.4)',
-      onComplete() { gsap.set(split.chars, { clearProps:'transform,rotateX' }); }
-    }, 0.25 + li * 0.12);
+    if (line.classList.contains('gradient-text')) {
+      // Animate gradient line as a whole to avoid compositing issues with background-clip:text
+      heroTL.from(line, {
+        opacity:0, y:60, duration:0.7, ease:'back.out(1.4)',
+        onComplete() { gsap.set(line, { clearProps:'all' }); }
+      }, 0.25 + li * 0.12);
+    } else {
+      const split = new SplitType(line, { types:'chars' });
+      heroTL.from(split.chars, {
+        opacity:0, y:80, rotateX:-60,
+        stagger:0.018, duration:0.7,
+        ease:'back.out(1.4)'
+      }, 0.25 + li * 0.12);
+    }
   });
 
   heroTL.to('.hero-sub',    { opacity:1, y:0, duration:0.8, ease:'power3.out' }, 0.7);

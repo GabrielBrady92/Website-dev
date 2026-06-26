@@ -1588,7 +1588,8 @@ function initAnimations(){
     heroTL.from(split.chars, {
       opacity:0, y:80, rotateX:-60,
       stagger:0.018, duration:0.7,
-      ease:'back.out(1.4)'
+      ease:'back.out(1.4)',
+      onComplete() { gsap.set(split.chars, { clearProps:'transform,rotateX' }); }
     }, 0.25 + li * 0.12);
   });
 

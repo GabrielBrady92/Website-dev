@@ -236,10 +236,6 @@
       -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
       filter: drop-shadow(0 0 30px rgba(0,150,255,0.3));
     }
-    .hero-title-line.gradient-text .char {
-      background: var(--grad);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-    }
 
     .hero-sub {
       font-size: clamp(15px,1.6vw,19px); color: var(--muted);
@@ -1585,11 +1581,12 @@ function initAnimations(){
   const heroLines = document.querySelectorAll('.hero-title-line');
   heroLines.forEach((line, li) => {
     if (line.classList.contains('gradient-text')) {
-      // Animate gradient line as a whole to avoid compositing issues with background-clip:text
-      heroTL.from(line, {
-        opacity:0, y:60, duration:0.7, ease:'back.out(1.4)',
-        onComplete() { gsap.set(line, { clearProps:'all' }); }
-      }, 0.25 + li * 0.12);
+      // Use opacity-only fade for gradient line — no transforms avoids compositing issues with background-clip:text
+      heroTL.fromTo(line,
+        { opacity: 0 },
+        { opacity: 1, duration: 0.8, ease: 'power3.out' },
+        0.25 + li * 0.12
+      );
     } else {
       const split = new SplitType(line, { types:'chars' });
       heroTL.from(split.chars, {

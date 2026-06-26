@@ -235,6 +235,11 @@
       background: var(--grad);
       -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
       filter: drop-shadow(0 0 30px rgba(0,150,255,0.3));
+      animation: gradientFadeIn 0.8s ease 0.37s both;
+    }
+    @keyframes gradientFadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
     }
 
     .hero-sub {
@@ -1581,12 +1586,7 @@ function initAnimations(){
   const heroLines = document.querySelectorAll('.hero-title-line');
   heroLines.forEach((line, li) => {
     if (line.classList.contains('gradient-text')) {
-      // Use opacity-only fade for gradient line — no transforms avoids compositing issues with background-clip:text
-      heroTL.fromTo(line,
-        { opacity: 0 },
-        { opacity: 1, duration: 0.8, ease: 'power3.out' },
-        0.25 + li * 0.12
-      );
+      // CSS animation handles this line — GSAP + background-clip:text is unreliable across browsers
     } else {
       const split = new SplitType(line, { types:'chars' });
       heroTL.from(split.chars, {

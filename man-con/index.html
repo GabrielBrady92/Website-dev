@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Man-Con Incorporated | Florida Heavy Civil &amp; Utility Contractors</title>
+<meta name="description" content="Man-Con Incorporated — heavy civil, underground utility, and site development contractors serving Florida communities." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:auto;min-width:320px;}
+
+:root{
+  --yellow:      #f2b418;
+  --yellow-deep: #c98f12;
+  --yellow-dark: #8a6a1a;
+  --blue:        #1c8fc4;
+  --blue-deep:   #10688f;
+  --sky-1:       #33c6e8;
+  --sky-2:       #b9f0f5;
+  --orange:      #ff6a1f;
+  --ink:         #0c0f13;
+  --charcoal:    #14171c;
+  --charcoal-2:  #1b1f26;
+  --steel:       #2a2f37;
+  --line:        rgba(255,255,255,0.09);
+  --cream:       #f6f3ec;
+  --cream-2:     #ece7db;
+  --text-dark:   #171512;
+  --font-head:   'Barlow Condensed', sans-serif;
+  --font-body:   'Inter', sans-serif;
+}
+
+body{
+  font-family:var(--font-body);
+  background:var(--ink);
+  color:#eef1f4;
+  overflow-x:clip;
+  line-height:1.6;
+}
+
+h1,h2,h3,.disp{
+  font-family:var(--font-head);
+  text-transform:uppercase;
+  line-height:0.96;
+  letter-spacing:0.5px;
+}
+
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-track{background:var(--ink);}
+::-webkit-scrollbar-thumb{background:var(--yellow);}
+
+a{color:inherit;text-decoration:none;}
+img,svg{display:block;max-width:100%;}
+.wrap{max-width:1180px;margin:0 auto;padding:0 32px;}
+
+/* ───────── NAV ───────── */
+#nav{
+  position:fixed;top:0;left:0;right:0;z-index:500;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:20px 32px;
+  background:linear-gradient(180deg,rgba(10,12,15,0.85),rgba(10,12,15,0));
+  backdrop-filter:blur(2px);
+}
+.nav-mark{
+  font-family:var(--font-head);font-weight:800;font-size:22px;letter-spacing:1px;
+  display:flex;align-items:center;gap:10px;
+}
+.nav-mark .dot{width:10px;height:10px;background:var(--yellow);border-radius:2px;transform:rotate(45deg);}
+.nav-mark small{display:block;font-family:var(--font-body);font-weight:600;font-size:9px;letter-spacing:3px;color:var(--sky-2);text-transform:uppercase;margin-top:1px;}
+#nav-links{display:flex;align-items:center;gap:28px;font-size:14px;font-weight:600;}
+#nav-links a:not(.btn-cta){opacity:0.85;transition:opacity .2s;}
+#nav-links a:not(.btn-cta):hover{opacity:1;color:var(--yellow);}
+.btn-cta{
+  background:var(--yellow);color:var(--ink);font-weight:800;
+  padding:11px 20px;border-radius:3px;font-size:13px;letter-spacing:0.3px;
+  box-shadow:0 4px 14px rgba(242,180,24,0.25);
+  transition:transform .2s,box-shadow .2s;
+}
+.btn-cta:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(242,180,24,0.35);}
+@media(max-width:768px){#nav-links a:not(.btn-cta){display:none;} #nav{padding:16px 20px;}}
+
+/* ───────── PRELOADER ───────── */
+#preloader{
+  position:fixed;inset:0;z-index:9999;background:var(--ink);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;
+}
+.pre-mark{font-family:var(--font-head);font-weight:800;font-size:15px;letter-spacing:6px;color:var(--yellow);opacity:0;}
+.pre-bar{width:180px;height:2px;background:rgba(255,255,255,0.08);position:relative;overflow:hidden;}
+.pre-fill{position:absolute;top:0;left:0;height:100%;width:0%;background:linear-gradient(90deg,var(--yellow),var(--orange));}
+
+/* ───────── SCROLL PROGRESS RAIL ───────── */
+#rail{position:fixed;right:26px;top:50%;transform:translateY(-50%);z-index:400;display:flex;flex-direction:column;gap:10px;}
+#rail .rail-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.25);transition:background .3s,transform .3s;}
+#rail .rail-dot.active{background:var(--yellow);transform:scale(1.5);}
+@media(max-width:900px){#rail{display:none;}}
+
+/* ───────── EXPERIENCE (pinned zoom + tour) ───────── */
+#experience{position:relative;height:1200vh;background:var(--ink);}
+#experience.no-pin{height:auto;}
+.exp-pin{position:sticky;top:0;height:100vh;width:100%;overflow:hidden;background:var(--ink);}
+
+.exp-layer{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;}
+
+/* -- space layer -- */
+#layer-space{background:radial-gradient(ellipse at 50% 30%,#0b1730 0%,#05070d 70%);}
+.starfield{position:absolute;inset:0;}
+.star{position:absolute;background:#fff;border-radius:50%;opacity:0.7;}
+.earth-wrap{position:relative;width:46vmin;height:46vmin;}
+.earth{
+  width:100%;height:100%;border-radius:50%;
+  background:
+    radial-gradient(circle at 32% 28%, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 4%),
+    radial-gradient(circle at 65% 70%, #2f8f4e 0%, transparent 30%),
+    radial-gradient(circle at 30% 65%, #2c7a45 0%, transparent 26%),
+    radial-gradient(circle at 70% 30%, #226d43 0%, transparent 22%),
+    radial-gradient(circle at 45% 45%, #1671b8 0%, #0b3c73 55%, #062244 100%);
+  box-shadow:inset -14px -10px 60px rgba(0,0,0,0.65), inset 8px 6px 40px rgba(255,255,255,0.08);
+}
+.earth-glow{position:absolute;inset:-8%;border-radius:50%;box-shadow:0 0 90px 25px rgba(51,198,232,0.18);pointer-events:none;}
+.earth-target{position:absolute;width:10px;height:10px;background:var(--orange);border-radius:50%;left:69%;top:57%;box-shadow:0 0 0 6px rgba(255,106,31,0.25);}
+
+.hero-copy{position:absolute;left:0;right:0;bottom:12%;text-align:center;padding:0 24px;}
+.hero-copy .eyebrow{font-family:var(--font-body);font-weight:700;letter-spacing:5px;font-size:12px;color:var(--sky-2);margin-bottom:14px;}
+.hero-copy h1{font-size:clamp(34px,7vw,84px);color:#fff;}
+.hero-copy h1 em{font-style:normal;color:var(--yellow);}
+.hero-copy .lede{max-width:520px;margin:18px auto 0;font-size:16px;color:#b9c3cf;}
+.scroll-cue{margin-top:34px;font-family:var(--font-body);font-weight:700;font-size:11px;letter-spacing:3px;color:var(--sky-2);opacity:0.8;}
+.scroll-cue span{display:block;margin-top:6px;animation:bob 1.6s ease-in-out infinite;}
+@keyframes bob{0%,100%{transform:translateY(0);}50%{transform:translateY(6px);}}
+
+/* -- florida layer -- */
+#layer-florida{opacity:0;}
+.florida-svg{width:44vmin;filter:drop-shadow(0 10px 40px rgba(0,0,0,0.5));}
+.fl-pin{fill:var(--orange);}
+.fl-pin-ring{fill:none;stroke:var(--orange);stroke-width:2;opacity:0.5;}
+
+/* -- jobsite layer (backdrop, persists through tour) -- */
+#layer-jobsite-sky{opacity:0;}
+.jobsite-svg{position:absolute;inset:0;width:100%;height:100%;}
+.jobsite-dim{position:absolute;inset:0;background:var(--ink);opacity:0;pointer-events:none;}
+
+/* -- caption chips shared by space/florida/jobsite -- */
+.layer-caption{
+  position:absolute;left:50%;bottom:9%;transform:translateX(-50%);
+  font-family:var(--font-body);font-weight:700;font-size:12px;letter-spacing:4px;
+  color:#fff;background:rgba(12,15,19,0.55);border:1px solid var(--line);
+  padding:10px 18px;border-radius:999px;opacity:0;white-space:nowrap;
+}
+
+/* -- excavator rig -- */
+#rig-wrap{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;}
+#rig{width:min(88vw,1180px);transform-origin:50% 50%;}
+.excavator-part{transition:opacity .15s;}
+
+/* -- tour captions -- */
+#tour-captions{position:absolute;left:0;right:0;bottom:8%;display:flex;justify-content:center;padding:0 24px;pointer-events:none;}
+.tour-caption{
+  position:absolute;max-width:460px;text-align:center;opacity:0;transform:translateY(14px);
+}
+.tour-caption .tnum{font-family:var(--font-body);font-weight:800;font-size:11px;letter-spacing:4px;color:var(--yellow);margin-bottom:8px;}
+.tour-caption h3{font-size:clamp(26px,4vw,42px);color:#fff;margin-bottom:8px;}
+.tour-caption p{font-size:14.5px;color:#c3ccd4;}
+
+/* ───────── MOBILE / NO-PIN FALLBACK ───────── */
+.mobile-scene{padding:110px 24px 70px;text-align:center;}
+.mobile-scene h2{font-size:32px;color:#fff;margin-bottom:14px;}
+.mobile-scene p{color:#b9c3cf;max-width:440px;margin:0 auto;}
+.mobile-scene svg{margin:34px auto 0;width:100%;max-width:420px;}
+.mobile-parts{display:grid;gap:14px;margin-top:40px;text-align:left;max-width:520px;margin-left:auto;margin-right:auto;}
+.mobile-part{background:var(--charcoal-2);border:1px solid var(--line);border-radius:10px;padding:16px 18px;}
+.mobile-part .tnum{font-weight:800;font-size:10px;letter-spacing:3px;color:var(--yellow);}
+.mobile-part h4{font-family:var(--font-head);font-size:22px;color:#fff;margin:4px 0 4px;}
+.mobile-part p{font-size:13.5px;color:#aeb8c2;}
+
+/* ───────── SERVICES ───────── */
+#services{background:var(--cream);color:var(--text-dark);padding:120px 0;position:relative;z-index:1;}
+.sec-head{text-align:center;max-width:640px;margin:0 auto 60px;}
+.sec-head .eyebrow{font-weight:700;letter-spacing:4px;font-size:11px;color:var(--blue-deep);margin-bottom:12px;}
+.sec-head h2{font-size:clamp(32px,5vw,54px);}
+.sec-head p{margin-top:14px;color:#5a5650;font-size:15.5px;}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+@media(max-width:900px){.svc-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:600px){.svc-grid{grid-template-columns:1fr;}}
+.svc-card{
+  background:#fff;border:1px solid rgba(0,0,0,0.06);border-radius:12px;padding:30px 26px;
+  box-shadow:0 1px 3px rgba(0,0,0,0.04);
+}
+.svc-card .ico{width:44px;height:44px;border-radius:9px;background:var(--yellow);display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:18px;}
+.svc-card h3{font-family:var(--font-head);font-size:23px;font-weight:700;letter-spacing:0;text-transform:none;margin-bottom:8px;}
+.svc-card p{font-size:14px;color:#655f56;}
+
+/* ───────── CAPABILITIES STRIP ───────── */
+#capabilities{background:var(--charcoal);padding:70px 0;}
+.cap-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:center;}
+@media(max-width:800px){.cap-grid{grid-template-columns:repeat(2,1fr);}}
+.cap-item h4{font-family:var(--font-head);font-size:19px;color:var(--yellow);letter-spacing:0.5px;margin-bottom:6px;}
+.cap-item p{font-size:13px;color:#93a0ab;}
+
+/* ───────── COVERAGE ───────── */
+#coverage{background:var(--ink);padding:120px 0;display:flex;align-items:center;gap:60px;}
+.wrap.coverage-wrap{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+@media(max-width:800px){.wrap.coverage-wrap{grid-template-columns:1fr;}}
+#coverage h2{font-size:clamp(30px,4.5vw,48px);color:#fff;margin-bottom:16px;}
+#coverage p{color:#b0bac4;font-size:15.5px;max-width:440px;}
+.coverage-list{margin-top:24px;display:grid;gap:10px;}
+.coverage-list li{list-style:none;display:flex;gap:10px;align-items:flex-start;font-size:14px;color:#c4ccd4;}
+.coverage-list li::before{content:'▸';color:var(--yellow);font-weight:800;}
+.coverage-map-svg{width:100%;max-width:340px;margin:0 auto;}
+
+/* ───────── CONTACT ───────── */
+#contact{background:linear-gradient(180deg,var(--yellow-deep),var(--yellow));color:var(--ink);padding:110px 0;}
+.contact-wrap{display:grid;grid-template-columns:1fr 1fr;gap:60px;}
+@media(max-width:850px){.contact-wrap{grid-template-columns:1fr;}}
+#contact h2{font-size:clamp(32px,5vw,56px);}
+#contact .lede{margin-top:14px;font-size:15.5px;max-width:420px;color:#3a2c0a;}
+.contact-actions{margin-top:28px;display:flex;gap:14px;flex-wrap:wrap;}
+.btn-dark{background:var(--ink);color:#fff;font-weight:800;padding:14px 24px;border-radius:3px;font-size:14px;}
+.btn-outline{border:2px solid var(--ink);font-weight:800;padding:12px 24px;border-radius:3px;font-size:14px;}
+.cform{background:rgba(12,15,19,0.06);border:1px solid rgba(12,15,19,0.15);border-radius:14px;padding:30px;}
+.cform label{display:block;font-size:11px;font-weight:700;letter-spacing:1.5px;margin-bottom:6px;margin-top:16px;}
+.cform label:first-child{margin-top:0;}
+.cform input,.cform textarea{
+  width:100%;padding:12px 14px;border-radius:6px;border:1px solid rgba(12,15,19,0.2);
+  background:rgba(255,255,255,0.6);font-family:var(--font-body);font-size:14px;color:var(--ink);
+}
+.cform textarea{resize:vertical;min-height:90px;}
+.cform button{
+  margin-top:20px;width:100%;padding:14px;border:none;border-radius:6px;
+  background:var(--ink);color:#fff;font-weight:800;font-size:14px;cursor:pointer;
+}
+
+/* ───────── FOOTER ───────── */
+footer{background:var(--ink);padding:40px 0;border-top:1px solid var(--line);}
+.foot-wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;font-size:13px;color:#7c8894;}
+.foot-wrap a{color:#c4ccd4;}
+</style>
+</head>
+<body>
+
+<div id="preloader">
+  <div class="pre-mark">MAN&nbsp;CON</div>
+  <div class="pre-bar"><div class="pre-fill"></div></div>
+</div>
+
+<nav id="nav">
+  <a href="#top" class="nav-mark"><span class="dot"></span><span>MAN CON<br><small>INCORPORATED</small></span></a>
+  <div id="nav-links">
+    <a href="#services">Services</a>
+    <a href="#coverage">Coverage</a>
+    <a href="#contact" class="btn-cta">Request a Quote</a>
+  </div>
+</nav>
+
+<div id="rail">
+  <div class="rail-dot active" data-label="Earth"></div>
+  <div class="rail-dot" data-label="Florida"></div>
+  <div class="rail-dot" data-label="Job Site"></div>
+  <div class="rail-dot" data-label="Machine"></div>
+  <div class="rail-dot" data-label="Tour"></div>
+</div>
+
+<main id="top">
+
+<!-- ================= DESKTOP PINNED EXPERIENCE ================= -->
+<section id="experience">
+  <div class="exp-pin">
+
+    <div class="exp-layer" id="layer-space">
+      <div class="starfield" id="starfield"></div>
+      <div class="earth-wrap">
+        <div class="earth-glow"></div>
+        <div class="earth"></div>
+        <div class="earth-target"></div>
+      </div>
+      <div class="hero-copy">
+        <p class="eyebrow">MAN CON INCORPORATED</p>
+        <h1>Florida infrastructure,<br><em>built</em> from the ground up.</h1>
+        <p class="lede">Heavy civil, underground utility, and site development contractors working across the state of Florida.</p>
+        <div class="scroll-cue">SCROLL<span>↓</span></div>
+      </div>
+    </div>
+
+    <div class="exp-layer" id="layer-florida">
+      <svg class="florida-svg" viewBox="0 0 400 520">
+        <path d="M70,58 L182,46 L232,58 L238,90 L302,96 L344,122 L332,162 L302,202 L292,262 L272,322 L252,382 L226,432 L206,462 L190,472 L176,456 L166,420 L160,370 L150,320 L130,262 L110,202 L90,150 L74,110 Z"
+              fill="#123b2b" stroke="#1f5a41" stroke-width="3"/>
+        <circle cx="176" cy="480" r="4" fill="#123b2b"/>
+        <circle cx="160" cy="488" r="3.4" fill="#123b2b"/>
+        <circle cx="145" cy="494" r="2.8" fill="#123b2b"/>
+        <g class="fl-pin-wrap" transform="translate(232,300)">
+          <circle class="fl-pin-ring" r="14"/>
+          <circle class="fl-pin" r="6"/>
+        </g>
+      </svg>
+      <div class="layer-caption" id="caption-florida">CENTRAL FLORIDA</div>
+    </div>
+
+    <div class="exp-layer" id="layer-jobsite-sky">
+      <svg class="jobsite-svg" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMax slice">
+        <defs>
+          <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="var(--sky-1)"/>
+            <stop offset="100%" stop-color="var(--sky-2)"/>
+          </linearGradient>
+          <linearGradient id="groundGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#9a8a6c"/>
+            <stop offset="100%" stop-color="#6b5c44"/>
+          </linearGradient>
+        </defs>
+        <rect x="0" y="0" width="1200" height="620" fill="url(#skyGrad)"/>
+        <circle cx="990" cy="120" r="60" fill="#ffffff" opacity="0.85"/>
+        <g opacity="0.85" fill="#ffffff">
+          <ellipse cx="200" cy="110" rx="70" ry="22"/>
+          <ellipse cx="255" cy="98" rx="50" ry="18"/>
+          <ellipse cx="820" cy="180" rx="60" ry="20"/>
+        </g>
+        <rect x="0" y="560" width="1200" height="240" fill="url(#groundGrad)"/>
+        <rect x="0" y="560" width="1200" height="70" fill="#7c7166"/>
+        <rect x="0" y="588" width="1200" height="10" fill="#e9c94a" opacity="0.8"/>
+        <!-- palms -->
+        <g id="palm-a" transform="translate(120,470)">
+          <rect x="-6" y="0" width="12" height="90" fill="#6b4a2a"/>
+          <g fill="#1f7a4a">
+            <ellipse cx="0" cy="-6" rx="46" ry="14" transform="rotate(-20 0 -6)"/>
+            <ellipse cx="0" cy="-6" rx="46" ry="14" transform="rotate(20 0 -6)"/>
+            <ellipse cx="0" cy="-6" rx="46" ry="14" transform="rotate(60 0 -6)"/>
+            <ellipse cx="0" cy="-6" rx="46" ry="14" transform="rotate(-60 0 -6)"/>
+            <ellipse cx="0" cy="-6" rx="46" ry="14" transform="rotate(100 0 -6)"/>
+          </g>
+        </g>
+        <g id="palm-b" transform="translate(1080,500) scale(0.8)">
+          <rect x="-6" y="0" width="12" height="90" fill="#6b4a2a"/>
+          <g fill="#1f7a4a">
+            <ellipse cx="0" cy="-6" rx="46" ry="14" transform="rotate(-20 0 -6)"/>
+            <ellipse cx="0" cy="-6" rx="46" ry="14" transform="rotate(20 0 -6)"/>
+            <ellipse cx="0" cy="-6" rx="46" ry="14" transform="rotate(60 0 -6)"/>
+            <ellipse cx="0" cy="-6" rx="46" ry="14" transform="rotate(-60 0 -6)"/>
+          </g>
+        </g>
+        <!-- traffic barrels -->
+        <g id="barrels" fill="#ff6a1f">
+          <g transform="translate(230,600)"><rect x="-16" y="-40" width="32" height="40" rx="6"/><rect x="-16" y="-28" width="32" height="8" fill="#fff"/><rect x="-16" y="-12" width="32" height="8" fill="#fff"/></g>
+          <g transform="translate(960,610)"><rect x="-16" y="-40" width="32" height="40" rx="6"/><rect x="-16" y="-28" width="32" height="8" fill="#fff"/><rect x="-16" y="-12" width="32" height="8" fill="#fff"/></g>
+          <g transform="translate(1020,605)"><rect x="-16" y="-40" width="32" height="40" rx="6"/><rect x="-16" y="-28" width="32" height="8" fill="#fff"/><rect x="-16" y="-12" width="32" height="8" fill="#fff"/></g>
+        </g>
+      </svg>
+      <div class="jobsite-dim"></div>
+      <div class="layer-caption" id="caption-jobsite">ACTIVE JOB SITE</div>
+    </div>
+
+    <!-- excavator rig, shared across jobsite-zoom + guided tour -->
+    <div id="rig-wrap">
+      <svg id="rig" viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="bodyGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#f6c53a"/>
+            <stop offset="100%" stop-color="#c98f12"/>
+          </linearGradient>
+          <linearGradient id="boomGrad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#f6c53a"/>
+            <stop offset="100%" stop-color="#c98f12"/>
+          </linearGradient>
+        </defs>
+
+        <!-- ground shadow -->
+        <ellipse cx="560" cy="686" rx="330" ry="26" fill="#000" opacity="0.25"/>
+
+        <!-- TRACKS / UNDERCARRIAGE -->
+        <g id="part-tracks" class="excavator-part">
+          <rect x="340" y="592" width="420" height="90" rx="45" fill="#1c1f22" stroke="#3a3d42" stroke-width="4"/>
+          <circle cx="382" cy="637" r="36" fill="#111417" stroke="#4a4e54" stroke-width="6"/>
+          <circle cx="466" cy="637" r="36" fill="#111417" stroke="#4a4e54" stroke-width="6"/>
+          <circle cx="550" cy="637" r="36" fill="#111417" stroke="#4a4e54" stroke-width="6"/>
+          <circle cx="634" cy="637" r="36" fill="#111417" stroke="#4a4e54" stroke-width="6"/>
+          <circle cx="718" cy="637" r="36" fill="#111417" stroke="#4a4e54" stroke-width="6"/>
+        </g>
+
+        <!-- TURRET / BODY -->
+        <g id="part-body" class="excavator-part">
+          <rect x="680" y="462" width="70" height="128" rx="14" fill="#b8901f" stroke="#8a6a1a" stroke-width="3"/>
+          <rect x="400" y="452" width="330" height="148" rx="22" fill="url(#bodyGrad)" stroke="#8a6a1a" stroke-width="3"/>
+          <rect x="430" y="474" width="120" height="10" rx="5" fill="#8a6a1a" opacity="0.5"/>
+        </g>
+
+        <!-- BOOM -->
+        <g id="part-boom" class="excavator-part">
+          <polygon points="612,452 596,410 352,108 372,148" fill="url(#boomGrad)" stroke="#8a6a1a" stroke-width="3"/>
+          <text x="505" y="300" transform="rotate(-52 505 300)" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-weight="800" font-size="26" fill="#1c8fc4" letter-spacing="1">MAN CON</text>
+          <line x1="455" y1="330" x2="555" y2="270" stroke="#1c8fc4" stroke-width="3" opacity="0.6"/>
+        </g>
+
+        <!-- BOOM CYLINDER (hydraulics) -->
+        <g id="part-hydraulics" class="excavator-part">
+          <g transform="rotate(-58 495 400)">
+            <rect x="410" y="390" width="170" height="20" rx="10" fill="#101214" stroke="#3a3d42" stroke-width="3"/>
+            <rect x="398" y="394" width="72" height="12" rx="6" fill="#c7cdd2"/>
+          </g>
+        </g>
+
+        <!-- STICK / ARM -->
+        <g id="part-stick" class="excavator-part">
+          <polygon points="378,146 340,108 155,280 190,320" fill="url(#boomGrad)" stroke="#8a6a1a" stroke-width="3"/>
+          <g transform="rotate(40 265 210)">
+            <rect x="225" y="202" width="80" height="15" rx="7.5" fill="#101214" stroke="#3a3d42" stroke-width="2.5"/>
+            <rect x="217" y="205.5" width="36" height="8" rx="4" fill="#c7cdd2"/>
+          </g>
+        </g>
+
+        <!-- BUCKET -->
+        <g id="part-bucket" class="excavator-part">
+          <path d="M175,290 C 130,282 78,302 45,360 L65,398 C112,388 155,362 180,330 Z" fill="#22262b" stroke="#0c0e10" stroke-width="3"/>
+          <g fill="#0c0e10">
+            <polygon points="45,360 33,378 55,372"/>
+            <polygon points="52,374 41,392 63,388"/>
+            <polygon points="63,388 53,406 73,400"/>
+          </g>
+        </g>
+
+        <!-- CAB (drawn last so it reads in front of the raised boom) -->
+        <g id="part-cab" class="excavator-part">
+          <polygon points="400,452 400,372 426,338 486,338 494,372 494,452" fill="#101820" stroke="#f2b418" stroke-width="7"/>
+          <polygon points="410,442 410,378 430,352 480,352 486,378 486,442" fill="#223642"/>
+          <circle cx="446" cy="326" r="8" fill="#e8e8e8" stroke="#8a6a1a" stroke-width="3"/>
+        </g>
+      </svg>
+    </div>
+
+    <div id="tour-captions">
+      <div class="tour-caption" data-stop="ready"><div class="tnum">MEET THE MACHINE</div><h3>Built for Florida ground.</h3><p>From soft coastal soils to compacted limerock, our fleet is matched to the job.</p></div>
+      <div class="tour-caption" data-stop="tracks"><div class="tnum">01 — UNDERCARRIAGE</div><h3>Goes anywhere the job is.</h3><p>Wide steel tracks distribute load across soft, wet, or uneven Florida terrain without tearing up the site.</p></div>
+      <div class="tour-caption" data-stop="cab"><div class="tnum">02 — THE CAB</div><h3>Experienced operators, every seat.</h3><p>Every Man-Con operator is trained, certified, and accountable for a safe, precise job site.</p></div>
+      <div class="tour-caption" data-stop="boom"><div class="tnum">03 — THE BOOM</div><h3>Reach where it counts.</h3><p>Engineered reach and lift capacity for deep utility trenches and tight right-of-way work.</p></div>
+      <div class="tour-caption" data-stop="hydraulics"><div class="tnum">04 — HYDRAULICS</div><h3>Power you can rely on.</h3><p>Maintained hydraulic systems keep crews moving and downtime off the schedule.</p></div>
+      <div class="tour-caption" data-stop="stick"><div class="tnum">05 — THE STICK</div><h3>Precision at depth.</h3><p>Fine digging control for utility work around existing lines, roads, and structures.</p></div>
+      <div class="tour-caption" data-stop="bucket"><div class="tnum">06 — THE BUCKET</div><h3>Where the work gets done.</h3><p>Purpose-fit attachments for trenching, grading, demolition, and cleanup.</p></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= MOBILE FALLBACK (no pin/zoom, simple scroll) ================= -->
+<section class="mobile-scene" id="mobile-scene" style="display:none;">
+  <p class="eyebrow" style="color:var(--sky-2);font-weight:700;letter-spacing:4px;font-size:11px;">MAN CON INCORPORATED</p>
+  <h2>Florida infrastructure, built from the ground up.</h2>
+  <p>Heavy civil, underground utility, and site development contractors working across the state of Florida.</p>
+  <svg viewBox="0 0 1200 800" id="rig-mobile"></svg>
+  <div class="mobile-parts">
+    <div class="mobile-part"><div class="tnum">01 — UNDERCARRIAGE</div><h4>Goes anywhere the job is.</h4><p>Wide steel tracks distribute load across soft, wet, or uneven Florida terrain.</p></div>
+    <div class="mobile-part"><div class="tnum">02 — THE CAB</div><h4>Experienced operators, every seat.</h4><p>Every operator is trained, certified, and accountable for a safe job site.</p></div>
+    <div class="mobile-part"><div class="tnum">03 — THE BOOM</div><h4>Reach where it counts.</h4><p>Engineered reach and lift capacity for deep utility work.</p></div>
+    <div class="mobile-part"><div class="tnum">04 — HYDRAULICS</div><h4>Power you can rely on.</h4><p>Maintained hydraulic systems keep crews moving.</p></div>
+    <div class="mobile-part"><div class="tnum">05 — THE STICK</div><h4>Precision at depth.</h4><p>Fine digging control around existing lines, roads, and structures.</p></div>
+    <div class="mobile-part"><div class="tnum">06 — THE BUCKET</div><h4>Where the work gets done.</h4><p>Purpose-fit attachments for trenching, grading, and cleanup.</p></div>
+  </div>
+</section>
+
+<!-- ================= SERVICES ================= -->
+<section id="services">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">WHAT WE DO</p>
+      <h2>Ground-up construction services</h2>
+      <p>From the first cut to the final grade, Man-Con handles the civil work that everything else gets built on.</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc-card"><div class="ico">⛏️</div><h3>Underground Utilities</h3><p>Water, sewer, and storm drainage installation and repair for municipal and private clients.</p></div>
+      <div class="svc-card"><div class="ico">🚧</div><h3>Site Development</h3><p>Land clearing, grading, and earthwork to get a site ready to build on.</p></div>
+      <div class="svc-card"><div class="ico">🛣️</div><h3>Road &amp; Right-of-Way</h3><p>Curb, sidewalk, and roadway prep work coordinated with traffic control and local agencies.</p></div>
+      <div class="svc-card"><div class="ico">💧</div><h3>Grading &amp; Drainage</h3><p>Stormwater solutions engineered to keep sites dry and code-compliant.</p></div>
+      <div class="svc-card"><div class="ico">🧱</div><h3>Demolition &amp; Site Prep</h3><p>Safe, efficient demolition and clearing to keep projects on schedule.</p></div>
+      <div class="svc-card"><div class="ico">📞</div><h3>Municipal Response</h3><p>Rapid mobilization for municipal utility repairs and right-of-way work.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CAPABILITIES ================= -->
+<section id="capabilities">
+  <div class="wrap cap-grid">
+    <div class="cap-item"><h4>Licensed &amp; Insured</h4><p>Fully licensed heavy civil contractor</p></div>
+    <div class="cap-item"><h4>Safety-First Crews</h4><p>Trained operators &amp; certified traffic control</p></div>
+    <div class="cap-item"><h4>Modern Fleet</h4><p>Maintained excavators, haulers &amp; support equipment</p></div>
+    <div class="cap-item"><h4>Municipal Experience</h4><p>Trusted on public right-of-way &amp; utility work</p></div>
+  </div>
+</section>
+
+<!-- ================= COVERAGE ================= -->
+<section id="coverage">
+  <div class="wrap coverage-wrap">
+    <div>
+      <p class="eyebrow" style="color:var(--sky-2);font-weight:700;letter-spacing:4px;font-size:11px;margin-bottom:12px;">WHERE WE WORK</p>
+      <h2>Serving communities across Florida</h2>
+      <p>Man-Con crews mobilize for municipal, commercial, and private projects across the state — from coastal utility work to inland site development.</p>
+      <ul class="coverage-list">
+        <li>Underground utility &amp; roadway crews available statewide</li>
+        <li>Coordinated traffic control for public right-of-way work</li>
+        <li>Rapid mobilization for municipal service requests</li>
+      </ul>
+    </div>
+    <svg class="coverage-map-svg" viewBox="0 0 400 520">
+      <path d="M70,58 L182,46 L232,58 L238,90 L302,96 L344,122 L332,162 L302,202 L292,262 L272,322 L252,382 L226,432 L206,462 L190,472 L176,456 L166,420 L160,370 L150,320 L130,262 L110,202 L90,150 L74,110 Z"
+            fill="#152a20" stroke="var(--yellow)" stroke-width="2.5"/>
+      <circle cx="232" cy="300" r="6" fill="var(--orange)"/>
+      <circle cx="150" cy="260" r="6" fill="var(--orange)"/>
+      <circle cx="260" cy="200" r="6" fill="var(--orange)"/>
+    </svg>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section id="contact">
+  <div class="wrap contact-wrap">
+    <div>
+      <h2>Let's build it.</h2>
+      <p class="lede">Tell us about your project and a member of our team will follow up to scope the work.</p>
+      <div class="contact-actions">
+        <!-- TODO: replace with Man-Con's real phone number -->
+        <a href="tel:+15550100199" class="btn-dark">📞 (555) 010-0199</a>
+        <!-- TODO: replace with Man-Con's real email address -->
+        <a href="mailto:info@manconinc.example" class="btn-outline">Email Us</a>
+      </div>
+    </div>
+    <form class="cform" onsubmit="return false;">
+      <label for="cf-name">Name</label>
+      <input id="cf-name" type="text" placeholder="Your name" required />
+      <label for="cf-phone">Phone</label>
+      <input id="cf-phone" type="tel" placeholder="(555) 555-5555" required />
+      <label for="cf-details">Project details</label>
+      <textarea id="cf-details" placeholder="Tell us about the site and scope of work"></textarea>
+      <!-- TODO: wire this form up to a real submission endpoint -->
+      <button type="submit">Request a Quote</button>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap foot-wrap">
+    <span>© <span id="year"></span> Man-Con Incorporated. All rights reserved.</span>
+    <span><a href="#services">Services</a> &nbsp;·&nbsp; <a href="#coverage">Coverage</a> &nbsp;·&nbsp; <a href="#contact">Contact</a></span>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+
+/* preloader */
+window.addEventListener('load', () => {
+  gsap.to('.pre-mark', {opacity:1, duration:0.4});
+  gsap.to('.pre-fill', {width:'100%', duration:0.9, delay:0.1, ease:'power2.inOut'});
+  gsap.to('#preloader', {
+    opacity:0, duration:0.6, delay:1.0, ease:'power2.out',
+    onComplete: () => document.getElementById('preloader').style.display='none'
+  });
+});
+
+/* starfield */
+(function(){
+  const field = document.getElementById('starfield');
+  let html = '';
+  for (let i=0;i<140;i++){
+    const size = Math.random()*2 + 0.6;
+    html += `<div class="star" style="left:${Math.random()*100}%;top:${Math.random()*100}%;width:${size}px;height:${size}px;opacity:${Math.random()*0.7+0.2}"></div>`;
+  }
+  field.innerHTML = html;
+})();
+
+const isDesktop = window.innerWidth > 900;
+
+if (!isDesktop) {
+  document.getElementById('experience').style.display = 'none';
+  document.getElementById('mobile-scene').style.display = 'block';
+  document.getElementById('rail').style.display = 'none';
+  const mobileRig = document.getElementById('rig-mobile');
+  mobileRig.innerHTML = document.getElementById('rig').innerHTML;
+} else {
+
+  gsap.registerPlugin(ScrollTrigger);
+  const lenis = new Lenis({ lerp:0.09, smoothWheel:true });
+  lenis.on('scroll', ScrollTrigger.update);
+  gsap.ticker.add((t)=>lenis.raf(t*1000));
+  gsap.ticker.lagSmoothing(0);
+
+  const railDots = gsap.utils.toArray('#rail .rail-dot');
+  function setRail(i){ railDots.forEach((d,idx)=>d.classList.toggle('active', idx===i)); }
+
+  const stops = [
+    { name:'ready',      part:null,             ox:'50%',   oy:'50%',   scale:1.25 },
+    { name:'tracks',     part:'#part-tracks',    ox:'45.8%', oy:'79.6%', scale:1.9  },
+    { name:'cab',        part:'#part-cab',       ox:'37.5%', oy:'48.4%', scale:2.3  },
+    { name:'boom',       part:'#part-boom',      ox:'43.3%', oy:'40.6%', scale:2.3  },
+    { name:'hydraulics', part:'#part-hydraulics',ox:'41.3%', oy:'50%',   scale:2.4  },
+    { name:'stick',      part:'#part-stick',     ox:'19.8%', oy:'29.9%', scale:2.6  },
+    { name:'bucket',     part:'#part-bucket',    ox:'9.2%',  oy:'41.9%', scale:2.35 },
+  ];
+
+  const allParts = gsap.utils.toArray('.excavator-part');
+  const captions = {};
+  gsap.utils.toArray('.tour-caption').forEach(el => captions[el.dataset.stop] = el);
+
+  const tl = gsap.timeline({
+    scrollTrigger:{
+      trigger:'#experience',
+      start:'top top',
+      end:'+=' + (window.innerHeight * 11.5),
+      scrub:1,
+      pin:'.exp-pin',
+      onUpdate: self => {
+        const p = self.progress;
+        if (p < 0.16) setRail(0);
+        else if (p < 0.30) setRail(1);
+        else if (p < 0.46) setRail(2);
+        else if (p < 0.50) setRail(3);
+        else setRail(4);
+      }
+    },
+    defaults:{ ease:'power1.inOut' }
+  });
+
+  gsap.set('#rig-wrap', { opacity:0 });
+  gsap.set(captions.ready, { opacity:0 });
+
+  // -- phase 1: space -> earth zoom toward Florida target --
+  tl.to({}, {duration:6})
+    .to('.hero-copy', { opacity:0, y:-30, duration:2 }, '<')
+    .to('.earth-wrap', { scale:3.4, transformOrigin:'69% 57%', duration:5 }, '<1')
+    .to('.starfield', { opacity:0.3, duration:5 }, '<')
+    .to('#layer-space', { opacity:0, duration:2 }, '>-1')
+
+  // -- phase 2: florida map zoom toward pin --
+    .to('#layer-florida', { opacity:1, duration:1 }, '<')
+    .to('#caption-florida', { opacity:1, duration:1 }, '<')
+    .to({}, { duration:2 })
+    .to('#caption-florida', { opacity:0, duration:1 })
+    .to('.florida-svg', { scale:4.2, transformOrigin:'58% 58%', duration:5 }, '<')
+    .to('#layer-florida', { opacity:0, duration:2 }, '>-1')
+
+  // -- phase 3: jobsite reveal, excavator small, zoom into machine --
+    .to('#layer-jobsite-sky', { opacity:1, duration:1 }, '<')
+    .to('#caption-jobsite', { opacity:1, duration:1 }, '<')
+    .set('#rig-wrap', { opacity:1 })
+    .set('#rig', { scale:0.22, transformOrigin:'50% 78%' })
+    .to({}, { duration:2 })
+    .to('#caption-jobsite', { opacity:0, duration:1 })
+    .to('.jobsite-dim', { opacity:0.6, duration:6 }, '<')
+    .to('#rig', { scale:1, transformOrigin:'50% 55%', duration:6 }, '<')
+    .to({}, { duration:1.5 })
+    .to(captions.ready, { opacity:1, y:0, duration:1.2 }, '<-0.5');
+
+  // -- phase 4: guided tour through excavator parts --
+  stops.slice(1).forEach((stop, i) => {
+    const prevCaption = i === 0 ? captions.ready : captions[stops[i].name];
+    tl.to({}, { duration:1.5 })
+      .to(prevCaption, { opacity:0, y:-14, duration:0.8 })
+      .to('#rig', { scale:1.35, transformOrigin: stop.ox + ' ' + stop.oy, duration:1.4 }, '<')
+      .to(allParts, { opacity:0.15, filter:'none', duration:0.8 }, '<')
+      .to(stop.part, { opacity:1, filter:'drop-shadow(0 0 22px rgba(255,255,255,0.5))', duration:0.8 }, '<')
+      .to('#rig', { scale:stop.scale, duration:1.6 })
+      .to(captions[stop.name], { opacity:1, y:0, duration:1 }, '<0.4');
+  });
+
+  // -- phase 5: pull back out --
+  tl.to({}, { duration:1.5 })
+    .to(captions.bucket, { opacity:0, y:-14, duration:0.8 })
+    .to(allParts, { opacity:1, filter:'none', duration:1 }, '<')
+    .to('#rig', { scale:1, transformOrigin:'50% 55%', duration:2 }, '<')
+    .to('.jobsite-dim', { opacity:0, duration:2 }, '<')
+    .to({}, { duration:1 });
+}
+</script>
+</body>
+</html>

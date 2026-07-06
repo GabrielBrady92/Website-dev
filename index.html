@@ -234,6 +234,12 @@
       -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
       filter: drop-shadow(0 0 30px rgba(0,150,255,0.3));
     }
+    /* Gradient hero line animates via CSS — splitting it into chars breaks background-clip:text */
+    .hero-title-line.gradient-text { animation: gradientFadeIn 0.8s ease 0.37s both; }
+    @keyframes gradientFadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
 
     .hero-sub {
       font-size: clamp(15px,1.6vw,19px); color: var(--muted);
@@ -1606,6 +1612,9 @@ function initAnimations(){
   // Split hero title lines character by character
   const heroLines = document.querySelectorAll('.hero-title-line');
   heroLines.forEach((line, li) => {
+    // Skip the gradient line: char-splitting breaks background-clip:text, making it invisible.
+    // Its entrance is handled by the gradientFadeIn CSS animation instead.
+    if (line.classList.contains('gradient-text')) return;
     const split = new SplitType(line, { types:'chars' });
     heroTL.from(split.chars, {
       opacity:0, y:80, rotateX:-60,
